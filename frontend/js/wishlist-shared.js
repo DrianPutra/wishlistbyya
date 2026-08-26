@@ -1604,7 +1604,7 @@ function connectRealtime() {
     }
 
     const socketURL =
-        `ws://localhost:8080/ws/folders/${activeFolderId}` +
+        `wss://wishlistbyya-api-production.up.railway.app/ws/folders/${activeFolderId}` +
         `?token=${encodeURIComponent(token)}`;
 
     wishlistSocket =
