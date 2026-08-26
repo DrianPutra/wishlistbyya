@@ -683,8 +683,7 @@ function renderWishlists() {
                             src="${escapeAttribute(item.image_url)}"
                             alt="${escapeAttribute(item.name)}"
                             onerror="
-                                this.style.display='none';
-                                this.nextElementSibling.style.display='block';
+                                this.closest('.wishlist-image').style.display='none';
                             "
                         >
 
@@ -705,7 +704,7 @@ function renderWishlists() {
 
 
             card.innerHTML = `
-                <div class="wishlist-image">
+                <div class="wishlist-image" style="${item.image_url ? "" : "display:none;"}">
 
                     ${imageHTML}
 
