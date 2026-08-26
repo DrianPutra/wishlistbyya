@@ -297,6 +297,41 @@ async function loadItems() {
 }
 
 
+async function loadMembers() {
+    const response =
+        await window.apiRequest(
+            `/folders/${activeFolderId}/members`,
+            {
+                method:
+                    "GET"
+            }
+        );
+
+    members =
+        response.members || [];
+
+    renderMembers();
+    updateStatistics();
+}
+
+
+async function loadActivities() {
+    const response =
+        await window.apiRequest(
+            `/folders/${activeFolderId}/activities`,
+            {
+                method:
+                    "GET"
+            }
+        );
+
+    activities =
+        response.activities || [];
+
+    renderActivities();
+}
+
+
 /* ==========================================
    RENDER PAGE
 ========================================== */
@@ -397,6 +432,56 @@ function renderMembers() {
                 ${escapeHTML(roleText)}
             `;
 
+            if (member.avatar_url) {
+                const avatarElement =
+                    item.querySelector(
+                        ".member-pill-avatar"
+                    );
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+                image.src =
+                    member.avatar_url;
+
+                image.alt =
+                    displayName;
+
+                image.style.width =
+                    "100%";
+
+                image.style.height =
+                    "100%";
+
+                image.style.objectFit =
+                    "cover";
+
+                image.style.borderRadius =
+                    "50%";
+
+                image.style.display =
+                    "block";
+
+                image.addEventListener(
+                    "error",
+                    function() {
+                        avatarElement.innerHTML =
+                            "";
+
+                        avatarElement.textContent =
+                            initials;
+                    }
+                );
+
+                avatarElement.innerHTML =
+                    "";
+
+                avatarElement.appendChild(
+                    image
+                );
+            }
 
             membersList.appendChild(
                 item
@@ -579,6 +664,57 @@ function renderActivities() {
 
                 </div>
             `;
+
+            if (activity.actor_avatar_url) {
+                const avatarElement =
+                    item.querySelector(
+                        ".activity-avatar"
+                    );
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+                image.src =
+                    activity.actor_avatar_url;
+
+                image.alt =
+                    displayName;
+
+                image.style.width =
+                    "100%";
+
+                image.style.height =
+                    "100%";
+
+                image.style.objectFit =
+                    "cover";
+
+                image.style.borderRadius =
+                    "50%";
+
+                image.style.display =
+                    "block";
+
+                image.addEventListener(
+                    "error",
+                    function() {
+                        avatarElement.innerHTML =
+                            "";
+
+                        avatarElement.textContent =
+                            initials;
+                    }
+                );
+
+                avatarElement.innerHTML =
+                    "";
+
+                avatarElement.appendChild(
+                    image
+                );
+            }
 
             activityList.appendChild(
                 item
@@ -1654,8 +1790,30 @@ function connectRealtime() {
                 "activity_created" &&
                 message.activity
             ) {
-                applyRealtimeActivity(
-                    message.activity
+                loadActivities().catch(
+                    error => {
+                        console.error(
+                            "Gagal memperbarui activity realtime:",
+                            error
+                        );
+                    }
+                );
+            }
+
+            if (
+                message.type ===
+                "profile_changed"
+            ) {
+                Promise.all([
+                    loadMembers(),
+                    loadActivities()
+                ]).catch(
+                    error => {
+                        console.error(
+                            "Gagal memperbarui profile realtime:",
+                            error
+                        );
+                    }
                 );
             }
         }

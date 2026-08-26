@@ -48,8 +48,14 @@ func main() {
 	userHandler :=
 		handler.NewUserHandler(db)
 
+	realtimeHub :=
+		realtime.NewHub()
+
 	avatarHandler :=
-		handler.NewAvatarHandler(db)
+		handler.NewAvatarHandler(
+			db,
+			realtimeHub,
+		)
 	folderHandler :=
 		handler.NewFolderHandler(db)
 
@@ -57,8 +63,6 @@ func main() {
 		handler.NewMemberHandler(db)
 
 	activityHandler := handler.NewActivityHandler(db)
-	realtimeHub :=
-		realtime.NewHub()
 
 	wishlistHandler :=
 		handler.NewWishlistHandler(

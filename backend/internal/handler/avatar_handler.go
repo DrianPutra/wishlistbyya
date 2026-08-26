@@ -14,6 +14,8 @@ import (
 	"github.com/cloudinary/cloudinary-go/v2/api/uploader"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"wishlistbyya/internal/realtime"
 )
 
 const (
@@ -22,14 +24,76 @@ const (
 )
 
 type AvatarHandler struct {
-	DB *pgxpool.Pool
+	DB  *pgxpool.Pool
+	Hub *realtime.Hub
 }
 
 func NewAvatarHandler(
 	db *pgxpool.Pool,
+	hub *realtime.Hub,
 ) *AvatarHandler {
 	return &AvatarHandler{
-		DB: db,
+		DB:  db,
+		Hub: hub,
+	}
+}
+
+func (h *AvatarHandler) broadcastProfileChanged(
+	c *gin.Context,
+	userID int64,
+) {
+	if h.Hub == nil {
+		return
+	}
+
+	rows, err := h.DB.Query(
+		c.Request.Context(),
+		`
+            SELECT f.id
+            FROM folders f
+            WHERE
+                f.type = 'shared'
+                AND (
+                    f.owner_id = $1
+                    OR EXISTS (
+                        SELECT 1
+                        FROM folder_members fm
+                        WHERE
+                            fm.folder_id = f.id
+                            AND fm.user_id = $1
+                    )
+                )
+        `,
+		userID,
+	)
+
+	if err != nil {
+		log.Printf(
+			"gagal mencari shared folder untuk realtime profile: %v",
+			err,
+		)
+
+		return
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		var folderID int64
+
+		if err := rows.Scan(
+			&folderID,
+		); err != nil {
+			continue
+		}
+
+		h.Hub.Broadcast(
+			folderID,
+			gin.H{
+				"type":    "profile_changed",
+				"user_id": userID,
+			},
+		)
 	}
 }
 
@@ -327,6 +391,11 @@ func (h *AvatarHandler) Upload(
 		return
 	}
 
+	h.broadcastProfileChanged(
+		c,
+		userID,
+	)
+
 	c.JSON(
 		http.StatusOK,
 		gin.H{
@@ -413,6 +482,11 @@ func (h *AvatarHandler) Delete(
 			cloudinaryErr,
 		)
 	}
+
+	h.broadcastProfileChanged(
+		c,
+		userID,
+	)
 
 	c.JSON(
 		http.StatusOK,

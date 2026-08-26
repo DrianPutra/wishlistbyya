@@ -18,10 +18,11 @@ type MemberHandler struct {
 }
 
 type FolderMember struct {
-	ID       int64  `json:"id"`
-	Email    string `json:"email"`
-	Username string `json:"username"`
-	Role     string `json:"role"`
+	ID        int64  `json:"id"`
+	Email     string `json:"email"`
+	Username  string `json:"username"`
+	AvatarURL string `json:"avatar_url"`
+	Role      string `json:"role"`
 }
 
 type AddMemberRequest struct {
@@ -128,12 +129,14 @@ func (h *MemberHandler) List(
                     id,
                     email,
                     username,
+                    avatar_url,
                     role
                 FROM (
                     SELECT
                         u.id,
                         u.email,
                         u.username,
+                        COALESCE(u.avatar_url, '') AS avatar_url,
                         'owner'::TEXT AS role,
                         0 AS sort_order
                     FROM folders f
@@ -147,6 +150,7 @@ func (h *MemberHandler) List(
                         u.id,
                         u.email,
                         u.username,
+                        COALESCE(u.avatar_url, '') AS avatar_url,
                         fm.role,
                         1 AS sort_order
                     FROM folder_members fm
@@ -186,6 +190,7 @@ func (h *MemberHandler) List(
 				&member.ID,
 				&member.Email,
 				&member.Username,
+				&member.AvatarURL,
 				&member.Role,
 			); err != nil {
 
@@ -348,7 +353,8 @@ func (h *MemberHandler) Add(
                 SELECT
                     id,
                     email,
-                    username
+                    username,
+                    COALESCE(avatar_url, '')
                 FROM users
                 WHERE email = $1
             `,
@@ -357,6 +363,7 @@ func (h *MemberHandler) Add(
 			&member.ID,
 			&member.Email,
 			&member.Username,
+			&member.AvatarURL,
 		)
 
 	if errors.Is(

@@ -15,15 +15,16 @@ type ActivityHandler struct {
 }
 
 type Activity struct {
-	ID            int64     `json:"id"`
-	FolderID      int64     `json:"folder_id"`
-	ActorID       *int64    `json:"actor_id"`
-	ActorUsername string    `json:"actor_username"`
-	ActorEmail    string    `json:"actor_email"`
-	Action        string    `json:"action"`
-	ItemID        *int64    `json:"item_id"`
-	ItemName      string    `json:"item_name"`
-	CreatedAt     time.Time `json:"created_at"`
+	ID             int64     `json:"id"`
+	FolderID       int64     `json:"folder_id"`
+	ActorID        *int64    `json:"actor_id"`
+	ActorUsername  string    `json:"actor_username"`
+	ActorEmail     string    `json:"actor_email"`
+	ActorAvatarURL string    `json:"actor_avatar_url"`
+	Action         string    `json:"action"`
+	ItemID         *int64    `json:"item_id"`
+	ItemName       string    `json:"item_name"`
+	CreatedAt      time.Time `json:"created_at"`
 }
 
 func NewActivityHandler(db *pgxpool.Pool) *ActivityHandler {
@@ -112,6 +113,7 @@ func (h *ActivityHandler) List(c *gin.Context) {
                 a.actor_id,
                 COALESCE(u.username, 'Unknown'),
                 COALESCE(u.email, ''),
+                COALESCE(u.avatar_url, ''),
                 a.action,
                 a.item_id,
                 a.item_name,
@@ -160,6 +162,7 @@ func (h *ActivityHandler) List(c *gin.Context) {
 			&actorID,
 			&activity.ActorUsername,
 			&activity.ActorEmail,
+			&activity.ActorAvatarURL,
 			&activity.Action,
 			&itemID,
 			&activity.ItemName,
