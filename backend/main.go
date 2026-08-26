@@ -17,8 +17,8 @@ import (
 
 func main() {
 	if err := godotenv.Load(); err != nil {
-		log.Fatal(
-			"Gagal membaca file .env",
+		log.Println(
+			"File .env tidak ditemukan, menggunakan environment variables sistem",
 		)
 	}
 
