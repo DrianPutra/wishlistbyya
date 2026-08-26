@@ -1,0 +1,243 @@
+body {
+    background: var(--bg-main);
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    background: var(--card-bg);
+
+    width: 100%;
+    max-width: 440px;
+
+    padding: 40px 35px;
+
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+
+    box-shadow: var(--shadow-subtle);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 6px;
+
+    background: var(--dark-primary);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.header h1 {
+    color: var(--text-dark);
+
+    font-size: 26px;
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--text-dark);
+
+    margin-bottom: 6px;
+}
+
+.input-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i.icon-prefix {
+    position: absolute;
+
+    left: 14px;
+
+    color: #8E7F7F;
+
+    font-size: 15px;
+
+    z-index: 2;
+}
+
+.input-wrapper input {
+    width: 100%;
+
+    padding: 12px 42px 12px 40px;
+
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+
+    background: var(--beige);
+    color: var(--text-dark);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    background: white;
+
+    border-color: #8E7F7F;
+
+    box-shadow:
+        0 0 0 4px rgba(142, 127, 127, 0.12);
+}
+
+/* =========================
+   PASSWORD
+========================= */
+
+.toggle-password {
+    position: absolute;
+
+    right: 14px;
+
+    cursor: pointer;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: var(--dark-primary);
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error-message {
+    display: none;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: var(--error-color);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn-submit {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 10px;
+
+    background: var(--dark-primary);
+
+    border: none;
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(45, 45, 45, 0.15);
+
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: var(--dark-hover);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(45, 45, 45, 0.2);
+}
+
+.btn-submit:active {
+    transform: translateY(1px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    margin-top: 22px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: var(--text-muted);
+}
+
+.footer a {
+    color: var(--dark-primary);
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

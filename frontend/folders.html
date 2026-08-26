@@ -1,0 +1,1673 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Folders â€” Wishlist</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        /* =========================
+           COLOR PALETTE
+        ========================= */
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow-subtle:
+                0 10px 30px rgba(45,45,45,0.06);
+
+            --shadow-hover:
+                0 15px 35px rgba(45,45,45,0.10);
+        }
+
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        body {
+
+            background: var(--bg-color);
+
+            min-height: 100vh;
+
+            padding: 40px 20px 70px;
+
+            color: var(--text-dark);
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 880px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            background: var(--card-bg);
+
+            padding: 30px 35px;
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border-color);
+
+            box-shadow: var(--shadow-subtle);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .header-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            min-width: 0;
+        }
+
+
+        .header-title h1 {
+
+            font-size: 38px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .header-title p {
+
+            margin-top: 3px;
+
+            font-size: 12px;
+
+            color: var(--text-muted);
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-avatar {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1.2;
+        }
+
+
+        .profile-name {
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .profile-username {
+
+            font-size: 9px;
+
+            color: var(--text-muted);
+
+            margin-top: 3px;
+        }
+
+
+        /* =========================
+           ADD BUTTON
+        ========================= */
+
+        .btn-add {
+
+            border: none;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            transition: all 0.3s ease;
+        }
+
+
+        .btn-add:hover {
+
+            background: var(--dark-hover);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(45,45,45,0.15);
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+
+            margin-bottom: 35px;
+        }
+
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-header h2 {
+
+            font-size: 25px;
+
+            font-weight: 700;
+        }
+
+
+        .section-header span {
+
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            background: var(--beige);
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+        }
+
+
+        /* =========================
+           FOLDER LIST
+        ========================= */
+
+        .folder-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        /* =========================
+           FOLDER CARD
+        ========================= */
+
+        .folder-card {
+
+            background: var(--card-bg);
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 17px;
+
+            padding: 20px 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            box-shadow: var(--shadow-subtle);
+
+            position: relative;
+
+            transition: all 0.3s ease;
+        }
+
+
+        .folder-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow: var(--shadow-hover);
+        }
+
+
+        /* =========================
+           FOLDER ICON
+        ========================= */
+
+        .folder-icon {
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 14px;
+
+            background: var(--beige);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .folder-icon i {
+
+            font-size: 21px;
+
+            color: var(--dark-primary);
+        }
+
+
+        /* =========================
+           FOLDER INFO
+        ========================= */
+
+        .folder-info {
+
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .folder-name {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            color: var(--text-dark);
+
+            cursor: pointer;
+
+            margin-bottom: 3px;
+        }
+
+
+        .folder-name:hover {
+
+            text-decoration: underline;
+        }
+
+
+        .folder-description {
+
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 6px;
+        }
+
+
+        .folder-meta {
+
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            display: flex;
+
+            gap: 10px;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+        }
+
+
+        .folder-meta i {
+
+            margin-right: 3px;
+        }
+
+
+        /* =========================
+           THREE DOT
+        ========================= */
+
+        .folder-menu-btn {
+
+            width: 35px;
+
+            height: 35px;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--text-muted);
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+
+            flex-shrink: 0;
+        }
+
+
+        .folder-menu-btn:hover {
+
+            background: var(--beige);
+
+            color: var(--dark-primary);
+        }
+
+
+        /* =========================
+           DROPDOWN
+        ========================= */
+
+        .folder-menu {
+
+            position: absolute;
+
+            right: 20px;
+
+            top: 62px;
+
+            width: 160px;
+
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.10);
+
+            padding: 6px;
+
+            z-index: 20;
+
+            display: none;
+        }
+
+
+        .folder-menu.active {
+
+            display: block;
+        }
+
+
+        .menu-item {
+
+            width: 100%;
+
+            border: none;
+
+            background: transparent;
+
+            padding: 10px 11px;
+
+            border-radius: 8px;
+
+            text-align: left;
+
+            font-size: 11px;
+
+            color: var(--text-dark);
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .menu-item:hover {
+
+            background: var(--beige);
+        }
+
+
+        .menu-item.delete {
+
+            color: var(--danger);
+        }
+
+
+        .menu-item.delete:hover {
+
+            background: #F9EEEE;
+        }
+
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty-state {
+
+            text-align: center;
+
+            padding: 55px 20px;
+
+            background: white;
+
+            border: 1px dashed var(--border-color);
+
+            border-radius: 18px;
+
+            display: none;
+        }
+
+
+        .empty-state i {
+
+            font-size: 35px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty-state h3 {
+
+            font-size: 24px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .empty-state p {
+
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 18px;
+        }
+
+
+        .empty-state button {
+
+            border: none;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            padding: 10px 17px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(45,45,45,0.35);
+
+            backdrop-filter: blur(5px);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 100;
+        }
+
+
+        .modal-overlay.active {
+
+            display: flex;
+        }
+
+
+        .modal {
+
+            background: white;
+
+            width: 100%;
+
+            max-width: 430px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            border: 1px solid var(--border-color);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.12);
+
+            animation: modalIn 0.25s ease;
+        }
+
+
+        @keyframes modalIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px)
+                    scale(0.98);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .modal h2 {
+
+            font-size: 29px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .modal-subtitle {
+
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-group {
+
+            margin-bottom: 16px;
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+        }
+
+
+        .input-group input,
+        .input-group textarea {
+
+            width: 100%;
+
+            border: 1px solid var(--border-color);
+
+            background: #FAF8F5;
+
+            border-radius: 10px;
+
+            padding: 11px 13px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            color: var(--text-dark);
+
+            transition: 0.2s;
+        }
+
+
+        .input-group textarea {
+
+            height: 75px;
+
+            resize: none;
+        }
+
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+
+            background: white;
+
+            border-color: var(--dark-primary);
+
+            box-shadow:
+                0 0 0 3px rgba(45,45,45,0.06);
+        }
+
+
+        /* =========================
+           FOLDER TYPE
+        ========================= */
+
+        .folder-type {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .type-option {
+
+            flex: 1;
+
+            border: 1px solid var(--border-color);
+
+            background: #FAF8F5;
+
+            border-radius: 10px;
+
+            padding: 12px 8px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            transition: 0.2s;
+        }
+
+
+        .type-option i {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            font-size: 15px;
+        }
+
+
+        .type-option.active {
+
+            background: var(--beige);
+
+            border-color: var(--dark-primary);
+        }
+
+
+        /* =========================
+           MEMBERS
+        ========================= */
+
+        .members-box {
+
+            margin-top: 10px;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 12px;
+
+            background: #FAF8F5;
+
+            padding: 10px;
+        }
+
+
+        .member-input-row {
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .member-input-row input {
+
+            flex: 1;
+        }
+
+
+        .btn-add-member {
+
+            width: 42px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+
+        .member-list {
+
+            margin-top: 10px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .member-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 8px 9px;
+
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 9px;
+        }
+
+
+        .member-avatar {
+
+            width: 28px;
+
+            height: 28px;
+
+            border-radius: 50%;
+
+            background: var(--beige);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+
+        .member-email {
+
+            flex: 1;
+
+            font-size: 10px;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        .remove-member {
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--danger);
+
+            cursor: pointer;
+
+            width: 25px;
+
+            height: 25px;
+
+            border-radius: 50%;
+        }
+
+
+        .remove-member:hover {
+
+            background: #F9EEEE;
+        }
+
+
+        .no-member {
+
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            text-align: center;
+
+            padding: 7px;
+        }
+
+
+        /* =========================
+           MODAL BUTTON
+        ========================= */
+
+        .modal-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 22px;
+        }
+
+
+        .btn-cancel,
+        .btn-save {
+
+            flex: 1;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            border: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-cancel {
+
+            background: var(--beige);
+
+            color: var(--text-dark);
+        }
+
+
+        .btn-save {
+
+            background: var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:hover {
+
+            background: var(--dark-hover);
+        }
+
+
+        /* =========================
+           DELETE MODAL
+        ========================= */
+
+        .delete-modal {
+
+            text-align: center;
+        }
+
+
+        .delete-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #F9EEEE;
+
+            color: var(--danger);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+
+        .delete-modal h2 {
+
+            margin-bottom: 8px;
+        }
+
+
+        .delete-modal p {
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            color: var(--text-muted);
+        }
+
+
+        .btn-delete-confirm {
+
+            flex: 1;
+
+            padding: 11px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: var(--danger);
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding:
+                    20px
+                    14px
+                    50px;
+            }
+
+
+            header {
+
+                padding: 25px 22px;
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .header-left {
+
+                width: 100%;
+
+                justify-content: space-between;
+
+                align-items: flex-start;
+
+                gap: 12px;
+            }
+
+
+            .header-title h1 {
+
+                font-size: 30px;
+            }
+
+
+            .profile-info {
+
+                display: none;
+            }
+
+
+            .profile-avatar {
+
+                width: 40px;
+
+                height: 40px;
+            }
+
+
+            .btn-add {
+
+                width: 100%;
+
+                justify-content: center;
+            }
+
+
+            .folder-card {
+
+                padding: 17px;
+            }
+
+
+            .folder-name {
+
+                font-size: 20px;
+            }
+
+
+            .modal {
+
+                padding: 23px;
+            }
+
+        }
+
+    
+        /* =========================
+           DROPDOWN STACKING FIX
+        ========================= */
+
+        .folder-list {
+            overflow: visible;
+        }
+
+        .folder-card {
+            z-index: 1;
+        }
+
+        .folder-card:hover,
+        .folder-card:has(.folder-menu.active) {
+            z-index: 100;
+        }
+
+        .folder-menu {
+            z-index: 999;
+        }
+
+
+        /* Dropdown layering only - tidak mengubah desain */
+        .folder-card.menu-open {
+            z-index: 1000;
+        }
+
+        .folder-card.menu-open .folder-menu {
+            z-index: 1001;
+        }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="header-left">
+
+            <div class="header-title">
+
+                <h1>My Folders</h1>
+
+                <p>
+                    rapikan wishlist kamu dalam satu tempat ♡</p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    NC
+                </div>
+
+
+                <div class="profile-info">
+
+                    <div class="profile-name">
+                        Naya Claudya
+                    </div>
+
+                    <div class="profile-username">
+                        @nayaclaudya
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-add"
+            onclick="openCreateModal('private')">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Buat Folder
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =========================
+         MY FOLDERS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>My Folders</h2>
+
+            <span id="myFolderCount">
+                0 folder
+            </span>
+
+        </div>
+
+
+        <div
+            class="folder-list"
+            id="myFolderList">
+        </div>
+
+
+        <div
+            class="empty-state"
+            id="emptyState">
+
+            <i class="fa-regular fa-folder-open"></i>
+
+            <h3>Belum ada folder</h3>
+
+            <p>
+                Buat folder pertama untuk mulai
+                menyimpan wishlist kamu.
+            </p>
+
+            <button
+                onclick="openCreateModal('private')">
+
+                + Buat Folder
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SHARED FOLDERS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>Shared With Me</h2>
+
+            <span id="sharedFolderCount">
+                0 folder
+            </span>
+
+        </div>
+
+
+        <div
+            class="folder-list"
+            id="sharedFolderList">
+        </div>
+
+
+        <div
+            class="empty-state"
+            id="sharedEmptyState">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            <h3>Belum ada shared folder</h3>
+
+            <p>
+                Buat folder bersama dan tambahkan
+                orang menggunakan email.
+            </p>
+
+            <button
+                onclick="openCreateModal('shared')">
+
+                + Buat Shared Folder
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================
+     CREATE / EDIT MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="folderModal">
+
+    <div class="modal">
+
+
+        <h2 id="modalTitle">
+            Buat Folder
+        </h2>
+
+
+        <p class="modal-subtitle">
+            Simpan wishlist kamu dengan lebih rapi ♡</p>
+
+
+        <!-- NAME -->
+
+        <div class="input-group">
+
+            <label>
+                Nama Folder
+            </label>
+
+
+            <input
+                type="text"
+                id="folderName"
+                placeholder="contoh: Wishlist Pribadi"
+            >
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="input-group">
+
+            <label>
+                Deskripsi
+            </label>
+
+
+            <textarea
+                id="folderDescription"
+                placeholder="contoh: Barang yang ingin aku beli..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- TYPE -->
+
+        <div class="input-group">
+
+            <label>
+                Jenis Folder
+            </label>
+
+
+            <div class="folder-type">
+
+
+                <div
+                    class="type-option active"
+                    id="privateOption"
+                    onclick="selectType('private')">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Pribadi
+
+                </div>
+
+
+                <div
+                    class="type-option"
+                    id="sharedOption"
+                    onclick="selectType('shared')">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    Dibagikan
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MEMBERS -->
+
+        <div
+            class="input-group"
+            id="membersGroup"
+            style="display:none;">
+
+            <label>
+                Anggota Wishlist
+            </label>
+
+
+            <div class="members-box">
+
+
+                <div class="member-input-row">
+
+                    <input
+                        type="email"
+                        id="memberEmail"
+                        placeholder="contoh@email.com"
+                        onkeydown="handleEmailKey(event)"
+                    >
+
+
+                    <button
+                        class="btn-add-member"
+                        onclick="addMember()">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="member-list"
+                    id="memberList">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="modal-buttons">
+
+
+            <button
+                class="btn-cancel"
+                onclick="closeModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="btn-save"
+                onclick="saveFolder()">
+
+                Simpan
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     DELETE MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="deleteModal">
+
+    <div class="modal delete-modal">
+
+
+        <div class="delete-icon">
+
+            <i class="fa-regular fa-trash-can"></i>
+
+        </div>
+
+
+        <h2>
+            Hapus Folder?
+        </h2>
+
+
+        <p>
+
+            Folder
+            <strong id="deleteFolderName"></strong>
+            akan dihapus.
+
+            <br>
+
+            Tindakan ini tidak dapat dibatalkan.
+
+        </p>
+
+
+        <div class="modal-buttons">
+
+
+            <button
+                class="btn-cancel"
+                onclick="closeDeleteModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="btn-delete-confirm"
+                onclick="confirmDelete()">
+
+                Hapus
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+    <script src="js/api.js"></script>
+    <script src="js/auth-guard.js"></script>
+    <script src="js/folders.js"></script>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,25 @@
+:root {
+    --bg-main: #FAF9F6;
+    --card-bg: #FFFFFF;
+
+    --dark-primary: #2D2D2D;
+    --dark-hover: #454545;
+
+    --beige: #F2EDE9;
+    --border-color: #DCD6CD;
+
+    --text-dark: #2D2D2D;
+    --text-muted: #8C857B;
+
+    --error-color: #C96B6B;
+    --success-color: #81A684;
+
+    --shadow-subtle:
+        0 10px 30px rgba(45, 45, 45, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daftar Akun Baru</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- font awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/auth.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Buat Akun</h1>
+            <p>Silakan lengkapi data untuk mulai mendaftar</p>
+        </div>
+
+        <form id="registerForm">
+
+            <!-- EMAIL -->
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-regular fa-envelope icon-prefix"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="nama@email.com"
+                    >
+
+                </div>
+
+                <div
+                    class="error-message"
+                    id="emailError"
+                >
+                    Format email tidak valid.
+                </div>
+
+            </div>
+
+
+            <!-- USERNAME -->
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-regular fa-user icon-prefix"></i>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Masukkan username"
+                    >
+
+                </div>
+
+                <div
+                    class="error-message"
+                    id="usernameError"
+                >
+                    Username minimal 4 karakter.
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock icon-prefix"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Minimal 6 karakter"
+                    >
+
+                    <i
+                        class="fa-regular fa-eye toggle-password"
+                        onclick="toggleVisibility('password', this)"
+                    ></i>
+
+                </div>
+
+                <div
+                    class="error-message"
+                    id="passwordError"
+                >
+                    Password minimal 6 karakter.
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Verifikasi Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-shield-halved icon-prefix"></i>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Ulangi password"
+                    >
+
+                    <i
+                        class="fa-regular fa-eye toggle-password"
+                        onclick="toggleVisibility('confirmPassword', this)"
+                    ></i>
+
+                </div>
+
+                <div
+                    class="error-message"
+                    id="confirmError"
+                >
+                    Password tidak cocok!
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <button
+                type="submit"
+                class="btn-submit"
+            >
+                Daftar Sekarang
+            </button>
+
+        </form>
+        <div class="footer">
+
+            Sudah punya akun?
+
+            <a href="login.html">
+                Masuk
+            </a>
+
+        </div>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>

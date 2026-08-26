@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist — Cepat Terwujud Ya!</title>
+    <!-- Google Fonts: Poppins & Fredoka -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+    --bg-gradient: linear-gradient(135deg, #FAF9F6 0%, #F2EDE9 100%);
+    --card-bg: #ffffff;
+    
+    --primary-pink: #8E7F7F;
+    --primary-hover: #2D2D2D;
+    
+    --soft-pink: #F2EDE9;
+    
+    --text-dark: #2D2D2D;
+    --text-muted: #8C857B;
+    
+    --border-color: #DCD6CD;
+    
+    --shadow-soft: 0 15px 35px rgba(45, 45, 45, 0.08);
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .welcome-card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 380px;
+            padding: 45px 30px;
+            border-radius: 28px;
+            box-shadow: var(--shadow-soft);
+            border: 1.5px solid var(--border-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Lingkaran Ikon Lucu */
+        .icon-wrapper {
+            width: 90px;
+            height: 90px;
+            background: var(--soft-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            border: 2px dashed var(--primary-pink);
+            animation: bounce-soft 3s ease-in-out infinite;
+        }
+
+        .icon-wrapper i {
+            font-size: 38px;
+            color: var(--primary-hover);
+        }
+
+        @keyframes bounce-soft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Teks Wishlist & Ucapan */
+        .brand-text {
+            font-family: 'Fredoka', cursive;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary-hover);
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .wishing-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .wishing-text span {
+            color: var(--primary-pink);
+        }
+
+        /* Area Tombol Masuk & Daftar */
+        .btn-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 13px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .btn-daftar {
+    background: #2D2D2D;
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(45, 45, 45, 0.15);
+    border: none;
+}
+
+.btn-daftar:hover {
+    background: #454545;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(45, 45, 45, 0.2);
+}
+
+        .btn-masuk {
+            background: var(--soft-pink);
+            color: var(--primary-hover);
+            border: 1.5px solid var(--border-color);
+        }
+
+        .btn-masuk:hover {
+            background: #ffffff;
+            border-color: var(--primary-pink);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-card">
+        <!-- Icon Lucu -->
+        <div class="icon-wrapper">
+            <i class="fa-solid fa-gift"></i>
+        </div>
+
+        <!-- Tulisan Wishlist & Doa -->
+        <h1 class="brand-text">wishlist</h1>
+        <p class="wishing-text">cepat terwujud ya! <span> ⋆.˚ 𓆉 𓆝</span></p>
+
+        <!-- Pilihan Masuk / Daftar -->
+        <div class="btn-group">
+        <a
+            href="register.html"
+            class="btn btn-daftar"
+        >
+            Daftar
+        </a>
+
+        <a
+            href="login.html"
+            class="btn btn-masuk"
+        >
+            Masuk
+        </a>
+        </div>
+    </div>
+
+</body>
+</html>

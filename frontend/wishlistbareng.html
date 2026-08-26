@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist Bareng â€” Wishlist</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           COLOR PALETTE
+        ===================================================== */
+
+        :root {
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+            --success: #718A6A;
+
+            --shadow-subtle:
+                0 10px 30px rgba(45,45,45,0.06);
+
+            --shadow-hover:
+                0 15px 35px rgba(45,45,45,0.10);
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        body {
+            background: var(--bg-color);
+            min-height: 100vh;
+            padding: 30px 20px 70px;
+            color: var(--text-dark);
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           TOP NAV
+        ===================================================== */
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+
+        .back-btn {
+            border: none;
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            padding: 9px 15px;
+
+            border-radius: 25px;
+
+            color: var(--text-dark);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            transition: 0.25s;
+        }
+
+
+        .back-btn:hover {
+            background: var(--beige);
+
+            transform: translateX(-2px);
+        }
+
+
+        .shared-label {
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            background: var(--card-bg);
+
+            padding: 30px 35px;
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border-color);
+
+            box-shadow: var(--shadow-subtle);
+
+            margin-bottom: 25px;
+        }
+
+
+        .header-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 20px;
+        }
+
+
+        .header-info {
+            min-width: 0;
+        }
+
+
+        .folder-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .folder-title-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            background: var(--beige);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .folder-title-icon i {
+            font-size: 19px;
+        }
+
+
+        .folder-title h1 {
+            font-size: 34px;
+
+            line-height: 1.1;
+
+            font-weight: 700;
+        }
+
+
+        .folder-description {
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-top: 10px;
+
+            line-height: 1.6;
+
+            max-width: 600px;
+        }
+
+
+        .btn-add {
+            border: none;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            transition: all 0.3s ease;
+
+            flex-shrink: 0;
+        }
+
+
+        .btn-add:hover {
+            background: var(--dark-hover);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(45,45,45,0.15);
+        }
+
+
+        /* =====================================================
+           MEMBERS
+        ===================================================== */
+
+        .members-section {
+            margin-top: 23px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid var(--border-color);
+        }
+
+
+        .members-title {
+            font-size: 11px;
+
+            font-weight: 700;
+
+            color: var(--text-dark);
+
+            margin-bottom: 10px;
+
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+
+        .members-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .member-pill {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            background: var(--beige);
+
+            border-radius: 20px;
+
+            padding: 6px 10px 6px 6px;
+
+            font-size: 10px;
+
+            color: var(--text-dark);
+        }
+
+
+        .member-pill-avatar {
+            width: 24px;
+            height: 24px;
+
+            border-radius: 50%;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .stat-card {
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 15px;
+
+            padding: 17px 18px;
+
+            box-shadow: var(--shadow-subtle);
+        }
+
+
+        .stat-label {
+            font-size: 9px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 5px;
+        }
+
+
+        .stat-value {
+            font-size: 23px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .section-title h2 {
+            font-size: 25px;
+
+            font-weight: 700;
+        }
+
+
+        .count-badge {
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            background: var(--beige);
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+        }
+
+
+        /* =====================================================
+           WISHLIST GRID
+        ===================================================== */
+
+        .wishlist-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 16px;
+        }
+
+
+        /* =====================================================
+           WISHLIST CARD
+        ===================================================== */
+
+        .wishlist-card {
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow-subtle);
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+
+        .wishlist-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow: var(--shadow-hover);
+        }
+
+
+        .wishlist-card.completed {
+            opacity: 0.7;
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .wishlist-image {
+            width: 100%;
+
+            height: 210px;
+
+            background: var(--beige);
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .wishlist-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .no-image {
+            color: var(--text-muted);
+
+            text-align: center;
+
+            font-size: 11px;
+        }
+
+
+        .no-image i {
+            display: block;
+
+            font-size: 28px;
+
+            margin-bottom: 7px;
+        }
+
+
+        /* =====================================================
+           STATUS BADGE
+        ===================================================== */
+
+        .status-badge {
+            position: absolute;
+
+            top: 10px;
+            left: 10px;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            background: white;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.08);
+        }
+
+
+        .status-badge.completed {
+            color: var(--success);
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .wishlist-content {
+            padding: 17px;
+        }
+
+
+        .wishlist-name {
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+            line-height: 1.25;
+        }
+
+
+        .wishlist-description {
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            line-height: 1.5;
+
+            min-height: 30px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .wishlist-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+
+        .wishlist-price {
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .wishlist-price.empty {
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            font-weight: 500;
+        }
+
+
+        .added-by {
+            font-size: 9px;
+
+            color: var(--text-muted);
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           CARD ACTIONS
+        ===================================================== */
+
+        .card-actions {
+            display: flex;
+
+            gap: 7px;
+
+            margin-top: 13px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid var(--border-color);
+        }
+
+
+        .action-btn {
+            flex: 1;
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 8px;
+
+            font-size: 9px;
+
+            cursor: pointer;
+
+            background: var(--beige);
+
+            color: var(--text-dark);
+
+            transition: 0.2s;
+        }
+
+
+        .action-btn:hover {
+            background: var(--beige-dark);
+        }
+
+
+        .action-btn.delete {
+            flex: 0 0 35px;
+
+            color: var(--danger);
+        }
+
+
+        .action-btn.delete:hover {
+            background: #F9EEEE;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            text-align: center;
+
+            padding: 65px 20px;
+
+            background: white;
+
+            border: 1px dashed var(--border-color);
+
+            border-radius: 18px;
+        }
+
+
+        .empty-state i {
+            font-size: 35px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty-state h3 {
+            font-size: 23px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .empty-state p {
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 18px;
+        }
+
+
+        .empty-state button {
+            border: none;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            padding: 10px 17px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(45,45,45,0.35);
+
+            backdrop-filter: blur(5px);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 100;
+        }
+
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+
+        .modal {
+            background: white;
+
+            width: 100%;
+
+            max-width: 450px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            border: 1px solid var(--border-color);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.12);
+
+            animation: modalIn 0.25s ease;
+        }
+
+
+        @keyframes modalIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(10px)
+                    scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .modal h2 {
+            font-size: 29px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .modal-subtitle {
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+
+        .input-group label {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+        }
+
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+
+            border: 1px solid var(--border-color);
+
+            background: #FAF8F5;
+
+            border-radius: 10px;
+
+            padding: 11px 13px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            color: var(--text-dark);
+
+            transition: 0.2s;
+        }
+
+
+        .input-group textarea {
+            height: 75px;
+
+            resize: none;
+        }
+
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            background: white;
+
+            border-color: var(--dark-primary);
+
+            box-shadow:
+                0 0 0 3px rgba(45,45,45,0.06);
+        }
+
+
+        /* =====================================================
+           MODAL BUTTONS
+        ===================================================== */
+
+        .modal-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 22px;
+        }
+
+
+        .btn-cancel,
+        .btn-save {
+            flex: 1;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            border: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-cancel {
+            background: var(--beige);
+
+            color: var(--text-dark);
+        }
+
+
+        .btn-save {
+            background: var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:hover {
+            background: var(--dark-hover);
+        }
+
+
+        /* =====================================================
+           DELETE MODAL
+        ===================================================== */
+
+        .delete-modal {
+            text-align: center;
+        }
+
+
+        .delete-icon {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #F9EEEE;
+
+            color: var(--danger);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+
+        .delete-modal h2 {
+            margin-bottom: 8px;
+        }
+
+
+        .delete-modal p {
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            color: var(--text-muted);
+        }
+
+
+        .btn-delete-confirm {
+            flex: 1;
+
+            padding: 11px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: var(--danger);
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding:
+                    18px
+                    14px
+                    50px;
+            }
+
+
+            .top-nav {
+                margin-bottom: 14px;
+            }
+
+
+            header {
+                padding: 23px 20px;
+            }
+
+
+            .header-top {
+                flex-direction: column;
+            }
+
+
+            .folder-title h1 {
+                font-size: 28px;
+            }
+
+
+            .folder-title-icon {
+                width: 43px;
+                height: 43px;
+            }
+
+
+            .btn-add {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+
+            .stats {
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 8px;
+            }
+
+
+            .stat-card {
+                padding: 13px 10px;
+            }
+
+
+            .stat-value {
+                font-size: 19px;
+            }
+
+
+            .stat-label {
+                font-size: 8px;
+            }
+
+
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .wishlist-image {
+                height: 230px;
+            }
+
+
+            .modal {
+                padding: 23px;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    
+        /* ACTIVITY LOG STYLE START */
+
+        .activity-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .activity-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .activity-count {
+            font-size: 9px;
+            color: var(--text-dark);
+            opacity: 0.55;
+        }
+
+        .activity-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--beige);
+            border-radius: 12px;
+        }
+
+        .activity-avatar {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--dark-primary);
+            color: white;
+
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+        .activity-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .activity-text {
+            font-size: 10px;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .activity-time {
+            margin-top: 2px;
+
+            font-size: 9px;
+            color: var(--text-dark);
+
+            opacity: 0.55;
+        }
+
+        .activity-empty {
+            padding: 8px 0;
+
+            font-size: 10px;
+            color: var(--text-dark);
+
+            opacity: 0.55;
+        }
+
+        /* ACTIVITY LOG STYLE END */
+
+    </style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =====================================================
+         TOP NAV
+    ====================================================== -->
+
+    <div class="top-nav">
+
+        <button
+            class="back-btn"
+            onclick="goBack()">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Kembali ke Folder
+
+        </button>
+
+
+        <div class="shared-label">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            Shared Wishlist
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <div class="header-top">
+
+
+            <div class="header-info">
+
+                <div class="folder-title">
+
+                    <div class="folder-title-icon">
+
+                        <i class="fa-solid fa-user-group"></i>
+
+                    </div>
+
+
+                    <h1 id="folderName">
+                        Wishlist Bareng
+                    </h1>
+
+                </div>
+
+
+                <p
+                    class="folder-description"
+                    id="folderDescription">
+
+                    Wishlist yang dibagikan bersama kamu
+
+                </p>
+
+            </div>
+
+
+
+            <button
+                class="btn-add"
+                onclick="openWishlistModal()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Tambah Wishlist
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MEMBERS -->
+
+        <div class="members-section">
+
+            <div class="members-title">
+
+                <i class="fa-solid fa-users"></i>
+
+                Anggota Wishlist
+
+            </div>
+
+
+            <div
+                class="members-list"
+                id="membersList">
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL WISHLIST
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalWishlist">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                SUDAH DIBELI
+            </div>
+
+            <div
+                class="stat-value"
+                id="completedWishlist">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL ANGGOTA
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalMembers">
+
+                0
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         WISHLIST SECTION
+    ====================================================== -->
+
+    <section class="section">
+
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                <h2>Wishlist</h2>
+
+                <span
+                    class="count-badge"
+                    id="wishlistCount">
+
+                    0 item
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WISHLIST LIST -->
+
+        <div
+            class="wishlist-grid"
+            id="wishlistGrid">
+
+        </div>
+
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty-state"
+            id="emptyWishlist">
+
+            <i class="fa-regular fa-heart"></i>
+
+            <h3>Belum ada wishlist</h3>
+
+            <p>
+                Tambahkan barang yang ingin kalian
+                beli atau dapatkan bersama â™¡
+            </p>
+
+            <button
+                onclick="openWishlistModal()">
+
+                + Tambah Wishlist
+
+            </button>
+
+        </div>
+
+        <!-- ACTIVITY LOG HTML START -->
+
+        <section
+            class="activity-section"
+            id="activitySection">
+
+            <div class="activity-header">
+
+                <div class="activity-title">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Aktivitas Terbaru
+                </div>
+
+                <div
+                    class="activity-count"
+                    id="activityCount">
+
+                    0 aktivitas
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="activity-list"
+                id="activityList">
+
+            </div>
+
+        </section>
+
+        <!-- ACTIVITY LOG HTML END -->
+
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     ADD / EDIT WISHLIST MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="wishlistModal">
+
+
+    <div class="modal">
+
+
+        <h2 id="modalTitle">
+            Tambah Wishlist
+        </h2>
+
+
+        <p class="modal-subtitle">
+            Tambahkan sesuatu yang ingin kalian miliki â™¡
+        </p>
+
+
+
+        <!-- NAME -->
+
+        <div class="input-group">
+
+            <label>
+                Nama Barang / Nama Tempat
+            </label>
+
+            <input
+                type="text"
+                id="itemName"
+                placeholder="contoh: Tas Charles & Keith"
+            >
+
+        </div>
+
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="input-group">
+
+            <label>
+                Deskripsi
+            </label>
+
+            <textarea
+                id="itemDescription"
+                placeholder="contoh: Warna hitam, ukuran medium..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- PRICE -->
+
+        <div class="input-group">
+
+            <label>
+                Harga
+            </label>
+
+            <input
+                type="text" inputmode="numeric"
+                id="itemPrice"
+                placeholder="contoh: 850000"
+                min="0"
+            >
+
+        </div>
+
+
+
+        <!-- IMAGE -->
+
+        <div class="input-group">
+
+            <label>
+                URL Gambar
+            </label>
+
+            <input
+                type="url"
+                id="itemImage"
+                placeholder="https://contoh.com/gambar.jpg"
+            >
+
+        </div>
+
+
+
+        <!-- ADDED BY -->
+
+        <div class="input-group">
+
+            <label>
+                Ditambahkan oleh
+            </label>
+
+            <input
+                type="text"
+                id="itemAddedBy"
+                placeholder="contoh: Naya"
+            >
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn-cancel"
+                onclick="closeWishlistModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="btn-save"
+                onclick="saveWishlist()">
+
+                Simpan
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     DELETE MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="deleteModal">
+
+
+    <div class="modal delete-modal">
+
+
+        <div class="delete-icon">
+
+            <i class="fa-regular fa-trash-can"></i>
+
+        </div>
+
+
+        <h2>
+            Hapus Wishlist?
+        </h2>
+
+
+        <p>
+
+            Wishlist
+
+            <strong id="deleteItemName"></strong>
+
+            akan dihapus.
+
+            <br>
+
+            Tindakan ini tidak dapat dibatalkan.
+
+        </p>
+
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn-cancel"
+                onclick="closeDeleteModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="btn-delete-confirm"
+                onclick="confirmDelete()">
+
+                Hapus
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+    <script src="js/api.js"></script>
+    <script src="js/auth-guard.js"></script>
+    <script src="js/wishlist-shared.js"></script>
+</body>
+</html>
