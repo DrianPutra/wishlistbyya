@@ -7,11 +7,26 @@ import (
 )
 
 func CORS() gin.HandlerFunc {
+	allowedOrigins := map[string]bool{
+		"http://localhost:5500":                          true,
+		"http://127.0.0.1:5500":                          true,
+		"https://wishlistbyya.adriandsputra.workers.dev": true,
+	}
+
 	return func(c *gin.Context) {
-		c.Writer.Header().Set(
-			"Access-Control-Allow-Origin",
-			"*",
-		)
+		origin := c.GetHeader("Origin")
+
+		if allowedOrigins[origin] {
+			c.Writer.Header().Set(
+				"Access-Control-Allow-Origin",
+				origin,
+			)
+
+			c.Writer.Header().Set(
+				"Vary",
+				"Origin",
+			)
+		}
 
 		c.Writer.Header().Set(
 			"Access-Control-Allow-Headers",
