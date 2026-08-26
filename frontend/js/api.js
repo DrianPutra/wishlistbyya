@@ -48,6 +48,7 @@ async function apiRequest(
 
     if (
         options.body &&
+        !(options.body instanceof FormData) &&
         !headers.has("Content-Type")
     ) {
         headers.set(

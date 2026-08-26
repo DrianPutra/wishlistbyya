@@ -85,10 +85,58 @@ function renderProfile(user) {
     }
 
     if (avatar) {
-        avatar.textContent =
+
+        const initials =
             user.username
                 .substring(0, 2)
                 .toUpperCase();
+
+        avatar.innerHTML = "";
+
+        if (user.avatar_url) {
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+            image.src =
+                user.avatar_url;
+
+            image.alt =
+                user.username;
+
+            image.style.width =
+                "100%";
+
+            image.style.height =
+                "100%";
+
+            image.style.objectFit =
+                "cover";
+
+            image.style.borderRadius =
+                "50%";
+
+            image.onerror =
+                function () {
+
+                    avatar.innerHTML =
+                        "";
+
+                    avatar.textContent =
+                        initials;
+                };
+
+            avatar.appendChild(
+                image
+            );
+
+        } else {
+
+            avatar.textContent =
+                initials;
+        }
     }
 }
 

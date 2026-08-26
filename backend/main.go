@@ -48,6 +48,8 @@ func main() {
 	userHandler :=
 		handler.NewUserHandler(db)
 
+	avatarHandler :=
+		handler.NewAvatarHandler(db)
 	folderHandler :=
 		handler.NewFolderHandler(db)
 
@@ -139,6 +141,25 @@ func main() {
 	protected.GET(
 		"/users/me",
 		userHandler.Me,
+	)
+
+	protected.PATCH(
+		"/users/me",
+		userHandler.UpdateMe,
+	)
+
+	protected.PATCH(
+		"/users/me/password",
+		userHandler.ChangePassword,
+	)
+	protected.POST(
+		"/users/me/avatar",
+		avatarHandler.Upload,
+	)
+
+	protected.DELETE(
+		"/users/me/avatar",
+		avatarHandler.Delete,
 	)
 
 	/* FOLDERS */
