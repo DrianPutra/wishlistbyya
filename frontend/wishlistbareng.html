@@ -1109,7 +1109,7 @@
 
         }
 
-    
+
         /* ACTIVITY LOG STYLE START */
 
         .activity-section {
@@ -1204,7 +1204,301 @@
 
         /* ACTIVITY LOG STYLE END */
 
-    </style>
+
+        /* =====================================================
+           FINAL WISHLIST RESPONSIVE LAYOUT START
+        ===================================================== */
+
+        /*
+           Card memenuhi lebar area Wishlist.
+        */
+
+        .wishlist-grid {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) !important;
+            width: 100% !important;
+            gap: 18px !important;
+        }
+
+        .wishlist-card {
+            width: 100% !important;
+            max-width: none !important;
+            box-sizing: border-box !important;
+        }
+
+
+        /*
+           DESKTOP / TABLET
+
+           kiri   : nama + deskripsi
+           tengah : harga + lihat produk
+           kanan  : oleh username
+           bawah  : tombol
+        */
+
+        .wishlist-content {
+            display: grid !important;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(180px, 240px)
+                minmax(120px, 170px) !important;
+
+            grid-template-areas:
+                "name        price       added"
+                "description product     added"
+                "actions     actions     actions" !important;
+
+            column-gap: 28px !important;
+            row-gap: 6px !important;
+
+            align-items: start !important;
+
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+
+        .wishlist-name {
+            grid-area: name !important;
+            min-width: 0 !important;
+        }
+
+
+        .wishlist-description {
+            grid-area: description !important;
+
+            min-height: 0 !important;
+            height: auto !important;
+
+            margin: 0 !important;
+        }
+
+
+        /*
+           Harga dan "added by" sebelumnya berada
+           di dalam .wishlist-bottom.
+        */
+
+        .wishlist-bottom {
+            display: contents !important;
+        }
+
+
+        .wishlist-price {
+            grid-area: price !important;
+
+            justify-self: center !important;
+            align-self: end !important;
+
+            margin: 0 !important;
+
+            text-align: center !important;
+            white-space: nowrap;
+        }
+
+
+        /*
+           Link Produk adalah child langsung
+           dari .wishlist-content.
+        */
+
+        .wishlist-content > a[rel="noopener noreferrer"] {
+            grid-area: product !important;
+
+            justify-self: center !important;
+            align-self: start !important;
+
+            margin: 0 !important;
+
+            white-space: nowrap;
+        }
+
+
+        .added-by {
+            grid-area: added !important;
+
+            justify-self: end !important;
+            align-self: center !important;
+
+            margin: 0 !important;
+
+            text-align: right !important;
+            white-space: nowrap;
+        }
+
+
+        .card-actions {
+            grid-area: actions !important;
+
+            width: 100% !important;
+
+            margin-top: 12px !important;
+            padding-top: 12px !important;
+        }
+
+
+        /* =====================================================
+           MOBILE
+           Tetap layout yang sama seperti desktop
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .wishlist-grid {
+                gap: 12px !important;
+            }
+
+            .wishlist-content {
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    minmax(82px, 100px)
+                    minmax(58px, 78px) !important;
+
+                grid-template-areas:
+                    "name        price       added"
+                    "description product     added"
+                    "actions     actions     actions" !important;
+
+                column-gap: 6px !important;
+                row-gap: 3px !important;
+
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+
+            .wishlist-name {
+                font-size: 15px !important;
+            }
+
+
+            .wishlist-description {
+                min-height: 0 !important;
+                height: auto !important;
+
+                margin: 0 !important;
+
+                font-size: 10px !important;
+                line-height: 1.35 !important;
+            }
+
+
+            .wishlist-price {
+                font-size: 9px !important;
+                line-height: 1.3 !important;
+
+                white-space: normal !important;
+            }
+
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                margin: 0 !important;
+
+                font-size: 8px !important;
+                line-height: 1.3 !important;
+
+                gap: 3px !important;
+            }
+
+
+            .added-by {
+                max-width: 78px !important;
+
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+
+                font-size: 8px !important;
+            }
+
+
+            .card-actions {
+                margin-top: 8px !important;
+                padding-top: 8px !important;
+            }
+
+        }
+
+        /* FINAL WISHLIST RESPONSIVE LAYOUT END */
+
+        /* =====================================================
+           PRODUCT INFO ALIGNMENT FINAL START
+        ===================================================== */
+
+        /*
+           Desktop:
+           kiri   = nama/deskripsi
+           tengah = harga/link, digeser lebih ke kiri
+           kanan  = oleh username
+        */
+
+        @media (min-width: 769px) {
+
+            .wishlist-content {
+                grid-template-columns:
+                    minmax(0, 43%)
+                    minmax(0, 32%)
+                    minmax(0, 1fr) !important;
+
+                column-gap: 24px !important;
+            }
+
+            .wishlist-price {
+                justify-self: start !important;
+                text-align: left !important;
+
+                margin: 0 !important;
+            }
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                justify-self: start !important;
+                text-align: left !important;
+
+                margin: 0 !important;
+            }
+
+            .added-by {
+                justify-self: end !important;
+                text-align: right !important;
+            }
+        }
+
+
+        /*
+           Mobile:
+           tetap layout yang sama seperti desktop,
+           dan harga + link tetap left aligned.
+        */
+
+        @media (max-width: 768px) {
+
+            .wishlist-content {
+                grid-template-columns:
+                    minmax(0, 44%)
+                    minmax(0, 31%)
+                    minmax(0, 1fr) !important;
+
+                column-gap: 5px !important;
+            }
+
+            .wishlist-price {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+
+            .added-by {
+                justify-self: end !important;
+                text-align: right !important;
+            }
+        }
+
+        /* PRODUCT INFO ALIGNMENT FINAL END */
+</style>
 </head>
 
 
