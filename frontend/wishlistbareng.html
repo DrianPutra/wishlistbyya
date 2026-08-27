@@ -1498,6 +1498,85 @@
         }
 
         /* PRODUCT INFO ALIGNMENT FINAL END */
+
+        /* =====================================================
+           NAME PRICE ALIGNMENT FIX START
+        ===================================================== */
+
+        /*
+           Nama produk dan harga berada pada baseline
+           yang sama di baris pertama.
+        */
+
+        .wishlist-name,
+        .wishlist-price {
+            align-self: baseline !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            line-height: 1.3 !important;
+        }
+
+        .wishlist-price {
+            justify-self: start !important;
+            text-align: left !important;
+        }
+
+
+        /*
+           DESKTOP:
+           pertahankan ukuran masing-masing,
+           hanya sejajarkan posisi vertikalnya.
+        */
+
+        @media (min-width: 769px) {
+
+            .wishlist-name,
+            .wishlist-price {
+                grid-row: 1 !important;
+            }
+
+            .wishlist-name {
+                align-self: baseline !important;
+            }
+
+            .wishlist-price {
+                align-self: baseline !important;
+            }
+        }
+
+
+        /*
+           MOBILE:
+           nama produk dan harga menggunakan
+           font family + ukuran teks yang sama.
+        */
+
+        @media (max-width: 768px) {
+
+            .wishlist-name,
+            .wishlist-price {
+                font-family: inherit !important;
+                font-size: 13px !important;
+
+                line-height: 1.3 !important;
+
+                align-self: baseline !important;
+            }
+
+            .wishlist-price {
+                justify-self: start !important;
+                text-align: left !important;
+
+                white-space: normal !important;
+            }
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+        }
+
+        /* NAME PRICE ALIGNMENT FIX END */
 </style>
 </head>
 
