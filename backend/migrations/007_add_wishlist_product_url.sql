@@ -1,0 +1,2 @@
+ALTER TABLE wishlist_items
+ADD COLUMN IF NOT EXISTS product_url TEXT NOT NULL DEFAULT '';

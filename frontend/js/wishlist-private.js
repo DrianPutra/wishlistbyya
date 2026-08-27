@@ -280,6 +280,31 @@ function renderWishlist() {
                         )}
                     </div>
 
+                    ${
+                        item.product_url
+                            ? `
+                                <a
+                                    href="${escapeHTML(item.product_url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="
+                                        display:inline-flex;
+                                        align-items:center;
+                                        gap:6px;
+                                        margin-top:10px;
+                                        color:inherit;
+                                        font-size:12px;
+                                        text-decoration:underline;
+                                        text-underline-offset:3px;
+                                    "
+                                >
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    Lihat Produk
+                                </a>
+                              `
+                            : ""
+                    }
+
                 </div>
 
 
@@ -394,6 +419,13 @@ function openModal() {
         .value =
         "";
 
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        "";
+
 
     modal.classList.add(
         "active"
@@ -463,6 +495,13 @@ function editWishlist(id) {
         .value =
         item.tag || "";
 
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        item.product_url || "";
+
 
     closeAllMenus();
 
@@ -515,6 +554,13 @@ function closeModal() {
         )
         .value =
         "";
+
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        "";
 }
 
 
@@ -545,6 +591,15 @@ async function saveWishlistItem() {
         document
             .getElementById(
                 "itemTag"
+            )
+            .value
+            .trim();
+
+
+    const productURL =
+        document
+            .getElementById(
+                "itemProductUrl"
             )
             .value
             .trim();
@@ -615,7 +670,9 @@ async function saveWishlistItem() {
                             tag:
                                 tag ||
                                 "Wishlist ✨",
-                            image_url: ""
+                            image_url: "",
+                            product_url:
+                                productURL
                         })
                 }
             );
@@ -634,7 +691,9 @@ async function saveWishlistItem() {
                             price,
                             tag:
                                 tag ||
-                                "Wishlist ✨"
+                                "Wishlist ✨",
+                            product_url:
+                                productURL
                         })
                 }
             );

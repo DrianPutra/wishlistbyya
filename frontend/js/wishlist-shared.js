@@ -839,6 +839,33 @@ function renderWishlists() {
                       `;
 
 
+
+
+            const productLinkHTML =
+                item.product_url
+                    ? `
+                        <a
+                            href="${escapeAttribute(item.product_url)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                display:inline-flex;
+                                align-items:center;
+                                gap:6px;
+                                margin-top:10px;
+                                color:inherit;
+                                font-size:12px;
+                                text-decoration:underline;
+                                text-underline-offset:3px;
+                            "
+                        >
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            Lihat Produk
+                        </a>
+                      `
+                    : "";
+
+
             card.innerHTML = `
                 <div class="wishlist-image" style="${item.image_url ? "" : "display:none;"}">
 
@@ -910,6 +937,11 @@ function renderWishlists() {
                         </div>
 
                     </div>
+
+
+
+
+                    ${productLinkHTML}
 
 
                     <div class="card-actions">
@@ -1041,6 +1073,13 @@ function openWishlistModal() {
         .value =
         "";
 
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        "";
+
 
     document
         .getElementById(
@@ -1124,6 +1163,15 @@ async function saveWishlist() {
             .trim();
 
 
+    const productURL =
+        document
+            .getElementById(
+                "itemProductUrl"
+            )
+            .value
+            .trim();
+
+
     if (!name) {
         alert(
             "Nama barang harus diisi."
@@ -1191,7 +1239,9 @@ async function saveWishlist() {
                             price,
                             tag: "",
                             image_url:
-                                imageURL
+                                imageURL,
+                            product_url:
+                                productURL
                         })
                 }
             );
@@ -1210,7 +1260,9 @@ async function saveWishlist() {
                             description,
                             price,
                             image_url:
-                                imageURL
+                                imageURL,
+                            product_url:
+                                productURL
                         })
                 }
             );
@@ -1304,6 +1356,13 @@ function editWishlist(id) {
         )
         .value =
         item.image_url || "";
+
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        item.product_url || "";
 
 
     document

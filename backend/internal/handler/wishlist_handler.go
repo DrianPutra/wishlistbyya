@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"time"
@@ -30,6 +31,7 @@ type WishlistItem struct {
 	Price       int64     `json:"price"`
 	Tag         string    `json:"tag"`
 	ImageURL    string    `json:"image_url"`
+	ProductURL  string    `json:"product_url"`
 	Completed   bool      `json:"completed"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
@@ -41,6 +43,7 @@ type CreateWishlistRequest struct {
 	Price       int64  `json:"price"`
 	Tag         string `json:"tag"`
 	ImageURL    string `json:"image_url"`
+	ProductURL  string `json:"product_url"`
 }
 
 type UpdateWishlistRequest struct {
@@ -49,6 +52,7 @@ type UpdateWishlistRequest struct {
 	Price       *int64  `json:"price"`
 	Tag         *string `json:"tag"`
 	ImageURL    *string `json:"image_url"`
+	ProductURL  *string `json:"product_url"`
 	Completed   *bool   `json:"completed"`
 }
 
@@ -60,6 +64,34 @@ func NewWishlistHandler(
 		DB:  db,
 		Hub: hub,
 	}
+}
+
+func normalizeProductURL(
+	value string,
+) (string, bool) {
+	value =
+		strings.TrimSpace(value)
+
+	if value == "" {
+		return "", true
+	}
+
+	parsed, err :=
+		url.ParseRequestURI(value)
+
+	if err != nil ||
+		parsed.Host == "" {
+
+		return "", false
+	}
+
+	if parsed.Scheme != "http" &&
+		parsed.Scheme != "https" {
+
+		return "", false
+	}
+
+	return value, true
 }
 
 /* ==========================================
@@ -180,6 +212,7 @@ func (h *WishlistHandler) List(
                     wi.price,
                     wi.tag,
                     wi.image_url,
+                    wi.product_url,
                     wi.completed,
                     wi.created_at,
                     wi.updated_at
@@ -228,6 +261,7 @@ func (h *WishlistHandler) List(
 				&item.Price,
 				&item.Tag,
 				&item.ImageURL,
+				&item.ProductURL,
 				&item.Completed,
 				&item.CreatedAt,
 				&item.UpdatedAt,
@@ -319,6 +353,25 @@ func (h *WishlistHandler) Create(
 			req.ImageURL,
 		)
 
+	productURL, validProductURL :=
+		normalizeProductURL(
+			req.ProductURL,
+		)
+
+	if !validProductURL {
+		c.JSON(
+			http.StatusBadRequest,
+			gin.H{
+				"error": "link produk harus berupa URL http atau https yang valid",
+			},
+		)
+
+		return
+	}
+
+	req.ProductURL =
+		productURL
+
 	if req.Name == "" {
 		c.JSON(
 			http.StatusBadRequest,
@@ -366,7 +419,8 @@ func (h *WishlistHandler) Create(
                         description,
                         price,
                         tag,
-                        image_url
+                        image_url,
+                        product_url
                     )
 
                     VALUES (
@@ -376,7 +430,8 @@ func (h *WishlistHandler) Create(
                         $4,
                         $5,
                         $6,
-                        $7
+                        $7,
+                        $8
                     )
 
                     RETURNING
@@ -388,6 +443,7 @@ func (h *WishlistHandler) Create(
                         price,
                         tag,
                         image_url,
+                        product_url,
                         completed,
                         created_at,
                         updated_at
@@ -403,6 +459,7 @@ func (h *WishlistHandler) Create(
                     i.price,
                     i.tag,
                     i.image_url,
+                    i.product_url,
                     i.completed,
                     i.created_at,
                     i.updated_at
@@ -419,6 +476,7 @@ func (h *WishlistHandler) Create(
 			req.Price,
 			req.Tag,
 			req.ImageURL,
+			req.ProductURL,
 		).Scan(
 			&item.ID,
 			&item.FolderID,
@@ -429,6 +487,7 @@ func (h *WishlistHandler) Create(
 			&item.Price,
 			&item.Tag,
 			&item.ImageURL,
+			&item.ProductURL,
 			&item.Completed,
 			&item.CreatedAt,
 			&item.UpdatedAt,
@@ -518,6 +577,7 @@ func (h *WishlistHandler) Update(
 		req.Price == nil &&
 		req.Tag == nil &&
 		req.ImageURL == nil &&
+		req.ProductURL == nil &&
 		req.Completed == nil {
 
 		c.JSON(
@@ -535,6 +595,7 @@ func (h *WishlistHandler) Update(
 	var priceValue interface{}
 	var tagValue interface{}
 	var imageValue interface{}
+	var productURLValue interface{}
 	var completedValue interface{}
 
 	if req.Name != nil {
@@ -606,6 +667,27 @@ func (h *WishlistHandler) Update(
 			)
 	}
 
+	if req.ProductURL != nil {
+		value, valid :=
+			normalizeProductURL(
+				*req.ProductURL,
+			)
+
+		if !valid {
+			c.JSON(
+				http.StatusBadRequest,
+				gin.H{
+					"error": "link produk harus berupa URL http atau https yang valid",
+				},
+			)
+
+			return
+		}
+
+		productURLValue =
+			value
+	}
+
 	if req.Completed != nil {
 		completedValue =
 			*req.Completed
@@ -651,9 +733,15 @@ func (h *WishlistHandler) Update(
                                 image_url
                             ),
 
+                        product_url =
+                            COALESCE(
+                                $6::TEXT,
+                                product_url
+                            ),
+
                         completed =
                             COALESCE(
-                                $6::BOOLEAN,
+                                $7::BOOLEAN,
                                 completed
                             ),
 
@@ -661,8 +749,8 @@ func (h *WishlistHandler) Update(
                             NOW()
 
                     WHERE
-                        id = $7
-                        AND folder_id = $8
+                        id = $8
+                        AND folder_id = $9
 
                     RETURNING
                         id,
@@ -673,6 +761,7 @@ func (h *WishlistHandler) Update(
                         price,
                         tag,
                         image_url,
+                        product_url,
                         completed,
                         created_at,
                         updated_at
@@ -688,6 +777,7 @@ func (h *WishlistHandler) Update(
                     i.price,
                     i.tag,
                     i.image_url,
+                    i.product_url,
                     i.completed,
                     i.created_at,
                     i.updated_at
@@ -702,6 +792,7 @@ func (h *WishlistHandler) Update(
 			priceValue,
 			tagValue,
 			imageValue,
+			productURLValue,
 			completedValue,
 			itemID,
 			folderID,
@@ -715,6 +806,7 @@ func (h *WishlistHandler) Update(
 			&item.Price,
 			&item.Tag,
 			&item.ImageURL,
+			&item.ProductURL,
 			&item.Completed,
 			&item.CreatedAt,
 			&item.UpdatedAt,
