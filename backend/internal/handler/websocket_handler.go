@@ -42,7 +42,7 @@ func NewWebSocketHandler(
 					origin ==
 						"http://127.0.0.1:5500" ||
 					origin ==
-						"https://wishlistbyya.adriandsputra.workers.dev"
+						"https://wishlistbyya.nekoyaa.workers.dev"
 			},
 		},
 	}
