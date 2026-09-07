@@ -42,6 +42,12 @@ let saveQueued =
 const AUTOSAVE_DELAY =
     800;
 
+/*
+   Autosave sengaja dinonaktifkan.
+   Nilai ini dipertahankan agar struktur
+   save manual dan realtime tetap aman.
+*/
+
 /* NOTE AUTOSAVE STATE END */
 
 
@@ -690,6 +696,8 @@ async function saveNote(
 
 function scheduleAutosave() {
 
+    /* NOTE AUTOSAVE DISABLED */
+
     if (
         !activeNote ||
         activeNote.role ===
@@ -699,29 +707,14 @@ function scheduleAutosave() {
     }
 
 
+    /*
+       Tidak ada timer dan tidak ada request otomatis.
+       Perubahan hanya disimpan ketika tombol
+       Simpan ditekan.
+    */
+
     saveStatus.textContent =
         "Belum disimpan";
-
-
-    if (autosaveTimer) {
-
-        clearTimeout(
-            autosaveTimer
-        );
-    }
-
-
-    autosaveTimer =
-        setTimeout(
-            function() {
-
-                saveNote(
-                    false
-                );
-
-            },
-            AUTOSAVE_DELAY
-        );
 }
 
 
