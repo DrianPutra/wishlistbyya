@@ -11,10 +11,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
+
+	"wishlistbyya/internal/realtime"
 )
 
 type NoteHandler struct {
-	DB *pgxpool.Pool
+	DB  *pgxpool.Pool
+	Hub *realtime.Hub
 }
 
 type Note struct {
@@ -52,10 +55,12 @@ type ShareNoteRequest struct {
 
 func NewNoteHandler(
 	db *pgxpool.Pool,
+	hub *realtime.Hub,
 ) *NoteHandler {
 
 	return &NoteHandler{
-		DB: db,
+		DB:  db,
+		Hub: hub,
 	}
 }
 
@@ -826,6 +831,24 @@ func (h *NoteHandler) Update(
 	note.Role =
 		role
 
+	/* NOTE REALTIME BROADCAST START */
+
+	if h.Hub != nil {
+
+		h.Hub.Broadcast(
+			noteID,
+			gin.H{
+				"type":       "note_updated",
+				"note_id":    note.ID,
+				"title":      note.Title,
+				"content":    note.Content,
+				"updated_at": note.UpdatedAt,
+			},
+		)
+	}
+
+	/* NOTE REALTIME BROADCAST END */
+
 	c.JSON(
 		http.StatusOK,
 		gin.H{
@@ -1304,6 +1327,20 @@ func (h *NoteHandler) Share(
 	target.Role =
 		req.Role
 
+	/* NOTE SHARE REALTIME START */
+
+	if h.Hub != nil {
+
+		h.Hub.Broadcast(
+			noteID,
+			gin.H{
+				"type": "note_members_changed",
+			},
+		)
+	}
+
+	/* NOTE SHARE REALTIME END */
+
 	c.JSON(
 		http.StatusOK,
 		gin.H{
@@ -1437,6 +1474,20 @@ func (h *NoteHandler) RemoveMember(
 
 		return
 	}
+
+	/* NOTE REMOVE MEMBER REALTIME START */
+
+	if h.Hub != nil {
+
+		h.Hub.Broadcast(
+			noteID,
+			gin.H{
+				"type": "note_members_changed",
+			},
+		)
+	}
+
+	/* NOTE REMOVE MEMBER REALTIME END */
 
 	c.JSON(
 		http.StatusOK,

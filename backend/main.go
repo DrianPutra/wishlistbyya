@@ -51,6 +51,9 @@ func main() {
 	realtimeHub :=
 		realtime.NewHub()
 
+	noteRealtimeHub :=
+		realtime.NewHub()
+
 	avatarHandler :=
 		handler.NewAvatarHandler(
 			db,
@@ -63,7 +66,11 @@ func main() {
 		handler.NewMemberHandler(db)
 
 	activityHandler := handler.NewActivityHandler(db)
-	noteHandler := handler.NewNoteHandler(db)
+	noteHandler :=
+		handler.NewNoteHandler(
+			db,
+			noteRealtimeHub,
+		)
 
 	wishlistHandler :=
 		handler.NewWishlistHandler(
@@ -77,6 +84,11 @@ func main() {
 			realtimeHub,
 		)
 
+	noteWebSocketHandler :=
+		handler.NewNoteWebSocketHandler(
+			db,
+			noteRealtimeHub,
+		)
 	/* HEALTH */
 
 	router.GET(
@@ -116,6 +128,10 @@ func main() {
 		webSocketHandler.Folder,
 	)
 
+	router.GET(
+		"/ws/notes/:id",
+		noteWebSocketHandler.Note,
+	)
 	/* API */
 
 	api :=
