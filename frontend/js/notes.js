@@ -604,3 +604,176 @@ window.closeCreateNoteModal =
 
 window.createNote =
     createNote;
+
+
+/* ==========================================
+   NOTES PROFILE AVATAR SYNC START
+========================================== */
+
+function getNotesInitials(
+    username
+) {
+
+    if (!username) {
+        return "--";
+    }
+
+
+    return username
+        .trim()
+        .split(/\s+/)
+        .slice(
+            0,
+            2
+        )
+        .map(
+            function(part) {
+
+                return part
+                    .charAt(0)
+                    .toUpperCase();
+            }
+        )
+        .join("");
+}
+
+
+function renderNotesProfileAvatar(
+    user
+) {
+
+    const avatar =
+        document.getElementById(
+            "noteProfileAvatar"
+        );
+
+
+    if (
+        !avatar ||
+        !user
+    ) {
+        return;
+    }
+
+
+    const displayName =
+        user.username ||
+        user.email ||
+        "User";
+
+
+    function showInitials() {
+
+        avatar.innerHTML =
+            "";
+
+        avatar.textContent =
+            getNotesInitials(
+                displayName
+            );
+    }
+
+
+    if (
+        user.avatar_url
+    ) {
+
+        const image =
+            document.createElement(
+                "img"
+            );
+
+
+        image.src =
+            user.avatar_url;
+
+
+        image.alt =
+            displayName;
+
+
+        image.loading =
+            "eager";
+
+
+        image.addEventListener(
+            "error",
+            function() {
+
+                showInitials();
+            }
+        );
+
+
+        avatar.innerHTML =
+            "";
+
+
+        avatar.appendChild(
+            image
+        );
+
+
+    } else {
+
+        showInitials();
+    }
+}
+
+
+/*
+   Data terbaru dari /users/me
+*/
+
+window.addEventListener(
+    "auth:ready",
+    function(event) {
+
+        renderNotesProfileAvatar(
+            event.detail
+        );
+    }
+);
+
+
+/*
+   Fallback sementara dari localStorage
+   supaya avatar langsung muncul sebelum
+   request /users/me selesai.
+*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        try {
+
+            const stored =
+                localStorage.getItem(
+                    "wishlist_user"
+                );
+
+
+            if (!stored) {
+                return;
+            }
+
+
+            renderNotesProfileAvatar(
+                JSON.parse(
+                    stored
+                )
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Gagal membaca profile Notes:",
+                error
+            );
+        }
+    }
+);
+
+/* NOTES PROFILE AVATAR SYNC END */
