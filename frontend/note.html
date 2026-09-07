@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Note</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow:
+                0 10px 30px
+                rgba(45,45,45,0.06);
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                28px 20px 70px;
+        }
+
+
+        .container {
+
+            width: 100%;
+            max-width: 950px;
+
+            margin:
+                0 auto;
+        }
+
+
+        .topbar {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .back {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                8px 13px;
+
+            border-radius: 10px;
+
+            text-decoration:
+                none;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .note-role {
+
+            color:
+                var(--text-muted);
+
+            background:
+                var(--beige);
+
+            border-radius: 20px;
+
+            padding:
+                6px 11px;
+
+            font-size: 9px;
+        }
+
+
+        .editor {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 22px;
+
+            box-shadow:
+                var(--shadow);
+
+            padding:
+                30px;
+        }
+
+
+        .title-input {
+
+            display: block;
+
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    39px
+                );
+
+            font-weight: 600;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .content-input {
+
+            display: block;
+
+            width: 100%;
+
+            min-height: 430px;
+
+            resize: vertical;
+
+            border: none;
+
+            outline: none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        .editor-footer {
+
+            border-top:
+                1px solid
+                var(--border-color);
+
+            margin-top:
+                20px;
+
+            padding-top:
+                16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+        }
+
+
+        .save-status {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 15px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-save {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:hover {
+
+            background:
+                var(--dark-hover);
+        }
+
+
+        .btn-delete {
+
+            background:
+                #F6ECEC;
+
+            color:
+                var(--danger);
+        }
+
+
+        .btn:disabled {
+
+            opacity: 0.5;
+
+            cursor: default;
+        }
+
+
+        .readonly-message {
+
+            display: none;
+
+            margin-bottom: 14px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--beige);
+
+            border-radius: 12px;
+
+            padding:
+                10px 13px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .readonly-message.visible {
+
+            display: block;
+        }
+
+
+        @media (
+            max-width: 650px
+        ) {
+
+            body {
+
+                padding:
+                    14px 14px 50px;
+            }
+
+
+            .editor {
+
+                padding:
+                    22px 18px;
+            }
+
+
+            .content-input {
+
+                min-height:
+                    360px;
+
+                font-size:
+                    13px;
+            }
+
+
+            .editor-footer {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+
+            .actions {
+
+                width: 100%;
+            }
+
+
+            .btn-save {
+
+                flex: 1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="container">
+
+
+        <div class="topbar">
+
+            <a
+                class="back"
+                href="notes.html"
+            >
+
+                <i
+                    class="fa-solid fa-arrow-left"
+                ></i>
+
+                My Notes
+
+            </a>
+
+
+            <div
+                class="note-role"
+                id="noteRole"
+            >
+                ...
+            </div>
+
+        </div>
+
+
+        <div
+            class="readonly-message"
+            id="readonlyMessage"
+        >
+            Kamu hanya memiliki akses untuk membaca note ini.
+        </div>
+
+
+        <section class="editor">
+
+
+            <input
+                class="title-input"
+                id="noteTitle"
+                type="text"
+                maxlength="200"
+                placeholder="Judul Note"
+            >
+
+
+            <textarea
+                class="content-input"
+                id="noteContent"
+                placeholder="Mulai menulis..."
+            ></textarea>
+
+
+            <div class="editor-footer">
+
+
+                <div
+                    class="save-status"
+                    id="saveStatus"
+                >
+                    Memuat note...
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="btn btn-delete"
+                        id="deleteNoteButton"
+                        type="button"
+                    >
+                        Hapus
+                    </button>
+
+
+                    <button
+                        class="btn btn-save"
+                        id="saveNoteButton"
+                        type="button"
+                    >
+                        Simpan
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/note.js"></script>
+
+
+</body>
+
+</html>

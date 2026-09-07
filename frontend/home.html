@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WishlistByYa</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        :root {
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --shadow:
+                0 15px 40px rgba(45,45,45,0.07);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #FAF9F6,
+                    #F2EDE9
+                );
+
+            color:
+                var(--text-dark);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 920px;
+        }
+
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 34px;
+        }
+
+
+        .welcome-small {
+            font-size: 13px;
+
+            color:
+                var(--text-muted);
+
+            margin-bottom: 3px;
+        }
+
+
+        .username {
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+
+        .logout {
+            border:
+                1px solid var(--border-color);
+
+            background:
+                rgba(255,255,255,0.7);
+
+            color:
+                var(--text-dark);
+
+            border-radius: 12px;
+
+            padding:
+                9px 14px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+            font-weight: 500;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .logout:hover {
+            background:
+                #FFFFFF;
+        }
+
+
+        .heading {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .heading h1 {
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    40px
+                );
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+            color:
+                var(--text-muted);
+
+            font-size: 14px;
+        }
+
+
+        .app-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        .app-card {
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.92
+                );
+
+            border-radius: 24px;
+
+            min-height: 260px;
+
+            padding: 30px;
+
+            box-shadow:
+                var(--shadow);
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+
+        .app-card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #BFB7AD;
+
+            box-shadow:
+                0 20px 45px
+                rgba(45,45,45,0.10);
+        }
+
+
+        .app-icon {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                var(--beige);
+
+            color:
+                var(--dark-primary);
+
+            font-size: 22px;
+
+            margin-bottom: 26px;
+        }
+
+
+        .app-card h2 {
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 24px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .app-card p {
+            color:
+                var(--text-muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 26px;
+        }
+
+
+        .open-text {
+            font-size: 13px;
+            font-weight: 600;
+
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        @media (
+            max-width: 650px
+        ) {
+
+            body {
+                align-items:
+                    flex-start;
+
+                padding:
+                    22px 18px;
+            }
+
+
+            .container {
+                padding-top:
+                    12px;
+            }
+
+
+            .topbar {
+                margin-bottom:
+                    30px;
+            }
+
+
+            .app-grid {
+                grid-template-columns:
+                    1fr;
+
+                gap: 14px;
+            }
+
+
+            .app-card {
+                min-height:
+                    190px;
+
+                padding: 24px;
+            }
+
+
+            .app-icon {
+                margin-bottom:
+                    19px;
+            }
+
+
+            .heading {
+                text-align:
+                    left;
+            }
+
+        }
+
+
+        /* =====================================================
+           HOME VERTICAL OPTIONS START
+        ===================================================== */
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow-y: auto;
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 620px;
+
+            min-height: auto;
+
+            margin: 0 auto;
+        }
+
+
+        .heading {
+            text-align: center;
+        }
+
+
+        .app-grid {
+            display: flex !important;
+
+            flex-direction: column !important;
+
+            align-items: center !important;
+
+            width: 100%;
+            max-width: 520px;
+
+            margin:
+                0 auto;
+
+            gap: 16px !important;
+        }
+
+
+        .app-card {
+            width: 100% !important;
+
+            min-height: 170px !important;
+
+            padding: 25px 28px !important;
+
+            flex-shrink: 0;
+        }
+
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .app-card h2 {
+            margin-bottom: 5px;
+        }
+
+
+        .app-card p {
+            margin-bottom: 17px;
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                min-height: 100vh;
+
+                align-items: center !important;
+
+                padding:
+                    20px 16px !important;
+            }
+
+
+            .container {
+                width: 100%;
+
+                padding-top: 0 !important;
+            }
+
+
+            .topbar {
+                margin-bottom:
+                    24px;
+            }
+
+
+            .heading {
+                text-align: center !important;
+
+                margin-bottom:
+                    22px;
+            }
+
+
+            .app-grid {
+                width: 100%;
+
+                max-width: 430px;
+
+                gap: 12px !important;
+            }
+
+
+            .app-card {
+                min-height: 150px !important;
+
+                padding:
+                    20px 22px !important;
+            }
+
+
+            .app-icon {
+                width: 44px;
+                height: 44px;
+
+                margin-bottom:
+                    13px;
+            }
+
+
+            .app-card h2 {
+                font-size:
+                    21px;
+            }
+
+
+            .app-card p {
+                font-size:
+                    12px;
+
+                margin-bottom:
+                    13px;
+            }
+
+        }
+
+        /* HOME VERTICAL OPTIONS END */
+
+        /* =====================================================
+           SIMPLE HOME BUTTONS FINAL START
+        ===================================================== */
+
+        /* Hilangkan heading dan isi card lama */
+
+        .heading {
+            display: none !important;
+        }
+
+        .app-icon,
+        .app-card h2,
+        .app-card p,
+        .open-text i {
+            display: none !important;
+        }
+
+
+        /* Container utama */
+
+        .container {
+            width: 100% !important;
+            max-width: 620px !important;
+        }
+
+
+        /* Area dua pilihan */
+
+        .app-grid {
+            display: flex !important;
+            flex-direction: column !important;
+
+            align-items: center !important;
+            justify-content: center !important;
+
+            gap: 12px !important;
+
+            width: 100% !important;
+            max-width: 260px !important;
+
+            margin: 60px auto 0 !important;
+        }
+
+
+        /* Tombol simple */
+
+        .app-card {
+            width: 100% !important;
+            min-height: 0 !important;
+
+            padding: 12px 18px !important;
+
+            border: none !important;
+            border-radius: 10px !important;
+
+            background: #2D2D2D !important;
+
+            box-shadow: none !important;
+
+            color: #FFFFFF !important;
+
+            text-align: center !important;
+
+            cursor: pointer !important;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease !important;
+        }
+
+
+        .app-card:hover {
+            background: #454545 !important;
+
+            transform:
+                translateY(-1px) !important;
+
+            box-shadow:
+                none !important;
+        }
+
+
+        .open-text {
+            display: block !important;
+
+            margin: 0 !important;
+
+            color: #FFFFFF !important;
+
+            font-size: 13px !important;
+            font-weight: 600 !important;
+
+            text-align: center !important;
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                align-items: center !important;
+            }
+
+            .app-grid {
+                max-width: 220px !important;
+
+                margin:
+                    45px auto 0 !important;
+
+                gap: 10px !important;
+            }
+
+            .app-card {
+                padding:
+                    11px 16px !important;
+            }
+
+            .open-text {
+                font-size:
+                    12px !important;
+            }
+
+        }
+
+        /* SIMPLE HOME BUTTONS FINAL END */
+
+        /* =====================================================
+           HOME ACCOUNT MENU START
+        ===================================================== */
+
+        .home-user-menu {
+            position: relative;
+            z-index: 50;
+        }
+
+
+        .menu-toggle {
+            width: 42px;
+            height: 42px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 12px;
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .menu-toggle:hover {
+            background:
+                var(--beige);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .account-menu {
+            position: absolute;
+
+            top: calc(100% + 10px);
+            right: 0;
+
+            width: 245px;
+
+            padding: 10px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 16px;
+
+            background:
+                var(--card-bg);
+
+            box-shadow:
+                0 18px 45px
+                rgba(45,45,45,0.12);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform:
+                translateY(-6px);
+
+            transition:
+                opacity 0.18s ease,
+                transform 0.18s ease,
+                visibility 0.18s ease;
+        }
+
+
+        .account-menu.active {
+            opacity: 1;
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+
+        .account-profile {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                8px;
+        }
+
+
+        .account-avatar {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background:
+                var(--dark-primary);
+
+            color: #FFFFFF;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        .account-avatar img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .account-profile-info {
+            min-width: 0;
+
+            text-align: left;
+        }
+
+
+        .account-name {
+            color:
+                var(--text-dark);
+
+            font-size: 12px;
+            font-weight: 600;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        .account-email {
+            margin-top: 2px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        .account-menu-divider {
+            height: 1px;
+
+            background:
+                var(--border-color);
+
+            margin:
+                6px 4px;
+        }
+
+
+        .account-menu-item {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                10px 11px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-size: 11px;
+            font-weight: 500;
+
+            transition:
+                background 0.15s ease;
+        }
+
+
+        .account-menu-item:hover {
+            background:
+                var(--beige);
+        }
+
+
+        .account-menu-item i {
+            width: 15px;
+
+            text-align: center;
+        }
+
+
+        .logout-item {
+            color:
+                #9C5D5D;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .account-menu {
+                width: 220px;
+            }
+
+
+            .menu-toggle {
+                width: 40px;
+                height: 40px;
+            }
+
+        }
+
+        /* HOME ACCOUNT MENU END */
+</style>
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+        <div class="topbar">
+
+            <div>
+
+                <div class="welcome-small">
+                    Welcome back
+                </div>
+
+                <div
+                    class="username"
+                    id="homeUsername"
+                >
+                    ...
+                </div>
+
+            </div>
+
+
+            <div class="home-user-menu">
+
+                <button
+                    class="menu-toggle"
+                    id="homeMenuToggle"
+                    type="button"
+                    aria-label="Buka menu akun"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+
+                <div
+                    class="account-menu"
+                    id="homeAccountMenu"
+                >
+
+                    <div class="account-profile">
+
+                        <div
+                            class="account-avatar"
+                            id="homeMenuAvatar"
+                        >
+                            --
+                        </div>
+
+                        <div class="account-profile-info">
+
+                            <div
+                                class="account-name"
+                                id="homeMenuName"
+                            >
+                                User
+                            </div>
+
+                            <div
+                                class="account-email"
+                                id="homeMenuEmail"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-menu-divider"></div>
+
+
+                    <button
+                        class="account-menu-item"
+                        type="button"
+                        onclick="openProfile()"
+                    >
+
+                        <i class="fa-regular fa-user"></i>
+
+                        Edit Profile
+
+                    </button>
+
+
+                    <button
+                        class="account-menu-item logout-item"
+                        type="button"
+                        onclick="logout()"
+                    >
+
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <section class="heading">
+
+            <h1>
+                What do you want to open?
+            </h1>
+
+            <p>
+                Pilih tempat yang ingin kamu buka.
+            </p>
+
+        </section>
+
+
+        <section class="app-grid">
+
+
+            <button
+                class="app-card"
+                type="button"
+                onclick="openFolders()"
+            >
+
+                <div class="app-icon">
+
+                    <i
+                        class="fa-regular fa-folder-open"
+                    ></i>
+
+                </div>
+
+                <h2>
+                    Folder
+                </h2>
+
+                <p>
+                    Buka semua folder wishlist,
+                    wishlist pribadi, dan wishlist
+                    yang dibagikan denganmu.
+                </p>
+
+                <div class="open-text">
+
+                    Open Folder
+
+                    <i
+                        class="fa-solid fa-arrow-right"
+                    ></i>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="app-card"
+                type="button"
+                onclick="openNotes()"
+            >
+
+                <div class="app-icon">
+
+                    <i
+                        class="fa-regular fa-note-sticky"
+                    ></i>
+
+                </div>
+
+                <h2>
+                    Note
+                </h2>
+
+                <p>
+                    Simpan catatan pribadi dan
+                    buka catatan yang dibagikan
+                    bersama orang lain.
+                </p>
+
+                <div class="open-text">
+
+                    Open Note
+
+                    <i
+                        class="fa-solid fa-arrow-right"
+                    ></i>
+
+                </div>
+
+            </button>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/home.js"></script>
+
+</body>
+
+</html>

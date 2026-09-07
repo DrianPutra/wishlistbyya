@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Notes</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow-subtle:
+                0 10px 30px
+                rgba(45,45,45,0.06);
+
+            --shadow-hover:
+                0 15px 35px
+                rgba(45,45,45,0.10);
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding-bottom:
+                70px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                28px auto 0;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                24px;
+
+            padding:
+                28px 30px;
+
+            box-shadow:
+                var(--shadow-subtle);
+        }
+
+
+        .header-top {
+
+            display: flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+        }
+
+
+        .header-title h1 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            margin-bottom: 5px;
+        }
+
+
+        .header-title p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 13px;
+        }
+
+
+        .btn-home {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                8px 13px;
+
+            border-radius:
+                10px;
+
+            margin-bottom:
+                14px;
+
+            text-decoration:
+                none;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        .profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-avatar {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            overflow: hidden;
+        }
+
+
+        .profile-avatar img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .profile-info {
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            line-height: 1.2;
+        }
+
+
+        .profile-name {
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .profile-username {
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           CREATE BUTTON
+        ===================================================== */
+
+        .btn-add {
+
+            margin-top: 25px;
+
+            border: none;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            padding:
+                12px 20px;
+
+            border-radius: 30px;
+
+            display:
+                inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .btn-add:hover {
+
+            background:
+                var(--dark-hover);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        main {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                38px auto 0;
+        }
+
+
+        .notes-section {
+
+            margin-bottom:
+                42px;
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .section-heading h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+
+        .note-count {
+
+            color:
+                var(--text-muted);
+
+            font-size: 11px;
+
+            background:
+                var(--beige);
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                20px;
+        }
+
+
+        /* =====================================================
+           NOTE GRID
+        ===================================================== */
+
+        .note-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 15px;
+        }
+
+
+        .note-card {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                18px;
+
+            background:
+                var(--card-bg);
+
+            padding:
+                20px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            box-shadow:
+                var(--shadow-subtle);
+
+            color:
+                var(--text-dark);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .note-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .note-title {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 20px;
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+
+        .note-preview {
+
+            color:
+                var(--text-muted);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .note-meta {
+
+            margin-top: 18px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty-state {
+
+            grid-column:
+                1 / -1;
+
+            border:
+                1px dashed
+                var(--border-color);
+
+            border-radius:
+                18px;
+
+            padding:
+                34px 20px;
+
+            text-align: center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.45
+                );
+
+            color:
+                var(--text-muted);
+
+            font-size: 12px;
+        }
+
+
+        .empty-state i {
+
+            display: block;
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (
+            max-width: 650px
+        ) {
+
+            header {
+
+                width:
+                    calc(100% - 28px);
+
+                margin-top:
+                    14px;
+
+                padding:
+                    22px 20px;
+            }
+
+
+            main {
+
+                width:
+                    calc(100% - 28px);
+
+                margin-top:
+                    28px;
+            }
+
+
+            .header-title h1 {
+
+                font-size:
+                    30px;
+            }
+
+
+            .profile-info {
+
+                display: none;
+            }
+
+
+            .profile-avatar {
+
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .btn-add {
+
+                width: 100%;
+
+                justify-content:
+                    center;
+            }
+
+
+            .note-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .note-card {
+
+                padding:
+                    17px;
+            }
+
+
+            .note-title {
+
+                font-size:
+                    20px;
+            }
+
+        }
+
+
+        /* =====================================================
+           NOTE PROFILE AVATAR LINK START
+        ===================================================== */
+
+        .profile-avatar-link {
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .profile-avatar-link:hover {
+            transform:
+                translateY(-2px);
+
+            background:
+                var(--dark-hover);
+
+            box-shadow:
+                0 6px 16px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .profile-avatar-link:active {
+            transform:
+                translateY(0);
+        }
+
+        /* NOTE PROFILE AVATAR LINK END */
+
+        /* =====================================================
+           CREATE NOTE MODAL START
+        ===================================================== */
+
+        .modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(45,45,45,0.28);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease;
+
+            z-index: 1000;
+        }
+
+
+        .modal-overlay.active {
+
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .modal {
+
+            width: 100%;
+            max-width: 430px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 20px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .modal h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 23px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .input-group label {
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 11px;
+
+            padding:
+                11px 13px;
+
+            outline: none;
+
+            background: white;
+
+            color:
+                var(--text-dark);
+
+            font-size: 13px;
+        }
+
+
+        .input-group input:focus {
+
+            border-color:
+                #AAA198;
+        }
+
+
+        .modal-actions {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+        }
+
+
+        .btn-cancel,
+        .btn-save {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 16px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-cancel {
+
+            background:
+                var(--beige);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .btn-save {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:disabled {
+
+            opacity: 0.6;
+
+            cursor: default;
+        }
+
+        /* CREATE NOTE MODAL END */
+</style>
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <div class="header-top">
+
+
+            <div class="header-title">
+
+                <a
+                    class="btn-home"
+                    href="home.html"
+                >
+
+                    <i
+                        class="fa-solid fa-house"
+                    ></i>
+
+                    Home
+
+                </a>
+
+
+                <h1>
+                    My Notes
+                </h1>
+
+                <p>
+                    semua catatan kamu dalam satu tempat ♡
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <a
+                    class="profile-avatar profile-avatar-link"
+                    id="noteProfileAvatar"
+                    href="profile.html"
+                    aria-label="Edit profile"
+                    title="Edit Profile"
+                >
+                    --
+                </a>
+
+
+                <div class="profile-info">
+
+                    <div
+                        class="profile-name"
+                        id="noteProfileName"
+                    >
+                        User
+                    </div>
+
+                    <div
+                        class="profile-username"
+                        id="noteProfileUsername"
+                    >
+                        @user
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="btn-add"
+            id="newNoteButton"
+            type="button"
+        >
+
+            <i
+                class="fa-solid fa-plus"
+            ></i>
+
+            Buat Note
+
+        </button>
+
+    </header>
+
+
+    <main>
+
+
+        <section
+            class="notes-section"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    My Notes
+                </h2>
+
+                <div
+                    class="note-count"
+                    id="myNoteCount"
+                >
+                    0 note
+                </div>
+
+            </div>
+
+
+            <div
+                class="note-grid"
+                id="myNotesGrid"
+            >
+
+                <div class="empty-state">
+
+                    <i
+                        class="fa-regular fa-note-sticky"
+                    ></i>
+
+                    Belum ada note.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section
+            class="notes-section"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    Shared With Me
+                </h2>
+
+                <div
+                    class="note-count"
+                    id="sharedNoteCount"
+                >
+                    0 note
+                </div>
+
+            </div>
+
+
+            <div
+                class="note-grid"
+                id="sharedNotesGrid"
+            >
+
+                <div class="empty-state">
+
+                    <i
+                        class="fa-solid fa-user-group"
+                    ></i>
+
+                    Belum ada note yang dibagikan denganmu.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CREATE NOTE MODAL START
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="createNoteModal"
+    >
+
+        <div class="modal">
+
+            <h2>
+                Buat Note
+            </h2>
+
+
+            <div class="input-group">
+
+                <label for="newNoteTitle">
+                    Judul Note
+                </label>
+
+                <input
+                    type="text"
+                    id="newNoteTitle"
+                    maxlength="200"
+                    placeholder="contoh: Our Plans ♡"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-cancel"
+                    type="button"
+                    onclick="closeCreateNoteModal()"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    class="btn-save"
+                    id="createNoteSubmit"
+                    type="button"
+                    onclick="createNote()"
+                >
+                    Buat Note
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CREATE NOTE MODAL END -->
+
+<script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/notes.js"></script>
+
+
+</body>
+
+</html>

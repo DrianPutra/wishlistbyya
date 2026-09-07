@@ -1,3 +1,62 @@
+/* ==========================================
+   AUTO LOGIN CHECK START
+========================================== */
+
+(async function redirectIfAlreadyLoggedIn() {
+
+    const token =
+        window.getAuthToken();
+
+    if (!token) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await window.apiRequest(
+                "/users/me",
+                {
+                    method: "GET"
+                }
+            );
+
+        localStorage.setItem(
+            "wishlist_user",
+            JSON.stringify(
+                response.user
+            )
+        );
+
+        window.location.replace(
+            "home.html"
+        );
+
+    } catch (error) {
+
+        if (
+            error.status === 401
+        ) {
+
+            window.clearAuthToken();
+
+            localStorage.removeItem(
+                "wishlist_user"
+            );
+
+            return;
+        }
+
+        console.error(
+            "Gagal memeriksa session:",
+            error
+        );
+    }
+
+})();
+
+/* AUTO LOGIN CHECK END */
+
 const loginForm =
     document.getElementById(
         "loginForm"
@@ -195,7 +254,7 @@ loginForm.addEventListener(
 
 
             window.location.href =
-                "folders.html";
+                "home.html";
 
 
         } catch (error) {

@@ -63,6 +63,7 @@ func main() {
 		handler.NewMemberHandler(db)
 
 	activityHandler := handler.NewActivityHandler(db)
+	noteHandler := handler.NewNoteHandler(db)
 
 	wishlistHandler :=
 		handler.NewWishlistHandler(
@@ -166,6 +167,52 @@ func main() {
 		avatarHandler.Delete,
 	)
 
+	/* NOTES */
+
+	notes :=
+		protected.Group(
+			"/notes",
+		)
+
+	notes.GET(
+		"",
+		noteHandler.List,
+	)
+
+	notes.POST(
+		"",
+		noteHandler.Create,
+	)
+
+	notes.GET(
+		"/:id",
+		noteHandler.GetOne,
+	)
+
+	notes.PATCH(
+		"/:id",
+		noteHandler.Update,
+	)
+
+	notes.DELETE(
+		"/:id",
+		noteHandler.Delete,
+	)
+
+	notes.GET(
+		"/:id/members",
+		noteHandler.ListMembers,
+	)
+
+	notes.POST(
+		"/:id/members",
+		noteHandler.Share,
+	)
+
+	notes.DELETE(
+		"/:id/members/:userId",
+		noteHandler.RemoveMember,
+	)
 	/* FOLDERS */
 
 	folders :=
