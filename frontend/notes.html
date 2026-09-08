@@ -948,6 +948,323 @@
         }
 
         /* NOTES PROFILE IMAGE STYLE END */
+
+        /* =====================================================
+           NOTES MOBILE FULL WIDTH START
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            html,
+            body {
+                width: 100% !important;
+                max-width: 100% !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                overflow-x: hidden !important;
+            }
+
+
+            body {
+                min-height: 100vh !important;
+
+                background:
+                    var(--bg-color) !important;
+            }
+
+
+            /* ==========================================
+               FULL PAGE CONTAINER
+            ========================================== */
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+
+                margin: 0 !important;
+                padding: 0 15px 50px !important;
+            }
+
+
+            /* ==========================================
+               HEADER JADI BAGIAN DARI PAGE
+               BUKAN FLOATING CARD
+            ========================================== */
+
+            header {
+                width: calc(100% + 30px) !important;
+
+                margin:
+                    0 -15px 32px !important;
+
+                padding:
+                    22px 15px 24px !important;
+
+                border: none !important;
+                border-bottom:
+                    1px solid
+                    var(--border-color) !important;
+
+                border-radius:
+                    0 !important;
+
+                box-shadow:
+                    none !important;
+
+                background:
+                    var(--card-bg) !important;
+            }
+
+
+            .header-top,
+            .header-left {
+                width: 100% !important;
+            }
+
+
+            /* Home + avatar */
+
+            .header-top {
+                display: flex !important;
+
+                align-items: center !important;
+                justify-content:
+                    space-between !important;
+
+                gap: 12px !important;
+            }
+
+
+            .profile {
+                flex-shrink: 0 !important;
+            }
+
+
+            .profile-info {
+                display: none !important;
+            }
+
+
+            .profile-avatar {
+                width: 42px !important;
+                height: 42px !important;
+
+                flex-shrink: 0 !important;
+            }
+
+
+            /* ==========================================
+               TITLE
+            ========================================== */
+
+            .header-title {
+                width: 100% !important;
+
+                margin-top:
+                    20px !important;
+            }
+
+
+            .header-title h1 {
+                margin: 0 !important;
+
+                font-size:
+                    30px !important;
+
+                line-height:
+                    1.15 !important;
+            }
+
+
+            .header-title p {
+                max-width:
+                    280px !important;
+
+                margin-top:
+                    7px !important;
+
+                font-size:
+                    12px !important;
+
+                line-height:
+                    1.6 !important;
+            }
+
+
+            /* ==========================================
+               CREATE NOTE BUTTON
+            ========================================== */
+
+            .btn-add {
+                width: 100% !important;
+
+                margin-top:
+                    22px !important;
+
+                padding:
+                    13px 18px !important;
+
+                justify-content:
+                    center !important;
+
+                border-radius:
+                    14px !important;
+            }
+
+
+            /* ==========================================
+               SECTION
+            ========================================== */
+
+            .section-header {
+                width: 100% !important;
+
+                margin-bottom:
+                    12px !important;
+            }
+
+
+            .section-header h2 {
+                font-size:
+                    24px !important;
+            }
+
+
+            /* ==========================================
+               NOTES LIST
+            ========================================== */
+
+            .note-grid {
+                width: 100% !important;
+
+                display: grid !important;
+
+                grid-template-columns:
+                    1fr !important;
+
+                gap:
+                    10px !important;
+            }
+
+
+            .note-card {
+                width: 100% !important;
+                max-width: none !important;
+
+                min-height:
+                    110px !important;
+
+                margin: 0 !important;
+
+                padding:
+                    17px 18px !important;
+
+                border-radius:
+                    15px !important;
+            }
+
+
+            .note-title {
+                font-size:
+                    19px !important;
+            }
+
+
+            .note-preview {
+                font-size:
+                    11px !important;
+
+                line-height:
+                    1.55 !important;
+            }
+
+
+            .note-meta {
+                margin-top:
+                    14px !important;
+            }
+
+
+            /* ==========================================
+               SECTION SPACING
+            ========================================== */
+
+            section {
+                width: 100% !important;
+            }
+
+
+            section + section {
+                margin-top:
+                    42px !important;
+            }
+
+
+            /* ==========================================
+               MODAL
+            ========================================== */
+
+            .modal-overlay {
+                padding:
+                    14px !important;
+            }
+
+
+            .modal {
+                width: 100% !important;
+
+                max-width:
+                    100% !important;
+
+                padding:
+                    22px 20px !important;
+
+                border-radius:
+                    20px !important;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .container {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            header {
+                width:
+                    calc(100% + 24px) !important;
+
+                margin-left:
+                    -12px !important;
+
+                margin-right:
+                    -12px !important;
+
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            .header-title h1 {
+                font-size:
+                    27px !important;
+            }
+
+        }
+
+        /* NOTES MOBILE FULL WIDTH END */
 </style>
 
 </head>
