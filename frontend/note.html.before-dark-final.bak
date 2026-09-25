@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Note</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow:
+                0 10px 30px
+                rgba(45,45,45,0.06);
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                28px 20px 70px;
+        }
+
+
+        .container {
+
+            width: 100%;
+            max-width: 950px;
+
+            margin:
+                0 auto;
+        }
+
+
+        .topbar {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .back {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                8px 13px;
+
+            border-radius: 10px;
+
+            text-decoration:
+                none;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .note-role {
+
+            color:
+                var(--text-muted);
+
+            background:
+                var(--beige);
+
+            border-radius: 20px;
+
+            padding:
+                6px 11px;
+
+            font-size: 9px;
+        }
+
+
+        .editor {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 22px;
+
+            box-shadow:
+                var(--shadow);
+
+            padding:
+                30px;
+        }
+
+
+        .title-input {
+
+            display: block;
+
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    39px
+                );
+
+            font-weight: 600;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .content-input {
+
+            display: block;
+
+            width: 100%;
+
+            min-height: 430px;
+
+            resize: vertical;
+
+            border: none;
+
+            outline: none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        .editor-footer {
+
+            border-top:
+                1px solid
+                var(--border-color);
+
+            margin-top:
+                20px;
+
+            padding-top:
+                16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+        }
+
+
+        .save-status {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 15px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-save {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:hover {
+
+            background:
+                var(--dark-hover);
+        }
+
+
+        .btn-delete {
+
+            background:
+                #F6ECEC;
+
+            color:
+                var(--danger);
+        }
+
+
+        .btn:disabled {
+
+            opacity: 0.5;
+
+            cursor: default;
+        }
+
+
+        .readonly-message {
+
+            display: none;
+
+            margin-bottom: 14px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--beige);
+
+            border-radius: 12px;
+
+            padding:
+                10px 13px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .readonly-message.visible {
+
+            display: block;
+        }
+
+
+        @media (
+            max-width: 650px
+        ) {
+
+            body {
+
+                padding:
+                    14px 14px 50px;
+            }
+
+
+            .editor {
+
+                padding:
+                    22px 18px;
+            }
+
+
+            .content-input {
+
+                min-height:
+                    360px;
+
+                font-size:
+                    13px;
+            }
+
+
+            .editor-footer {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+
+            .actions {
+
+                width: 100%;
+            }
+
+
+            .btn-save {
+
+                flex: 1;
+            }
+
+        }
+
+
+        /* =====================================================
+           NOTE SHARING UI START
+        ===================================================== */
+
+        .topbar-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .btn-share {
+
+            display: none;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                8px 12px;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-share.visible {
+
+            display:
+                inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+        }
+
+
+        .btn-share:hover {
+
+            background:
+                var(--dark-hover);
+        }
+
+
+        /* MEMBERS */
+
+        .note-members {
+
+            margin-bottom:
+                16px;
+
+            padding:
+                12px 14px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                14px;
+
+            background:
+                var(--card-bg);
+
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+
+        .members-label {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            margin-right: 3px;
+        }
+
+
+        .member-chip {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                5px 9px 5px 5px;
+
+            border-radius:
+                30px;
+
+            background:
+                var(--beige);
+
+            font-size: 9px;
+        }
+
+
+        .member-avatar {
+
+            width: 24px;
+            height: 24px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            font-size: 8px;
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+
+        .member-name {
+
+            font-weight: 600;
+        }
+
+
+        .member-role {
+
+            color:
+                var(--text-muted);
+
+            font-size: 8px;
+        }
+
+
+        .member-remove {
+
+            width: 20px;
+            height: 20px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                transparent;
+
+            color:
+                var(--danger);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 9px;
+        }
+
+
+        .member-remove:hover {
+
+            background:
+                rgba(185,106,106,0.10);
+        }
+
+
+        /* SHARE MODAL */
+
+        .share-modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(45,45,45,0.30);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease;
+
+            z-index: 1000;
+        }
+
+
+        .share-modal-overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .share-modal {
+
+            width: 100%;
+
+            max-width: 420px;
+
+            padding: 24px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 20px;
+
+            background:
+                var(--card-bg);
+
+            box-shadow:
+                0 20px 50px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .share-modal h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 23px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .share-modal-description {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .share-input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .share-input-group label {
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+
+        .share-input-group input,
+        .share-input-group select {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 10px;
+
+            padding:
+                10px 12px;
+
+            background: white;
+
+            color:
+                var(--text-dark);
+
+            outline: none;
+
+            font-size: 12px;
+        }
+
+
+        .share-modal-actions {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+        }
+
+
+        .share-cancel,
+        .share-submit {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 15px;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .share-cancel {
+
+            background:
+                var(--beige);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .share-submit {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .share-submit:disabled {
+
+            opacity: 0.6;
+
+            cursor: default;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .topbar {
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .topbar-right {
+
+                flex-wrap: wrap;
+
+                justify-content:
+                    flex-end;
+            }
+
+
+            .note-members {
+
+                padding:
+                    10px 11px;
+
+                gap: 6px;
+            }
+
+
+            .member-chip {
+
+                max-width: 100%;
+            }
+
+
+            .member-name {
+
+                max-width: 100px;
+
+                overflow: hidden;
+
+                white-space: nowrap;
+
+                text-overflow: ellipsis;
+            }
+
+
+            .share-modal {
+
+                padding:
+                    21px 18px;
+            }
+
+        }
+
+        /* NOTE SHARING UI END */
+</style>
+
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+<style id="global-dark-theme-fix">
+/* =========================================================
+   GLOBAL DARK THEME FIX
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"],
+[data-theme="dark"] body {
+    --dark-bg: #0f0c0b;
+    --dark-surface: #1b1715;
+    --dark-surface-2: #231d1a;
+    --dark-border: rgba(210, 185, 155, 0.18);
+    --dark-text: #f7efe8;
+    --dark-muted: #c9b7a6;
+    --dark-soft: #a8927e;
+    --dark-accent: #f5eee7;
+    --dark-accent-text: #1c1715;
+    --dark-chip: #2b2421;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"] body {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   TEXT FIX
+   ========================================================= */
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme div,
+body.dark-theme label,
+body.dark-theme a,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] label,
+[data-theme="dark"] a {
+    color: inherit;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .subtitle,
+body.dark-theme .welcome-label,
+body.dark-theme .section-subtitle,
+body.dark-theme .empty-subtitle,
+body.dark-theme .note-subtitle,
+body.dark-theme .member-role,
+body.dark-theme .meta-text,
+body.dark-theme .helper-text,
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .welcome-label,
+[data-theme="dark"] .section-subtitle,
+[data-theme="dark"] .empty-subtitle,
+[data-theme="dark"] .note-subtitle,
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .meta-text,
+[data-theme="dark"] .helper-text {
+    color: var(--dark-muted) !important;
+}
+
+body.dark-theme .accent-text,
+body.dark-theme .brand-text,
+body.dark-theme .user-name,
+body.dark-theme .note-title,
+body.dark-theme .page-title,
+body.dark-theme .section-title,
+[data-theme="dark"] .accent-text,
+[data-theme="dark"] .brand-text,
+[data-theme="dark"] .user-name,
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .section-title {
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   CARD / CONTAINER FIX
+   ========================================================= */
+
+body.dark-theme .welcome-card,
+body.dark-theme .home-card,
+body.dark-theme .hero-card,
+body.dark-theme .top-card,
+body.dark-theme .summary-card,
+body.dark-theme .section-card,
+body.dark-theme .note-card,
+body.dark-theme .note-editor-card,
+body.dark-theme .editor-card,
+body.dark-theme .member-card,
+body.dark-theme .members-card,
+body.dark-theme .toolbar-card,
+body.dark-theme .dropdown-menu,
+body.dark-theme .menu-dropdown,
+body.dark-theme .profile-dropdown,
+body.dark-theme .modal-content,
+body.dark-theme .share-modal-content,
+[data-theme="dark"] .welcome-card,
+[data-theme="dark"] .home-card,
+[data-theme="dark"] .hero-card,
+[data-theme="dark"] .top-card,
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .section-card,
+[data-theme="dark"] .note-card,
+[data-theme="dark"] .note-editor-card,
+[data-theme="dark"] .editor-card,
+[data-theme="dark"] .member-card,
+[data-theme="dark"] .members-card,
+[data-theme="dark"] .toolbar-card,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .menu-dropdown,
+[data-theme="dark"] .profile-dropdown,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .share-modal-content {
+    background: linear-gradient(135deg, #1c1715 0%, #211b18 100%) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   INPUT / EDITOR FIX
+   ========================================================= */
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .editor,
+body.dark-theme .note-editor,
+body.dark-theme .note-content,
+body.dark-theme .title-input,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .editor,
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-content,
+[data-theme="dark"] .title-input {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--dark-soft) !important;
+}
+
+/* =========================================================
+   BUTTON FIX
+   ========================================================= */
+
+body.dark-theme .btn,
+body.dark-theme button,
+body.dark-theme .action-btn,
+body.dark-theme .menu-btn,
+body.dark-theme .profile-btn,
+body.dark-theme .home-nav-btn,
+body.dark-theme .primary-btn,
+body.dark-theme .secondary-btn,
+[data-theme="dark"] .btn,
+[data-theme="dark"] button,
+[data-theme="dark"] .action-btn,
+[data-theme="dark"] .menu-btn,
+[data-theme="dark"] .profile-btn,
+[data-theme="dark"] .home-nav-btn,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .secondary-btn {
+    border-color: var(--dark-border) !important;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .primary-btn,
+body.dark-theme .btn-dark,
+body.dark-theme .main-action,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .btn-dark,
+[data-theme="dark"] .main-action {
+    background: var(--dark-accent) !important;
+    color: var(--dark-accent-text) !important;
+    border: none !important;
+}
+
+body.dark-theme .btn-primary *,
+body.dark-theme .primary-btn *,
+body.dark-theme .btn-dark *,
+body.dark-theme .main-action *,
+[data-theme="dark"] .btn-primary *,
+[data-theme="dark"] .primary-btn *,
+[data-theme="dark"] .btn-dark *,
+[data-theme="dark"] .main-action * {
+    color: var(--dark-accent-text) !important;
+}
+
+body.dark-theme .btn-secondary,
+body.dark-theme .secondary-btn,
+body.dark-theme .ghost-btn,
+body.dark-theme .back-btn,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .secondary-btn,
+[data-theme="dark"] .ghost-btn,
+[data-theme="dark"] .back-btn {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   CHIP / BADGE FIX
+   ========================================================= */
+
+body.dark-theme .badge,
+body.dark-theme .role-badge,
+body.dark-theme .status-badge,
+body.dark-theme .chip,
+body.dark-theme .pill,
+body.dark-theme .member-pill,
+[data-theme="dark"] .badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .pill,
+[data-theme="dark"] .member-pill {
+    background: var(--dark-chip) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   DROPDOWN / MENU FIX
+   ========================================================= */
+
+body.dark-theme .dropdown-menu a,
+body.dark-theme .menu-dropdown a,
+body.dark-theme .profile-dropdown a,
+body.dark-theme .dropdown-menu button,
+body.dark-theme .menu-dropdown button,
+body.dark-theme .profile-dropdown button,
+[data-theme="dark"] .dropdown-menu a,
+[data-theme="dark"] .menu-dropdown a,
+[data-theme="dark"] .profile-dropdown a,
+[data-theme="dark"] .dropdown-menu button,
+[data-theme="dark"] .menu-dropdown button,
+[data-theme="dark"] .profile-dropdown button {
+    color: var(--dark-text) !important;
+    background: transparent !important;
+}
+
+body.dark-theme .dropdown-menu a:hover,
+body.dark-theme .menu-dropdown a:hover,
+body.dark-theme .profile-dropdown a:hover,
+body.dark-theme .dropdown-menu button:hover,
+body.dark-theme .menu-dropdown button:hover,
+body.dark-theme .profile-dropdown button:hover,
+[data-theme="dark"] .dropdown-menu a:hover,
+[data-theme="dark"] .menu-dropdown a:hover,
+[data-theme="dark"] .profile-dropdown a:hover,
+[data-theme="dark"] .dropdown-menu button:hover,
+[data-theme="dark"] .menu-dropdown button:hover,
+[data-theme="dark"] .profile-dropdown button:hover {
+    background: rgba(255,255,255,0.05) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   NOTE PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .note-page,
+body.dark-theme .note-shell,
+body.dark-theme .editor-shell,
+body.dark-theme .note-main,
+[data-theme="dark"] .note-page,
+[data-theme="dark"] .note-shell,
+[data-theme="dark"] .editor-shell,
+[data-theme="dark"] .note-main {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .note-title-input,
+body.dark-theme .note-content-input,
+body.dark-theme .note-editor-title,
+body.dark-theme .note-editor-content,
+[data-theme="dark"] .note-title-input,
+[data-theme="dark"] .note-content-input,
+[data-theme="dark"] .note-editor-title,
+[data-theme="dark"] .note-editor-content {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   HOME PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .welcome-card .brand-text,
+body.dark-theme .welcome-card .username,
+body.dark-theme .welcome-card .title,
+body.dark-theme .welcome-card h1,
+body.dark-theme .welcome-card h2,
+body.dark-theme .welcome-card h3,
+[data-theme="dark"] .welcome-card .brand-text,
+[data-theme="dark"] .welcome-card .username,
+[data-theme="dark"] .welcome-card .title,
+[data-theme="dark"] .welcome-card h1,
+[data-theme="dark"] .welcome-card h2,
+[data-theme="dark"] .welcome-card h3 {
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .welcome-card p,
+body.dark-theme .welcome-card span,
+[data-theme="dark"] .welcome-card p,
+[data-theme="dark"] .welcome-card span {
+    color: var(--dark-muted) !important;
+}
+</style>
+</head>
+
+
+<body>
+
+
+    <main class="container">
+
+
+        <div class="topbar">
+
+            <a
+                class="back"
+                href="notes.html"
+            >
+
+                <i
+                    class="fa-solid fa-arrow-left"
+                ></i>
+
+                My Notes
+
+            </a>
+
+
+            <div class="topbar-right">
+
+                <div
+                    class="note-role"
+                    id="noteRole"
+                >
+                    ...
+                </div>
+
+
+                <button
+                    class="btn-share"
+                    id="shareNoteButton"
+                    type="button"
+                >
+
+                    <i
+                        class="fa-solid fa-user-plus"
+                    ></i>
+
+                    Bagikan
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="readonly-message"
+            id="readonlyMessage"
+        >
+            Kamu hanya memiliki akses untuk membaca note ini.
+        </div>
+
+
+        <div
+            class="note-members"
+            id="noteMembers"
+        >
+
+            <span class="members-label">
+                Anggota
+            </span>
+
+            <span
+                class="member-role"
+            >
+                Memuat...
+            </span>
+
+        </div>
+
+
+        <section class="editor">
+
+
+            <input
+                class="title-input"
+                id="noteTitle"
+                type="text"
+                maxlength="200"
+                placeholder="Judul Note"
+            >
+
+
+            <textarea
+                class="content-input"
+                id="noteContent"
+                placeholder="Mulai menulis..."
+            ></textarea>
+
+
+            <div class="editor-footer">
+
+
+                <div
+                    class="save-status"
+                    id="saveStatus"
+                >
+                    Memuat note...
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="btn btn-delete"
+                        id="deleteNoteButton"
+                        type="button"
+                    >
+                        Hapus
+                    </button>
+
+
+                    <button
+                        class="btn btn-save"
+                        id="saveNoteButton"
+                        type="button"
+                    >
+                        Simpan
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <div
+        class="share-modal-overlay"
+        id="shareNoteModal"
+    >
+
+        <div class="share-modal">
+
+            <h2>
+                Bagikan Note
+            </h2>
+
+            <p class="share-modal-description">
+                Masukkan email akun yang ingin kamu beri akses.
+            </p>
+
+
+            <div class="share-input-group">
+
+                <label for="shareEmail">
+                    Email
+                </label>
+
+                <input
+                    id="shareEmail"
+                    type="email"
+                    placeholder="contoh@email.com"
+                >
+
+            </div>
+
+
+            <div class="share-input-group">
+
+                <label for="shareRole">
+                    Akses
+                </label>
+
+                <select
+                    id="shareRole"
+                >
+
+                    <option value="editor">
+                        Editor - bisa membaca dan mengedit
+                    </option>
+
+                    <option value="viewer">
+                        Viewer - hanya membaca
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="share-modal-actions">
+
+                <button
+                    class="share-cancel"
+                    type="button"
+                    id="shareCancelButton"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    class="share-submit"
+                    type="button"
+                    id="shareSubmitButton"
+                >
+                    Bagikan
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/note.js"></script>
+
+
+
+    <script src="js/theme.js"></script>
+</body>
+
+</html>

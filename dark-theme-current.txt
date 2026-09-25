@@ -1,0 +1,5894 @@
+﻿========== HOME.HTML ==========
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WishlistByYa</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        :root {
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --shadow:
+                0 15px 40px rgba(45,45,45,0.07);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #FAF9F6,
+                    #F2EDE9
+                );
+
+            color:
+                var(--text-dark);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 920px;
+        }
+
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 34px;
+        }
+
+
+        .welcome-small {
+            font-size: 13px;
+
+            color:
+                var(--text-muted);
+
+            margin-bottom: 3px;
+        }
+
+
+        .username {
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+
+        .logout {
+            border:
+                1px solid var(--border-color);
+
+            background:
+                rgba(255,255,255,0.7);
+
+            color:
+                var(--text-dark);
+
+            border-radius: 12px;
+
+            padding:
+                9px 14px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+            font-weight: 500;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .logout:hover {
+            background:
+                #FFFFFF;
+        }
+
+
+        .heading {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .heading h1 {
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    40px
+                );
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+            color:
+                var(--text-muted);
+
+            font-size: 14px;
+        }
+
+
+        .app-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        .app-card {
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.92
+                );
+
+            border-radius: 24px;
+
+            min-height: 260px;
+
+            padding: 30px;
+
+            box-shadow:
+                var(--shadow);
+
+            cursor: pointer;
+
+            text-align: left;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+
+        .app-card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #BFB7AD;
+
+            box-shadow:
+                0 20px 45px
+                rgba(45,45,45,0.10);
+        }
+
+
+        .app-icon {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                var(--beige);
+
+            color:
+                var(--dark-primary);
+
+            font-size: 22px;
+
+            margin-bottom: 26px;
+        }
+
+
+        .app-card h2 {
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 24px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .app-card p {
+            color:
+                var(--text-muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 26px;
+        }
+
+
+        .open-text {
+            font-size: 13px;
+            font-weight: 600;
+
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        @media (
+            max-width: 650px
+        ) {
+
+            body {
+                align-items:
+                    flex-start;
+
+                padding:
+                    22px 18px;
+            }
+
+
+            .container {
+                padding-top:
+                    12px;
+            }
+
+
+            .topbar {
+                margin-bottom:
+                    30px;
+            }
+
+
+            .app-grid {
+                grid-template-columns:
+                    1fr;
+
+                gap: 14px;
+            }
+
+
+            .app-card {
+                min-height:
+                    190px;
+
+                padding: 24px;
+            }
+
+
+            .app-icon {
+                margin-bottom:
+                    19px;
+            }
+
+
+            .heading {
+                text-align:
+                    left;
+            }
+
+        }
+
+
+        /* =====================================================
+           HOME VERTICAL OPTIONS START
+        ===================================================== */
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow-y: auto;
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 620px;
+
+            min-height: auto;
+
+            margin: 0 auto;
+        }
+
+
+        .heading {
+            text-align: center;
+        }
+
+
+        .app-grid {
+            display: flex !important;
+
+            flex-direction: column !important;
+
+            align-items: center !important;
+
+            width: 100%;
+            max-width: 520px;
+
+            margin:
+                0 auto;
+
+            gap: 16px !important;
+        }
+
+
+        .app-card {
+            width: 100% !important;
+
+            min-height: 170px !important;
+
+            padding: 25px 28px !important;
+
+            flex-shrink: 0;
+        }
+
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .app-card h2 {
+            margin-bottom: 5px;
+        }
+
+
+        .app-card p {
+            margin-bottom: 17px;
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                min-height: 100vh;
+
+                align-items: center !important;
+
+                padding:
+                    20px 16px !important;
+            }
+
+
+            .container {
+                width: 100%;
+
+                padding-top: 0 !important;
+            }
+
+
+            .topbar {
+                margin-bottom:
+                    24px;
+            }
+
+
+            .heading {
+                text-align: center !important;
+
+                margin-bottom:
+                    22px;
+            }
+
+
+            .app-grid {
+                width: 100%;
+
+                max-width: 430px;
+
+                gap: 12px !important;
+            }
+
+
+            .app-card {
+                min-height: 150px !important;
+
+                padding:
+                    20px 22px !important;
+            }
+
+
+            .app-icon {
+                width: 44px;
+                height: 44px;
+
+                margin-bottom:
+                    13px;
+            }
+
+
+            .app-card h2 {
+                font-size:
+                    21px;
+            }
+
+
+            .app-card p {
+                font-size:
+                    12px;
+
+                margin-bottom:
+                    13px;
+            }
+
+        }
+
+        /* HOME VERTICAL OPTIONS END */
+
+        /* =====================================================
+           SIMPLE HOME BUTTONS FINAL START
+        ===================================================== */
+
+        /* Hilangkan heading dan isi card lama */
+
+        .heading {
+            display: none !important;
+        }
+
+        .app-icon,
+        .app-card h2,
+        .app-card p,
+        .open-text i {
+            display: none !important;
+        }
+
+
+        /* Container utama */
+
+        .container {
+            width: 100% !important;
+            max-width: 620px !important;
+        }
+
+
+        /* Area dua pilihan */
+
+        .app-grid {
+            display: flex !important;
+            flex-direction: column !important;
+
+            align-items: center !important;
+            justify-content: center !important;
+
+            gap: 12px !important;
+
+            width: 100% !important;
+            max-width: 260px !important;
+
+            margin: 60px auto 0 !important;
+        }
+
+
+        /* Tombol simple */
+
+        .app-card {
+            width: 100% !important;
+            min-height: 0 !important;
+
+            padding: 12px 18px !important;
+
+            border: none !important;
+            border-radius: 10px !important;
+
+            background: #2D2D2D !important;
+
+            box-shadow: none !important;
+
+            color: #FFFFFF !important;
+
+            text-align: center !important;
+
+            cursor: pointer !important;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease !important;
+        }
+
+
+        .app-card:hover {
+            background: #454545 !important;
+
+            transform:
+                translateY(-1px) !important;
+
+            box-shadow:
+                none !important;
+        }
+
+
+        .open-text {
+            display: block !important;
+
+            margin: 0 !important;
+
+            color: #FFFFFF !important;
+
+            font-size: 13px !important;
+            font-weight: 600 !important;
+
+            text-align: center !important;
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                align-items: center !important;
+            }
+
+            .app-grid {
+                max-width: 220px !important;
+
+                margin:
+                    45px auto 0 !important;
+
+                gap: 10px !important;
+            }
+
+            .app-card {
+                padding:
+                    11px 16px !important;
+            }
+
+            .open-text {
+                font-size:
+                    12px !important;
+            }
+
+        }
+
+        /* SIMPLE HOME BUTTONS FINAL END */
+
+        /* =====================================================
+           HOME ACCOUNT MENU START
+        ===================================================== */
+
+        .home-user-menu {
+            position: relative;
+            z-index: 50;
+        }
+
+
+        .menu-toggle {
+            width: 42px;
+            height: 42px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 12px;
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .menu-toggle:hover {
+            background:
+                var(--beige);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .account-menu {
+            position: absolute;
+
+            top: calc(100% + 10px);
+            right: 0;
+
+            width: 245px;
+
+            padding: 10px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 16px;
+
+            background:
+                var(--card-bg);
+
+            box-shadow:
+                0 18px 45px
+                rgba(45,45,45,0.12);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform:
+                translateY(-6px);
+
+            transition:
+                opacity 0.18s ease,
+                transform 0.18s ease,
+                visibility 0.18s ease;
+        }
+
+
+        .account-menu.active {
+            opacity: 1;
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+
+        .account-profile {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                8px;
+        }
+
+
+        .account-avatar {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background:
+                var(--dark-primary);
+
+            color: #FFFFFF;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        .account-avatar img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .account-profile-info {
+            min-width: 0;
+
+            text-align: left;
+        }
+
+
+        .account-name {
+            color:
+                var(--text-dark);
+
+            font-size: 12px;
+            font-weight: 600;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        .account-email {
+            margin-top: 2px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        .account-menu-divider {
+            height: 1px;
+
+            background:
+                var(--border-color);
+
+            margin:
+                6px 4px;
+        }
+
+
+        .account-menu-item {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                10px 11px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-size: 11px;
+            font-weight: 500;
+
+            transition:
+                background 0.15s ease;
+        }
+
+
+        .account-menu-item:hover {
+            background:
+                var(--beige);
+        }
+
+
+        .account-menu-item i {
+            width: 15px;
+
+            text-align: center;
+        }
+
+
+        .logout-item {
+            color:
+                #9C5D5D;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .account-menu {
+                width: 220px;
+            }
+
+
+            .menu-toggle {
+                width: 40px;
+                height: 40px;
+            }
+
+        }
+
+        /* HOME ACCOUNT MENU END */
+
+        /* =====================================================
+           HOME LOGIN CARD START
+        ===================================================== */
+
+        body {
+            min-height: 100vh !important;
+
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            padding: 24px !important;
+        }
+
+
+        .container {
+            width: 100% !important;
+            max-width: 470px !important;
+
+            margin: 0 auto !important;
+
+            padding:
+                38px 34px 36px !important;
+
+            background:
+                #FFFFFF !important;
+
+            border:
+                1.5px solid
+                var(--border-color) !important;
+
+            border-radius:
+                28px !important;
+
+            box-shadow:
+                0 15px 35px
+                rgba(45,45,45,0.08) !important;
+        }
+
+
+        .topbar {
+            width: 100% !important;
+
+            margin-bottom:
+                0 !important;
+        }
+
+
+        .welcome-small {
+            font-size:
+                13px !important;
+
+            margin-bottom:
+                3px;
+        }
+
+
+        .username {
+            font-size:
+                25px !important;
+        }
+
+
+        .app-grid {
+            width: 100% !important;
+
+            max-width:
+                100% !important;
+
+            margin:
+                34px auto 0 !important;
+
+            gap:
+                12px !important;
+        }
+
+
+        .app-card {
+            width: 100% !important;
+
+            padding:
+                13px 18px !important;
+
+            border-radius:
+                13px !important;
+        }
+
+
+        .open-text {
+            font-size:
+                13px !important;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            body {
+                padding:
+                    18px 14px !important;
+            }
+
+
+            .container {
+                max-width:
+                    400px !important;
+
+                padding:
+                    28px 22px 26px !important;
+
+                border-radius:
+                    23px !important;
+            }
+
+
+            .username {
+                font-size:
+                    22px !important;
+            }
+
+
+            .menu-toggle {
+                width:
+                    40px !important;
+
+                height:
+                    40px !important;
+
+                border-radius:
+                    11px !important;
+            }
+
+
+            .app-grid {
+                max-width:
+                    100% !important;
+
+                margin:
+                    28px auto 0 !important;
+
+                gap:
+                    10px !important;
+            }
+
+
+            .app-card {
+                width:
+                    100% !important;
+
+                padding:
+                    12px 16px !important;
+            }
+
+
+            .open-text {
+                font-size:
+                    12px !important;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .container {
+                padding:
+                    24px 18px !important;
+
+                border-radius:
+                    20px !important;
+            }
+
+
+            .username {
+                font-size:
+                    20px !important;
+            }
+
+        }
+
+        /* HOME LOGIN CARD END */
+</style>
+
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+<style id="global-dark-theme-fix">
+/* =========================================================
+   GLOBAL DARK THEME FIX
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"],
+[data-theme="dark"] body {
+    --dark-bg: #0f0c0b;
+    --dark-surface: #1b1715;
+    --dark-surface-2: #231d1a;
+    --dark-border: rgba(210, 185, 155, 0.18);
+    --dark-text: #f7efe8;
+    --dark-muted: #c9b7a6;
+    --dark-soft: #a8927e;
+    --dark-accent: #f5eee7;
+    --dark-accent-text: #1c1715;
+    --dark-chip: #2b2421;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"] body {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   TEXT FIX
+   ========================================================= */
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme div,
+body.dark-theme label,
+body.dark-theme a,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] label,
+[data-theme="dark"] a {
+    color: inherit;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .subtitle,
+body.dark-theme .welcome-label,
+body.dark-theme .section-subtitle,
+body.dark-theme .empty-subtitle,
+body.dark-theme .note-subtitle,
+body.dark-theme .member-role,
+body.dark-theme .meta-text,
+body.dark-theme .helper-text,
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .welcome-label,
+[data-theme="dark"] .section-subtitle,
+[data-theme="dark"] .empty-subtitle,
+[data-theme="dark"] .note-subtitle,
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .meta-text,
+[data-theme="dark"] .helper-text {
+    color: var(--dark-muted) !important;
+}
+
+body.dark-theme .accent-text,
+body.dark-theme .brand-text,
+body.dark-theme .user-name,
+body.dark-theme .note-title,
+body.dark-theme .page-title,
+body.dark-theme .section-title,
+[data-theme="dark"] .accent-text,
+[data-theme="dark"] .brand-text,
+[data-theme="dark"] .user-name,
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .section-title {
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   CARD / CONTAINER FIX
+   ========================================================= */
+
+body.dark-theme .welcome-card,
+body.dark-theme .home-card,
+body.dark-theme .hero-card,
+body.dark-theme .top-card,
+body.dark-theme .summary-card,
+body.dark-theme .section-card,
+body.dark-theme .note-card,
+body.dark-theme .note-editor-card,
+body.dark-theme .editor-card,
+body.dark-theme .member-card,
+body.dark-theme .members-card,
+body.dark-theme .toolbar-card,
+body.dark-theme .dropdown-menu,
+body.dark-theme .menu-dropdown,
+body.dark-theme .profile-dropdown,
+body.dark-theme .modal-content,
+body.dark-theme .share-modal-content,
+[data-theme="dark"] .welcome-card,
+[data-theme="dark"] .home-card,
+[data-theme="dark"] .hero-card,
+[data-theme="dark"] .top-card,
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .section-card,
+[data-theme="dark"] .note-card,
+[data-theme="dark"] .note-editor-card,
+[data-theme="dark"] .editor-card,
+[data-theme="dark"] .member-card,
+[data-theme="dark"] .members-card,
+[data-theme="dark"] .toolbar-card,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .menu-dropdown,
+[data-theme="dark"] .profile-dropdown,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .share-modal-content {
+    background: linear-gradient(135deg, #1c1715 0%, #211b18 100%) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   INPUT / EDITOR FIX
+   ========================================================= */
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .editor,
+body.dark-theme .note-editor,
+body.dark-theme .note-content,
+body.dark-theme .title-input,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .editor,
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-content,
+[data-theme="dark"] .title-input {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--dark-soft) !important;
+}
+
+/* =========================================================
+   BUTTON FIX
+   ========================================================= */
+
+body.dark-theme .btn,
+body.dark-theme button,
+body.dark-theme .action-btn,
+body.dark-theme .menu-btn,
+body.dark-theme .profile-btn,
+body.dark-theme .home-nav-btn,
+body.dark-theme .primary-btn,
+body.dark-theme .secondary-btn,
+[data-theme="dark"] .btn,
+[data-theme="dark"] button,
+[data-theme="dark"] .action-btn,
+[data-theme="dark"] .menu-btn,
+[data-theme="dark"] .profile-btn,
+[data-theme="dark"] .home-nav-btn,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .secondary-btn {
+    border-color: var(--dark-border) !important;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .primary-btn,
+body.dark-theme .btn-dark,
+body.dark-theme .main-action,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .btn-dark,
+[data-theme="dark"] .main-action {
+    background: var(--dark-accent) !important;
+    color: var(--dark-accent-text) !important;
+    border: none !important;
+}
+
+body.dark-theme .btn-primary *,
+body.dark-theme .primary-btn *,
+body.dark-theme .btn-dark *,
+body.dark-theme .main-action *,
+[data-theme="dark"] .btn-primary *,
+[data-theme="dark"] .primary-btn *,
+[data-theme="dark"] .btn-dark *,
+[data-theme="dark"] .main-action * {
+    color: var(--dark-accent-text) !important;
+}
+
+body.dark-theme .btn-secondary,
+body.dark-theme .secondary-btn,
+body.dark-theme .ghost-btn,
+body.dark-theme .back-btn,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .secondary-btn,
+[data-theme="dark"] .ghost-btn,
+[data-theme="dark"] .back-btn {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   CHIP / BADGE FIX
+   ========================================================= */
+
+body.dark-theme .badge,
+body.dark-theme .role-badge,
+body.dark-theme .status-badge,
+body.dark-theme .chip,
+body.dark-theme .pill,
+body.dark-theme .member-pill,
+[data-theme="dark"] .badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .pill,
+[data-theme="dark"] .member-pill {
+    background: var(--dark-chip) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   DROPDOWN / MENU FIX
+   ========================================================= */
+
+body.dark-theme .dropdown-menu a,
+body.dark-theme .menu-dropdown a,
+body.dark-theme .profile-dropdown a,
+body.dark-theme .dropdown-menu button,
+body.dark-theme .menu-dropdown button,
+body.dark-theme .profile-dropdown button,
+[data-theme="dark"] .dropdown-menu a,
+[data-theme="dark"] .menu-dropdown a,
+[data-theme="dark"] .profile-dropdown a,
+[data-theme="dark"] .dropdown-menu button,
+[data-theme="dark"] .menu-dropdown button,
+[data-theme="dark"] .profile-dropdown button {
+    color: var(--dark-text) !important;
+    background: transparent !important;
+}
+
+body.dark-theme .dropdown-menu a:hover,
+body.dark-theme .menu-dropdown a:hover,
+body.dark-theme .profile-dropdown a:hover,
+body.dark-theme .dropdown-menu button:hover,
+body.dark-theme .menu-dropdown button:hover,
+body.dark-theme .profile-dropdown button:hover,
+[data-theme="dark"] .dropdown-menu a:hover,
+[data-theme="dark"] .menu-dropdown a:hover,
+[data-theme="dark"] .profile-dropdown a:hover,
+[data-theme="dark"] .dropdown-menu button:hover,
+[data-theme="dark"] .menu-dropdown button:hover,
+[data-theme="dark"] .profile-dropdown button:hover {
+    background: rgba(255,255,255,0.05) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   NOTE PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .note-page,
+body.dark-theme .note-shell,
+body.dark-theme .editor-shell,
+body.dark-theme .note-main,
+[data-theme="dark"] .note-page,
+[data-theme="dark"] .note-shell,
+[data-theme="dark"] .editor-shell,
+[data-theme="dark"] .note-main {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .note-title-input,
+body.dark-theme .note-content-input,
+body.dark-theme .note-editor-title,
+body.dark-theme .note-editor-content,
+[data-theme="dark"] .note-title-input,
+[data-theme="dark"] .note-content-input,
+[data-theme="dark"] .note-editor-title,
+[data-theme="dark"] .note-editor-content {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   HOME PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .welcome-card .brand-text,
+body.dark-theme .welcome-card .username,
+body.dark-theme .welcome-card .title,
+body.dark-theme .welcome-card h1,
+body.dark-theme .welcome-card h2,
+body.dark-theme .welcome-card h3,
+[data-theme="dark"] .welcome-card .brand-text,
+[data-theme="dark"] .welcome-card .username,
+[data-theme="dark"] .welcome-card .title,
+[data-theme="dark"] .welcome-card h1,
+[data-theme="dark"] .welcome-card h2,
+[data-theme="dark"] .welcome-card h3 {
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .welcome-card p,
+body.dark-theme .welcome-card span,
+[data-theme="dark"] .welcome-card p,
+[data-theme="dark"] .welcome-card span {
+    color: var(--dark-muted) !important;
+}
+</style>
+</head>
+
+
+<body>
+
+    <main class="container">
+
+        <div class="topbar">
+
+            <div>
+
+                <div class="welcome-small">
+                    Welcome back
+                </div>
+
+                <div
+                    class="username"
+                    id="homeUsername"
+                >
+                    ...
+                </div>
+
+            </div>
+
+
+            <div class="home-user-menu">
+
+                <button
+                    class="menu-toggle"
+                    id="homeMenuToggle"
+                    type="button"
+                    aria-label="Buka menu akun"
+                    aria-expanded="false"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+
+                <div
+                    class="account-menu"
+                    id="homeAccountMenu"
+                >
+
+                    <div class="account-profile">
+
+                        <div
+                            class="account-avatar"
+                            id="homeMenuAvatar"
+                        >
+                            --
+                        </div>
+
+                        <div class="account-profile-info">
+
+                            <div
+                                class="account-name"
+                                id="homeMenuName"
+                            >
+                                User
+                            </div>
+
+                            <div
+                                class="account-email"
+                                id="homeMenuEmail"
+                            >
+                                -
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-menu-divider"></div>
+
+
+                    <button
+                        class="account-menu-item"
+                        type="button"
+                        onclick="openProfile()"
+                    >
+
+                        <i class="fa-regular fa-user"></i>
+
+                        Edit Profile
+
+                    </button>
+
+
+                    <button
+                        class="account-menu-item logout-item"
+                        type="button"
+                        onclick="logout()"
+                    >
+
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <section class="heading">
+
+            <h1>
+                What do you want to open?
+            </h1>
+
+            <p>
+                Pilih tempat yang ingin kamu buka.
+            </p>
+
+        </section>
+
+
+        <section class="app-grid">
+
+
+            <button
+                class="app-card"
+                type="button"
+                onclick="openFolders()"
+            >
+
+                <div class="app-icon">
+
+                    <i
+                        class="fa-regular fa-folder-open"
+                    ></i>
+
+                </div>
+
+                <h2>
+                    Folder
+                </h2>
+
+                <p>
+                    Buka semua folder wishlist,
+                    wishlist pribadi, dan wishlist
+                    yang dibagikan denganmu.
+                </p>
+
+                <div class="open-text">
+
+                    Open Folder
+
+                    <i
+                        class="fa-solid fa-arrow-right"
+                    ></i>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="app-card"
+                type="button"
+                onclick="openNotes()"
+            >
+
+                <div class="app-icon">
+
+                    <i
+                        class="fa-regular fa-note-sticky"
+                    ></i>
+
+                </div>
+
+                <h2>
+                    Note
+                </h2>
+
+                <p>
+                    Simpan catatan pribadi dan
+                    buka catatan yang dibagikan
+                    bersama orang lain.
+                </p>
+
+                <div class="open-text">
+
+                    Open Note
+
+                    <i
+                        class="fa-solid fa-arrow-right"
+                    ></i>
+
+                </div>
+
+            </button>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/home.js"></script>
+
+
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
+
+
+========== NOTES.HTML ==========
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Notes</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow-subtle:
+                0 10px 30px
+                rgba(45,45,45,0.06);
+
+            --shadow-hover:
+                0 15px 35px
+                rgba(45,45,45,0.10);
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding-bottom:
+                70px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                28px auto 0;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                24px;
+
+            padding:
+                28px 30px;
+
+            box-shadow:
+                var(--shadow-subtle);
+        }
+
+
+        .header-top {
+
+            display: flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+        }
+
+
+        .header-title h1 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            margin-bottom: 5px;
+        }
+
+
+        .header-title p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 13px;
+        }
+
+
+        .btn-home {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                8px 13px;
+
+            border-radius:
+                10px;
+
+            margin-bottom:
+                14px;
+
+            text-decoration:
+                none;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        .profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-avatar {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            overflow: hidden;
+        }
+
+
+        .profile-avatar img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .profile-info {
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            line-height: 1.2;
+        }
+
+
+        .profile-name {
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .profile-username {
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           CREATE BUTTON
+        ===================================================== */
+
+        .btn-add {
+
+            margin-top: 25px;
+
+            border: none;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            padding:
+                12px 20px;
+
+            border-radius: 30px;
+
+            display:
+                inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .btn-add:hover {
+
+            background:
+                var(--dark-hover);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        main {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                38px auto 0;
+        }
+
+
+        .notes-section {
+
+            margin-bottom:
+                42px;
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .section-heading h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+
+        .note-count {
+
+            color:
+                var(--text-muted);
+
+            font-size: 11px;
+
+            background:
+                var(--beige);
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                20px;
+        }
+
+
+        /* =====================================================
+           NOTE GRID
+        ===================================================== */
+
+        .note-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 15px;
+        }
+
+
+        .note-card {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                18px;
+
+            background:
+                var(--card-bg);
+
+            padding:
+                20px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            box-shadow:
+                var(--shadow-subtle);
+
+            color:
+                var(--text-dark);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .note-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .note-title {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 20px;
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+
+        .note-preview {
+
+            color:
+                var(--text-muted);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .note-meta {
+
+            margin-top: 18px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty-state {
+
+            grid-column:
+                1 / -1;
+
+            border:
+                1px dashed
+                var(--border-color);
+
+            border-radius:
+                18px;
+
+            padding:
+                34px 20px;
+
+            text-align: center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.45
+                );
+
+            color:
+                var(--text-muted);
+
+            font-size: 12px;
+        }
+
+
+        .empty-state i {
+
+            display: block;
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (
+            max-width: 650px
+        ) {
+
+            header {
+
+                width:
+                    calc(100% - 28px);
+
+                margin-top:
+                    14px;
+
+                padding:
+                    22px 20px;
+            }
+
+
+            main {
+
+                width:
+                    calc(100% - 28px);
+
+                margin-top:
+                    28px;
+            }
+
+
+            .header-title h1 {
+
+                font-size:
+                    30px;
+            }
+
+
+            .profile-info {
+
+                display: none;
+            }
+
+
+            .profile-avatar {
+
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .btn-add {
+
+                width: 100%;
+
+                justify-content:
+                    center;
+            }
+
+
+            .note-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .note-card {
+
+                padding:
+                    17px;
+            }
+
+
+            .note-title {
+
+                font-size:
+                    20px;
+            }
+
+        }
+
+
+        /* =====================================================
+           NOTE PROFILE AVATAR LINK START
+        ===================================================== */
+
+        .profile-avatar-link {
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .profile-avatar-link:hover {
+            transform:
+                translateY(-2px);
+
+            background:
+                var(--dark-hover);
+
+            box-shadow:
+                0 6px 16px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .profile-avatar-link:active {
+            transform:
+                translateY(0);
+        }
+
+        /* NOTE PROFILE AVATAR LINK END */
+
+        /* =====================================================
+           CREATE NOTE MODAL START
+        ===================================================== */
+
+        .modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(45,45,45,0.28);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease;
+
+            z-index: 1000;
+        }
+
+
+        .modal-overlay.active {
+
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .modal {
+
+            width: 100%;
+            max-width: 430px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 20px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .modal h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 23px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .input-group label {
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 11px;
+
+            padding:
+                11px 13px;
+
+            outline: none;
+
+            background: white;
+
+            color:
+                var(--text-dark);
+
+            font-size: 13px;
+        }
+
+
+        .input-group input:focus {
+
+            border-color:
+                #AAA198;
+        }
+
+
+        .modal-actions {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+        }
+
+
+        .btn-cancel,
+        .btn-save {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 16px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-cancel {
+
+            background:
+                var(--beige);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .btn-save {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:disabled {
+
+            opacity: 0.6;
+
+            cursor: default;
+        }
+
+        /* CREATE NOTE MODAL END */
+
+        /* =====================================================
+           FULL WIDTH NOTE CARD START
+        ===================================================== */
+
+        .note-grid {
+            display: grid !important;
+
+            grid-template-columns:
+                1fr !important;
+
+            width: 100% !important;
+
+            gap: 12px !important;
+        }
+
+
+        .note-card {
+            width: 100% !important;
+
+            max-width: none !important;
+
+            min-height: 125px;
+
+            padding:
+                22px 26px !important;
+        }
+
+
+        .note-title {
+            font-size:
+                21px !important;
+        }
+
+
+        .note-preview {
+            margin-top: 4px;
+
+            max-width: 850px;
+        }
+
+
+        .note-meta {
+            margin-top:
+                20px !important;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .note-grid {
+                grid-template-columns:
+                    1fr !important;
+
+                gap:
+                    10px !important;
+            }
+
+
+            .note-card {
+                width:
+                    100% !important;
+
+                min-height:
+                    110px;
+
+                padding:
+                    17px 18px !important;
+
+                border-radius:
+                    15px;
+            }
+
+
+            .note-title {
+                font-size:
+                    19px !important;
+            }
+
+
+            .note-preview {
+                font-size:
+                    10px;
+
+                line-height:
+                    1.5;
+            }
+
+
+            .note-meta {
+                margin-top:
+                    15px !important;
+
+                font-size:
+                    9px;
+            }
+
+        }
+
+        /* FULL WIDTH NOTE CARD END */
+
+        /* ==========================================
+           NOTES PROFILE IMAGE STYLE START
+        ========================================== */
+
+        #noteProfileAvatar {
+            overflow: hidden;
+        }
+
+
+        #noteProfileAvatar img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+        }
+
+        /* NOTES PROFILE IMAGE STYLE END */
+
+        /* =====================================================
+           NOTES MOBILE FULL WIDTH START
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            html,
+            body {
+                width: 100% !important;
+                max-width: 100% !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                overflow-x: hidden !important;
+            }
+
+
+            body {
+                min-height: 100vh !important;
+
+                background:
+                    var(--bg-color) !important;
+            }
+
+
+            /* ==========================================
+               FULL PAGE CONTAINER
+            ========================================== */
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+
+                margin: 0 !important;
+                padding: 0 15px 50px !important;
+            }
+
+
+            /* ==========================================
+               HEADER JADI BAGIAN DARI PAGE
+               BUKAN FLOATING CARD
+            ========================================== */
+
+            header {
+                width: calc(100% + 30px) !important;
+
+                margin:
+                    0 -15px 32px !important;
+
+                padding:
+                    22px 15px 24px !important;
+
+                border: none !important;
+                border-bottom:
+                    1px solid
+                    var(--border-color) !important;
+
+                border-radius:
+                    0 !important;
+
+                box-shadow:
+                    none !important;
+
+                background:
+                    var(--card-bg) !important;
+            }
+
+
+            .header-top,
+            .header-left {
+                width: 100% !important;
+            }
+
+
+            /* Home + avatar */
+
+            .header-top {
+                display: flex !important;
+
+                align-items: center !important;
+                justify-content:
+                    space-between !important;
+
+                gap: 12px !important;
+            }
+
+
+            .profile {
+                flex-shrink: 0 !important;
+            }
+
+
+            .profile-info {
+                display: none !important;
+            }
+
+
+            .profile-avatar {
+                width: 42px !important;
+                height: 42px !important;
+
+                flex-shrink: 0 !important;
+            }
+
+
+            /* ==========================================
+               TITLE
+            ========================================== */
+
+            .header-title {
+                width: 100% !important;
+
+                margin-top:
+                    20px !important;
+            }
+
+
+            .header-title h1 {
+                margin: 0 !important;
+
+                font-size:
+                    30px !important;
+
+                line-height:
+                    1.15 !important;
+            }
+
+
+            .header-title p {
+                max-width:
+                    280px !important;
+
+                margin-top:
+                    7px !important;
+
+                font-size:
+                    12px !important;
+
+                line-height:
+                    1.6 !important;
+            }
+
+
+            /* ==========================================
+               CREATE NOTE BUTTON
+            ========================================== */
+
+            .btn-add {
+                width: 100% !important;
+
+                margin-top:
+                    22px !important;
+
+                padding:
+                    13px 18px !important;
+
+                justify-content:
+                    center !important;
+
+                border-radius:
+                    14px !important;
+            }
+
+
+            /* ==========================================
+               SECTION
+            ========================================== */
+
+            .section-header {
+                width: 100% !important;
+
+                margin-bottom:
+                    12px !important;
+            }
+
+
+            .section-header h2 {
+                font-size:
+                    24px !important;
+            }
+
+
+            /* ==========================================
+               NOTES LIST
+            ========================================== */
+
+            .note-grid {
+                width: 100% !important;
+
+                display: grid !important;
+
+                grid-template-columns:
+                    1fr !important;
+
+                gap:
+                    10px !important;
+            }
+
+
+            .note-card {
+                width: 100% !important;
+                max-width: none !important;
+
+                min-height:
+                    110px !important;
+
+                margin: 0 !important;
+
+                padding:
+                    17px 18px !important;
+
+                border-radius:
+                    15px !important;
+            }
+
+
+            .note-title {
+                font-size:
+                    19px !important;
+            }
+
+
+            .note-preview {
+                font-size:
+                    11px !important;
+
+                line-height:
+                    1.55 !important;
+            }
+
+
+            .note-meta {
+                margin-top:
+                    14px !important;
+            }
+
+
+            /* ==========================================
+               SECTION SPACING
+            ========================================== */
+
+            section {
+                width: 100% !important;
+            }
+
+
+            section + section {
+                margin-top:
+                    42px !important;
+            }
+
+
+            /* ==========================================
+               MODAL
+            ========================================== */
+
+            .modal-overlay {
+                padding:
+                    14px !important;
+            }
+
+
+            .modal {
+                width: 100% !important;
+
+                max-width:
+                    100% !important;
+
+                padding:
+                    22px 20px !important;
+
+                border-radius:
+                    20px !important;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .container {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            header {
+                width:
+                    calc(100% + 24px) !important;
+
+                margin-left:
+                    -12px !important;
+
+                margin-right:
+                    -12px !important;
+
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            .header-title h1 {
+                font-size:
+                    27px !important;
+            }
+
+        }
+
+        /* NOTES MOBILE FULL WIDTH END */
+
+        /* =====================================================
+           NOTES MOBILE ZOOM SAFE START
+        ===================================================== */
+
+        /*
+           Tetap gunakan layout mobile pada perangkat touch,
+           walaupun browser di-zoom out.
+        */
+        @media
+        (max-width: 1024px),
+        (hover: none) and (pointer: coarse) {
+
+            html {
+                width: 100%;
+                min-width: 0;
+            }
+
+
+            body {
+                width: 100% !important;
+                min-width: 0 !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                overflow-x: visible !important;
+            }
+
+
+            /* ==========================================
+               MAIN CONTAINER
+            ========================================== */
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                min-width: 0 !important;
+
+                margin: 0 !important;
+                padding:
+                    0 0 50px !important;
+            }
+
+
+            /* ==========================================
+               HEADER
+               Tidak pakai width calc / margin negatif
+            ========================================== */
+
+            header {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                margin:
+                    0 0 32px !important;
+
+                padding:
+                    22px 16px 24px !important;
+
+                border-left:
+                    none !important;
+
+                border-right:
+                    none !important;
+
+                border-top:
+                    none !important;
+
+                border-radius:
+                    0 !important;
+
+                box-shadow:
+                    none !important;
+            }
+
+
+            .header-top,
+            .header-left,
+            .header-title {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+
+
+            /* ==========================================
+               CONTENT
+            ========================================== */
+
+            main,
+            section {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+
+
+            section {
+                padding-left:
+                    16px !important;
+
+                padding-right:
+                    16px !important;
+            }
+
+
+            /* Jangan tambah padding lagi kalau section
+               ternyata berada di dalam elemen lain */
+            section section {
+                padding-left:
+                    0 !important;
+
+                padding-right:
+                    0 !important;
+            }
+
+
+            /* ==========================================
+               SECTION HEADER
+            ========================================== */
+
+            .section-header {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                display: flex !important;
+
+                align-items: center !important;
+                justify-content:
+                    space-between !important;
+
+                gap: 10px !important;
+            }
+
+
+            .section-header h2 {
+                min-width: 0 !important;
+
+                overflow-wrap:
+                    anywhere !important;
+            }
+
+
+            /* ==========================================
+               NOTE GRID
+            ========================================== */
+
+            .note-grid {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                grid-template-columns:
+                    minmax(0, 1fr) !important;
+            }
+
+
+            /* ==========================================
+               NOTE CARD
+            ========================================== */
+
+            .note-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                margin-left:
+                    0 !important;
+
+                margin-right:
+                    0 !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+
+            .note-title,
+            .note-preview,
+            .note-meta {
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                overflow-wrap:
+                    anywhere !important;
+
+                word-break:
+                    break-word !important;
+            }
+
+
+            /* ==========================================
+               CREATE BUTTON
+            ========================================== */
+
+            .btn-add {
+                width: 100% !important;
+                max-width: 100% !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+
+            /* ==========================================
+               PROFILE
+            ========================================== */
+
+            .profile {
+                flex-shrink:
+                    0 !important;
+            }
+
+
+            .profile-avatar {
+                flex-shrink:
+                    0 !important;
+            }
+
+
+            /* ==========================================
+               MODAL
+            ========================================== */
+
+            .modal-overlay {
+                width: 100% !important;
+
+                padding:
+                    16px !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+
+            .modal {
+                width: 100% !important;
+                max-width: 440px !important;
+                min-width: 0 !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+        }
+
+
+        /* Sangat kecil */
+
+        @media (max-width: 380px) {
+
+            header {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            section {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+        }
+
+        /* NOTES MOBILE ZOOM SAFE END */
+
+        /* =====================================================
+           NOTES HEADER CARD WIDTH FIX START
+        ===================================================== */
+
+        @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+
+            header {
+                width: auto !important;
+                max-width: none !important;
+                min-width: 0 !important;
+
+                margin: 16px 16px 28px !important;
+                padding: 22px 18px 24px !important;
+
+                border: 1px solid var(--border-color) !important;
+                border-radius: 24px !important;
+                box-shadow: var(--shadow-subtle) !important;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                margin: 0 auto !important;
+                padding: 0 0 50px !important;
+            }
+
+            .header-top,
+            .header-left,
+            .header-title {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+
+            .header-actions,
+            .header-buttons,
+            .btn-add {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .btn-add {
+                display: flex !important;
+                justify-content: center !important;
+            }
+        }
+
+        @media (max-width: 380px) {
+            header {
+                margin: 12px 12px 24px !important;
+                padding: 18px 14px 20px !important;
+            }
+        }
+
+        /* NOTES HEADER CARD WIDTH FIX END */
+</style>
+
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+<style id="global-dark-theme-fix">
+/* =========================================================
+   GLOBAL DARK THEME FIX
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"],
+[data-theme="dark"] body {
+    --dark-bg: #0f0c0b;
+    --dark-surface: #1b1715;
+    --dark-surface-2: #231d1a;
+    --dark-border: rgba(210, 185, 155, 0.18);
+    --dark-text: #f7efe8;
+    --dark-muted: #c9b7a6;
+    --dark-soft: #a8927e;
+    --dark-accent: #f5eee7;
+    --dark-accent-text: #1c1715;
+    --dark-chip: #2b2421;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"] body {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   TEXT FIX
+   ========================================================= */
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme div,
+body.dark-theme label,
+body.dark-theme a,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] label,
+[data-theme="dark"] a {
+    color: inherit;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .subtitle,
+body.dark-theme .welcome-label,
+body.dark-theme .section-subtitle,
+body.dark-theme .empty-subtitle,
+body.dark-theme .note-subtitle,
+body.dark-theme .member-role,
+body.dark-theme .meta-text,
+body.dark-theme .helper-text,
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .welcome-label,
+[data-theme="dark"] .section-subtitle,
+[data-theme="dark"] .empty-subtitle,
+[data-theme="dark"] .note-subtitle,
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .meta-text,
+[data-theme="dark"] .helper-text {
+    color: var(--dark-muted) !important;
+}
+
+body.dark-theme .accent-text,
+body.dark-theme .brand-text,
+body.dark-theme .user-name,
+body.dark-theme .note-title,
+body.dark-theme .page-title,
+body.dark-theme .section-title,
+[data-theme="dark"] .accent-text,
+[data-theme="dark"] .brand-text,
+[data-theme="dark"] .user-name,
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .section-title {
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   CARD / CONTAINER FIX
+   ========================================================= */
+
+body.dark-theme .welcome-card,
+body.dark-theme .home-card,
+body.dark-theme .hero-card,
+body.dark-theme .top-card,
+body.dark-theme .summary-card,
+body.dark-theme .section-card,
+body.dark-theme .note-card,
+body.dark-theme .note-editor-card,
+body.dark-theme .editor-card,
+body.dark-theme .member-card,
+body.dark-theme .members-card,
+body.dark-theme .toolbar-card,
+body.dark-theme .dropdown-menu,
+body.dark-theme .menu-dropdown,
+body.dark-theme .profile-dropdown,
+body.dark-theme .modal-content,
+body.dark-theme .share-modal-content,
+[data-theme="dark"] .welcome-card,
+[data-theme="dark"] .home-card,
+[data-theme="dark"] .hero-card,
+[data-theme="dark"] .top-card,
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .section-card,
+[data-theme="dark"] .note-card,
+[data-theme="dark"] .note-editor-card,
+[data-theme="dark"] .editor-card,
+[data-theme="dark"] .member-card,
+[data-theme="dark"] .members-card,
+[data-theme="dark"] .toolbar-card,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .menu-dropdown,
+[data-theme="dark"] .profile-dropdown,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .share-modal-content {
+    background: linear-gradient(135deg, #1c1715 0%, #211b18 100%) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   INPUT / EDITOR FIX
+   ========================================================= */
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .editor,
+body.dark-theme .note-editor,
+body.dark-theme .note-content,
+body.dark-theme .title-input,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .editor,
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-content,
+[data-theme="dark"] .title-input {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--dark-soft) !important;
+}
+
+/* =========================================================
+   BUTTON FIX
+   ========================================================= */
+
+body.dark-theme .btn,
+body.dark-theme button,
+body.dark-theme .action-btn,
+body.dark-theme .menu-btn,
+body.dark-theme .profile-btn,
+body.dark-theme .home-nav-btn,
+body.dark-theme .primary-btn,
+body.dark-theme .secondary-btn,
+[data-theme="dark"] .btn,
+[data-theme="dark"] button,
+[data-theme="dark"] .action-btn,
+[data-theme="dark"] .menu-btn,
+[data-theme="dark"] .profile-btn,
+[data-theme="dark"] .home-nav-btn,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .secondary-btn {
+    border-color: var(--dark-border) !important;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .primary-btn,
+body.dark-theme .btn-dark,
+body.dark-theme .main-action,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .btn-dark,
+[data-theme="dark"] .main-action {
+    background: var(--dark-accent) !important;
+    color: var(--dark-accent-text) !important;
+    border: none !important;
+}
+
+body.dark-theme .btn-primary *,
+body.dark-theme .primary-btn *,
+body.dark-theme .btn-dark *,
+body.dark-theme .main-action *,
+[data-theme="dark"] .btn-primary *,
+[data-theme="dark"] .primary-btn *,
+[data-theme="dark"] .btn-dark *,
+[data-theme="dark"] .main-action * {
+    color: var(--dark-accent-text) !important;
+}
+
+body.dark-theme .btn-secondary,
+body.dark-theme .secondary-btn,
+body.dark-theme .ghost-btn,
+body.dark-theme .back-btn,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .secondary-btn,
+[data-theme="dark"] .ghost-btn,
+[data-theme="dark"] .back-btn {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   CHIP / BADGE FIX
+   ========================================================= */
+
+body.dark-theme .badge,
+body.dark-theme .role-badge,
+body.dark-theme .status-badge,
+body.dark-theme .chip,
+body.dark-theme .pill,
+body.dark-theme .member-pill,
+[data-theme="dark"] .badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .pill,
+[data-theme="dark"] .member-pill {
+    background: var(--dark-chip) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   DROPDOWN / MENU FIX
+   ========================================================= */
+
+body.dark-theme .dropdown-menu a,
+body.dark-theme .menu-dropdown a,
+body.dark-theme .profile-dropdown a,
+body.dark-theme .dropdown-menu button,
+body.dark-theme .menu-dropdown button,
+body.dark-theme .profile-dropdown button,
+[data-theme="dark"] .dropdown-menu a,
+[data-theme="dark"] .menu-dropdown a,
+[data-theme="dark"] .profile-dropdown a,
+[data-theme="dark"] .dropdown-menu button,
+[data-theme="dark"] .menu-dropdown button,
+[data-theme="dark"] .profile-dropdown button {
+    color: var(--dark-text) !important;
+    background: transparent !important;
+}
+
+body.dark-theme .dropdown-menu a:hover,
+body.dark-theme .menu-dropdown a:hover,
+body.dark-theme .profile-dropdown a:hover,
+body.dark-theme .dropdown-menu button:hover,
+body.dark-theme .menu-dropdown button:hover,
+body.dark-theme .profile-dropdown button:hover,
+[data-theme="dark"] .dropdown-menu a:hover,
+[data-theme="dark"] .menu-dropdown a:hover,
+[data-theme="dark"] .profile-dropdown a:hover,
+[data-theme="dark"] .dropdown-menu button:hover,
+[data-theme="dark"] .menu-dropdown button:hover,
+[data-theme="dark"] .profile-dropdown button:hover {
+    background: rgba(255,255,255,0.05) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   NOTE PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .note-page,
+body.dark-theme .note-shell,
+body.dark-theme .editor-shell,
+body.dark-theme .note-main,
+[data-theme="dark"] .note-page,
+[data-theme="dark"] .note-shell,
+[data-theme="dark"] .editor-shell,
+[data-theme="dark"] .note-main {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .note-title-input,
+body.dark-theme .note-content-input,
+body.dark-theme .note-editor-title,
+body.dark-theme .note-editor-content,
+[data-theme="dark"] .note-title-input,
+[data-theme="dark"] .note-content-input,
+[data-theme="dark"] .note-editor-title,
+[data-theme="dark"] .note-editor-content {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   HOME PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .welcome-card .brand-text,
+body.dark-theme .welcome-card .username,
+body.dark-theme .welcome-card .title,
+body.dark-theme .welcome-card h1,
+body.dark-theme .welcome-card h2,
+body.dark-theme .welcome-card h3,
+[data-theme="dark"] .welcome-card .brand-text,
+[data-theme="dark"] .welcome-card .username,
+[data-theme="dark"] .welcome-card .title,
+[data-theme="dark"] .welcome-card h1,
+[data-theme="dark"] .welcome-card h2,
+[data-theme="dark"] .welcome-card h3 {
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .welcome-card p,
+body.dark-theme .welcome-card span,
+[data-theme="dark"] .welcome-card p,
+[data-theme="dark"] .welcome-card span {
+    color: var(--dark-muted) !important;
+}
+</style>
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <div class="header-top">
+
+
+            <div class="header-title">
+
+                <a
+                    class="btn-home"
+                    href="home.html"
+                >
+
+                    <i
+                        class="fa-solid fa-house"
+                    ></i>
+
+                    Home
+
+                </a>
+
+
+                <h1>
+                    My Notes
+                </h1>
+
+                <p>
+                    semua catatan kamu dalam satu tempat â™¡
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <a
+                    class="profile-avatar profile-avatar-link"
+                    id="noteProfileAvatar"
+                    href="profile.html"
+                    aria-label="Edit profile"
+                    title="Edit Profile"
+                >
+                    --
+                </a>
+
+
+                <div class="profile-info">
+
+                    <div
+                        class="profile-name"
+                        id="noteProfileName"
+                    >
+                        User
+                    </div>
+
+                    <div
+                        class="profile-username"
+                        id="noteProfileUsername"
+                    >
+                        @user
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="btn-add"
+            id="newNoteButton"
+            type="button"
+        >
+
+            <i
+                class="fa-solid fa-plus"
+            ></i>
+
+            Buat Note
+
+        </button>
+
+    </header>
+
+
+    <main>
+
+
+        <section
+            class="notes-section"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    My Notes
+                </h2>
+
+                <div
+                    class="note-count"
+                    id="myNoteCount"
+                >
+                    0 note
+                </div>
+
+            </div>
+
+
+            <div
+                class="note-grid"
+                id="myNotesGrid"
+            >
+
+                <div class="empty-state">
+
+                    <i
+                        class="fa-regular fa-note-sticky"
+                    ></i>
+
+                    Belum ada note.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section
+            class="notes-section"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    Shared With Me
+                </h2>
+
+                <div
+                    class="note-count"
+                    id="sharedNoteCount"
+                >
+                    0 note
+                </div>
+
+            </div>
+
+
+            <div
+                class="note-grid"
+                id="sharedNotesGrid"
+            >
+
+                <div class="empty-state">
+
+                    <i
+                        class="fa-solid fa-user-group"
+                    ></i>
+
+                    Belum ada note yang dibagikan denganmu.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CREATE NOTE MODAL START
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="createNoteModal"
+    >
+
+        <div class="modal">
+
+            <h2>
+                Buat Note
+            </h2>
+
+
+            <div class="input-group">
+
+                <label for="newNoteTitle">
+                    Judul Note
+                </label>
+
+                <input
+                    type="text"
+                    id="newNoteTitle"
+                    maxlength="200"
+                    placeholder="contoh: Our Plans â™¡"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-cancel"
+                    type="button"
+                    onclick="closeCreateNoteModal()"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    class="btn-save"
+                    id="createNoteSubmit"
+                    type="button"
+                    onclick="createNote()"
+                >
+                    Buat Note
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CREATE NOTE MODAL END -->
+
+<script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/notes.js"></script>
+
+
+
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
+
+
+========== NOTE.HTML ==========
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Note</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow:
+                0 10px 30px
+                rgba(45,45,45,0.06);
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                28px 20px 70px;
+        }
+
+
+        .container {
+
+            width: 100%;
+            max-width: 950px;
+
+            margin:
+                0 auto;
+        }
+
+
+        .topbar {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .back {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                8px 13px;
+
+            border-radius: 10px;
+
+            text-decoration:
+                none;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .note-role {
+
+            color:
+                var(--text-muted);
+
+            background:
+                var(--beige);
+
+            border-radius: 20px;
+
+            padding:
+                6px 11px;
+
+            font-size: 9px;
+        }
+
+
+        .editor {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 22px;
+
+            box-shadow:
+                var(--shadow);
+
+            padding:
+                30px;
+        }
+
+
+        .title-input {
+
+            display: block;
+
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    28px,
+                    5vw,
+                    39px
+                );
+
+            font-weight: 600;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .content-input {
+
+            display: block;
+
+            width: 100%;
+
+            min-height: 430px;
+
+            resize: vertical;
+
+            border: none;
+
+            outline: none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-dark);
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        .editor-footer {
+
+            border-top:
+                1px solid
+                var(--border-color);
+
+            margin-top:
+                20px;
+
+            padding-top:
+                16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+        }
+
+
+        .save-status {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 15px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-save {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:hover {
+
+            background:
+                var(--dark-hover);
+        }
+
+
+        .btn-delete {
+
+            background:
+                #F6ECEC;
+
+            color:
+                var(--danger);
+        }
+
+
+        .btn:disabled {
+
+            opacity: 0.5;
+
+            cursor: default;
+        }
+
+
+        .readonly-message {
+
+            display: none;
+
+            margin-bottom: 14px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--beige);
+
+            border-radius: 12px;
+
+            padding:
+                10px 13px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .readonly-message.visible {
+
+            display: block;
+        }
+
+
+        @media (
+            max-width: 650px
+        ) {
+
+            body {
+
+                padding:
+                    14px 14px 50px;
+            }
+
+
+            .editor {
+
+                padding:
+                    22px 18px;
+            }
+
+
+            .content-input {
+
+                min-height:
+                    360px;
+
+                font-size:
+                    13px;
+            }
+
+
+            .editor-footer {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+
+            .actions {
+
+                width: 100%;
+            }
+
+
+            .btn-save {
+
+                flex: 1;
+            }
+
+        }
+
+
+        /* =====================================================
+           NOTE SHARING UI START
+        ===================================================== */
+
+        .topbar-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .btn-share {
+
+            display: none;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                8px 12px;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-share.visible {
+
+            display:
+                inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+        }
+
+
+        .btn-share:hover {
+
+            background:
+                var(--dark-hover);
+        }
+
+
+        /* MEMBERS */
+
+        .note-members {
+
+            margin-bottom:
+                16px;
+
+            padding:
+                12px 14px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                14px;
+
+            background:
+                var(--card-bg);
+
+            display: flex;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+
+        .members-label {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            margin-right: 3px;
+        }
+
+
+        .member-chip {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                5px 9px 5px 5px;
+
+            border-radius:
+                30px;
+
+            background:
+                var(--beige);
+
+            font-size: 9px;
+        }
+
+
+        .member-avatar {
+
+            width: 24px;
+            height: 24px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            font-size: 8px;
+            font-weight: 700;
+
+            flex-shrink: 0;
+        }
+
+
+        .member-name {
+
+            font-weight: 600;
+        }
+
+
+        .member-role {
+
+            color:
+                var(--text-muted);
+
+            font-size: 8px;
+        }
+
+
+        .member-remove {
+
+            width: 20px;
+            height: 20px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                transparent;
+
+            color:
+                var(--danger);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 9px;
+        }
+
+
+        .member-remove:hover {
+
+            background:
+                rgba(185,106,106,0.10);
+        }
+
+
+        /* SHARE MODAL */
+
+        .share-modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(45,45,45,0.30);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease;
+
+            z-index: 1000;
+        }
+
+
+        .share-modal-overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .share-modal {
+
+            width: 100%;
+
+            max-width: 420px;
+
+            padding: 24px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 20px;
+
+            background:
+                var(--card-bg);
+
+            box-shadow:
+                0 20px 50px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .share-modal h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 23px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .share-modal-description {
+
+            color:
+                var(--text-muted);
+
+            font-size: 10px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .share-input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .share-input-group label {
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+
+        .share-input-group input,
+        .share-input-group select {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 10px;
+
+            padding:
+                10px 12px;
+
+            background: white;
+
+            color:
+                var(--text-dark);
+
+            outline: none;
+
+            font-size: 12px;
+        }
+
+
+        .share-modal-actions {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+        }
+
+
+        .share-cancel,
+        .share-submit {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 15px;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .share-cancel {
+
+            background:
+                var(--beige);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .share-submit {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .share-submit:disabled {
+
+            opacity: 0.6;
+
+            cursor: default;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .topbar {
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .topbar-right {
+
+                flex-wrap: wrap;
+
+                justify-content:
+                    flex-end;
+            }
+
+
+            .note-members {
+
+                padding:
+                    10px 11px;
+
+                gap: 6px;
+            }
+
+
+            .member-chip {
+
+                max-width: 100%;
+            }
+
+
+            .member-name {
+
+                max-width: 100px;
+
+                overflow: hidden;
+
+                white-space: nowrap;
+
+                text-overflow: ellipsis;
+            }
+
+
+            .share-modal {
+
+                padding:
+                    21px 18px;
+            }
+
+        }
+
+        /* NOTE SHARING UI END */
+</style>
+
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+<style id="global-dark-theme-fix">
+/* =========================================================
+   GLOBAL DARK THEME FIX
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"],
+[data-theme="dark"] body {
+    --dark-bg: #0f0c0b;
+    --dark-surface: #1b1715;
+    --dark-surface-2: #231d1a;
+    --dark-border: rgba(210, 185, 155, 0.18);
+    --dark-text: #f7efe8;
+    --dark-muted: #c9b7a6;
+    --dark-soft: #a8927e;
+    --dark-accent: #f5eee7;
+    --dark-accent-text: #1c1715;
+    --dark-chip: #2b2421;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"] body {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   TEXT FIX
+   ========================================================= */
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme div,
+body.dark-theme label,
+body.dark-theme a,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] label,
+[data-theme="dark"] a {
+    color: inherit;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .subtitle,
+body.dark-theme .welcome-label,
+body.dark-theme .section-subtitle,
+body.dark-theme .empty-subtitle,
+body.dark-theme .note-subtitle,
+body.dark-theme .member-role,
+body.dark-theme .meta-text,
+body.dark-theme .helper-text,
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .welcome-label,
+[data-theme="dark"] .section-subtitle,
+[data-theme="dark"] .empty-subtitle,
+[data-theme="dark"] .note-subtitle,
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .meta-text,
+[data-theme="dark"] .helper-text {
+    color: var(--dark-muted) !important;
+}
+
+body.dark-theme .accent-text,
+body.dark-theme .brand-text,
+body.dark-theme .user-name,
+body.dark-theme .note-title,
+body.dark-theme .page-title,
+body.dark-theme .section-title,
+[data-theme="dark"] .accent-text,
+[data-theme="dark"] .brand-text,
+[data-theme="dark"] .user-name,
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .section-title {
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   CARD / CONTAINER FIX
+   ========================================================= */
+
+body.dark-theme .welcome-card,
+body.dark-theme .home-card,
+body.dark-theme .hero-card,
+body.dark-theme .top-card,
+body.dark-theme .summary-card,
+body.dark-theme .section-card,
+body.dark-theme .note-card,
+body.dark-theme .note-editor-card,
+body.dark-theme .editor-card,
+body.dark-theme .member-card,
+body.dark-theme .members-card,
+body.dark-theme .toolbar-card,
+body.dark-theme .dropdown-menu,
+body.dark-theme .menu-dropdown,
+body.dark-theme .profile-dropdown,
+body.dark-theme .modal-content,
+body.dark-theme .share-modal-content,
+[data-theme="dark"] .welcome-card,
+[data-theme="dark"] .home-card,
+[data-theme="dark"] .hero-card,
+[data-theme="dark"] .top-card,
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .section-card,
+[data-theme="dark"] .note-card,
+[data-theme="dark"] .note-editor-card,
+[data-theme="dark"] .editor-card,
+[data-theme="dark"] .member-card,
+[data-theme="dark"] .members-card,
+[data-theme="dark"] .toolbar-card,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .menu-dropdown,
+[data-theme="dark"] .profile-dropdown,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .share-modal-content {
+    background: linear-gradient(135deg, #1c1715 0%, #211b18 100%) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   INPUT / EDITOR FIX
+   ========================================================= */
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .editor,
+body.dark-theme .note-editor,
+body.dark-theme .note-content,
+body.dark-theme .title-input,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .editor,
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-content,
+[data-theme="dark"] .title-input {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--dark-soft) !important;
+}
+
+/* =========================================================
+   BUTTON FIX
+   ========================================================= */
+
+body.dark-theme .btn,
+body.dark-theme button,
+body.dark-theme .action-btn,
+body.dark-theme .menu-btn,
+body.dark-theme .profile-btn,
+body.dark-theme .home-nav-btn,
+body.dark-theme .primary-btn,
+body.dark-theme .secondary-btn,
+[data-theme="dark"] .btn,
+[data-theme="dark"] button,
+[data-theme="dark"] .action-btn,
+[data-theme="dark"] .menu-btn,
+[data-theme="dark"] .profile-btn,
+[data-theme="dark"] .home-nav-btn,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .secondary-btn {
+    border-color: var(--dark-border) !important;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .primary-btn,
+body.dark-theme .btn-dark,
+body.dark-theme .main-action,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .btn-dark,
+[data-theme="dark"] .main-action {
+    background: var(--dark-accent) !important;
+    color: var(--dark-accent-text) !important;
+    border: none !important;
+}
+
+body.dark-theme .btn-primary *,
+body.dark-theme .primary-btn *,
+body.dark-theme .btn-dark *,
+body.dark-theme .main-action *,
+[data-theme="dark"] .btn-primary *,
+[data-theme="dark"] .primary-btn *,
+[data-theme="dark"] .btn-dark *,
+[data-theme="dark"] .main-action * {
+    color: var(--dark-accent-text) !important;
+}
+
+body.dark-theme .btn-secondary,
+body.dark-theme .secondary-btn,
+body.dark-theme .ghost-btn,
+body.dark-theme .back-btn,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .secondary-btn,
+[data-theme="dark"] .ghost-btn,
+[data-theme="dark"] .back-btn {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   CHIP / BADGE FIX
+   ========================================================= */
+
+body.dark-theme .badge,
+body.dark-theme .role-badge,
+body.dark-theme .status-badge,
+body.dark-theme .chip,
+body.dark-theme .pill,
+body.dark-theme .member-pill,
+[data-theme="dark"] .badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .pill,
+[data-theme="dark"] .member-pill {
+    background: var(--dark-chip) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   DROPDOWN / MENU FIX
+   ========================================================= */
+
+body.dark-theme .dropdown-menu a,
+body.dark-theme .menu-dropdown a,
+body.dark-theme .profile-dropdown a,
+body.dark-theme .dropdown-menu button,
+body.dark-theme .menu-dropdown button,
+body.dark-theme .profile-dropdown button,
+[data-theme="dark"] .dropdown-menu a,
+[data-theme="dark"] .menu-dropdown a,
+[data-theme="dark"] .profile-dropdown a,
+[data-theme="dark"] .dropdown-menu button,
+[data-theme="dark"] .menu-dropdown button,
+[data-theme="dark"] .profile-dropdown button {
+    color: var(--dark-text) !important;
+    background: transparent !important;
+}
+
+body.dark-theme .dropdown-menu a:hover,
+body.dark-theme .menu-dropdown a:hover,
+body.dark-theme .profile-dropdown a:hover,
+body.dark-theme .dropdown-menu button:hover,
+body.dark-theme .menu-dropdown button:hover,
+body.dark-theme .profile-dropdown button:hover,
+[data-theme="dark"] .dropdown-menu a:hover,
+[data-theme="dark"] .menu-dropdown a:hover,
+[data-theme="dark"] .profile-dropdown a:hover,
+[data-theme="dark"] .dropdown-menu button:hover,
+[data-theme="dark"] .menu-dropdown button:hover,
+[data-theme="dark"] .profile-dropdown button:hover {
+    background: rgba(255,255,255,0.05) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   NOTE PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .note-page,
+body.dark-theme .note-shell,
+body.dark-theme .editor-shell,
+body.dark-theme .note-main,
+[data-theme="dark"] .note-page,
+[data-theme="dark"] .note-shell,
+[data-theme="dark"] .editor-shell,
+[data-theme="dark"] .note-main {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .note-title-input,
+body.dark-theme .note-content-input,
+body.dark-theme .note-editor-title,
+body.dark-theme .note-editor-content,
+[data-theme="dark"] .note-title-input,
+[data-theme="dark"] .note-content-input,
+[data-theme="dark"] .note-editor-title,
+[data-theme="dark"] .note-editor-content {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   HOME PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .welcome-card .brand-text,
+body.dark-theme .welcome-card .username,
+body.dark-theme .welcome-card .title,
+body.dark-theme .welcome-card h1,
+body.dark-theme .welcome-card h2,
+body.dark-theme .welcome-card h3,
+[data-theme="dark"] .welcome-card .brand-text,
+[data-theme="dark"] .welcome-card .username,
+[data-theme="dark"] .welcome-card .title,
+[data-theme="dark"] .welcome-card h1,
+[data-theme="dark"] .welcome-card h2,
+[data-theme="dark"] .welcome-card h3 {
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .welcome-card p,
+body.dark-theme .welcome-card span,
+[data-theme="dark"] .welcome-card p,
+[data-theme="dark"] .welcome-card span {
+    color: var(--dark-muted) !important;
+}
+</style>
+</head>
+
+
+<body>
+
+
+    <main class="container">
+
+
+        <div class="topbar">
+
+            <a
+                class="back"
+                href="notes.html"
+            >
+
+                <i
+                    class="fa-solid fa-arrow-left"
+                ></i>
+
+                My Notes
+
+            </a>
+
+
+            <div class="topbar-right">
+
+                <div
+                    class="note-role"
+                    id="noteRole"
+                >
+                    ...
+                </div>
+
+
+                <button
+                    class="btn-share"
+                    id="shareNoteButton"
+                    type="button"
+                >
+
+                    <i
+                        class="fa-solid fa-user-plus"
+                    ></i>
+
+                    Bagikan
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="readonly-message"
+            id="readonlyMessage"
+        >
+            Kamu hanya memiliki akses untuk membaca note ini.
+        </div>
+
+
+        <div
+            class="note-members"
+            id="noteMembers"
+        >
+
+            <span class="members-label">
+                Anggota
+            </span>
+
+            <span
+                class="member-role"
+            >
+                Memuat...
+            </span>
+
+        </div>
+
+
+        <section class="editor">
+
+
+            <input
+                class="title-input"
+                id="noteTitle"
+                type="text"
+                maxlength="200"
+                placeholder="Judul Note"
+            >
+
+
+            <textarea
+                class="content-input"
+                id="noteContent"
+                placeholder="Mulai menulis..."
+            ></textarea>
+
+
+            <div class="editor-footer">
+
+
+                <div
+                    class="save-status"
+                    id="saveStatus"
+                >
+                    Memuat note...
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="btn btn-delete"
+                        id="deleteNoteButton"
+                        type="button"
+                    >
+                        Hapus
+                    </button>
+
+
+                    <button
+                        class="btn btn-save"
+                        id="saveNoteButton"
+                        type="button"
+                    >
+                        Simpan
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <div
+        class="share-modal-overlay"
+        id="shareNoteModal"
+    >
+
+        <div class="share-modal">
+
+            <h2>
+                Bagikan Note
+            </h2>
+
+            <p class="share-modal-description">
+                Masukkan email akun yang ingin kamu beri akses.
+            </p>
+
+
+            <div class="share-input-group">
+
+                <label for="shareEmail">
+                    Email
+                </label>
+
+                <input
+                    id="shareEmail"
+                    type="email"
+                    placeholder="contoh@email.com"
+                >
+
+            </div>
+
+
+            <div class="share-input-group">
+
+                <label for="shareRole">
+                    Akses
+                </label>
+
+                <select
+                    id="shareRole"
+                >
+
+                    <option value="editor">
+                        Editor - bisa membaca dan mengedit
+                    </option>
+
+                    <option value="viewer">
+                        Viewer - hanya membaca
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="share-modal-actions">
+
+                <button
+                    class="share-cancel"
+                    type="button"
+                    id="shareCancelButton"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    class="share-submit"
+                    type="button"
+                    id="shareSubmitButton"
+                >
+                    Bagikan
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/note.js"></script>
+
+
+
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
+
+
+========== THEME.CSS ==========
+/* ==========================================================
+   NEKOYA GLOBAL THEME
+========================================================== */
+
+
+/* ==========================================================
+   GLOBAL THEME TRANSITION
+========================================================== */
+
+html {
+    color-scheme: light;
+}
+
+
+body,
+header,
+main,
+section,
+article,
+input,
+textarea,
+select,
+button,
+.modal,
+.folder-card,
+.note-card,
+.wish-card {
+    transition:
+        background-color .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+
+/* ==========================================================
+   DARK VARIABLES
+========================================================== */
+
+html[data-theme="dark"] {
+
+    color-scheme: dark;
+
+
+    /* Wishlist variables */
+
+    --bg-main: #121110;
+    --bg-soft: #252220;
+
+    --card: #1C1A19;
+
+    --dark: #F3F0EC;
+    --dark-hover: #FFFFFF;
+
+    --soft-brown: #C4B2A8;
+
+    --muted: #A59D95;
+
+    --border: #3B3733;
+
+    --danger: #E58B8B;
+
+
+    /* Main app variables */
+
+    --bg-color: #121110;
+
+    --card-bg: #1C1A19;
+
+    --dark-primary: #F3F0EC;
+
+    --beige: #252220;
+    --beige-dark: #302C28;
+
+    --border-color: #3B3733;
+
+    --text-dark: #F3F0EC;
+
+    --text-muted: #A59D95;
+
+
+    /* Auth variables */
+
+    --bg-gradient:
+        linear-gradient(
+            135deg,
+            #121110 0%,
+            #1C1917 100%
+        );
+
+    --primary-pink: #C4B2A8;
+
+    --primary-hover: #FFFFFF;
+
+    --soft-pink: #252220;
+
+
+    /* Shadows */
+
+    --shadow:
+        0 12px 35px
+        rgba(0,0,0,.20);
+
+    --shadow-soft:
+        0 15px 35px
+        rgba(0,0,0,.22);
+
+    --shadow-subtle:
+        0 8px 25px
+        rgba(0,0,0,.16);
+
+    --shadow-hover:
+        0 18px 40px
+        rgba(0,0,0,.30);
+}
+
+
+/* ==========================================================
+   PAGE BACKGROUND
+========================================================== */
+
+html[data-theme="dark"] body {
+
+    background:
+        #121110 !important;
+
+    color:
+        #F3F0EC !important;
+}
+
+
+/* ==========================================================
+   COMMON SURFACES
+========================================================== */
+
+html[data-theme="dark"] header,
+
+html[data-theme="dark"] .welcome-card,
+
+html[data-theme="dark"] .home-card,
+
+html[data-theme="dark"] .auth-card,
+
+html[data-theme="dark"] .login-card,
+
+html[data-theme="dark"] .register-card,
+
+html[data-theme="dark"] .profile-card,
+
+html[data-theme="dark"] .folder-card,
+
+html[data-theme="dark"] .note-card,
+
+html[data-theme="dark"] .wish-card,
+
+html[data-theme="dark"] .modal,
+
+html[data-theme="dark"] .folder-menu,
+
+html[data-theme="dark"] .wish-menu,
+
+html[data-theme="dark"] .profile-menu,
+
+html[data-theme="dark"] .dropdown-menu,
+
+html[data-theme="dark"] .empty-state,
+
+html[data-theme="dark"] .members-section {
+
+    background:
+        #1C1A19 !important;
+
+    border-color:
+        #3B3733 !important;
+
+    color:
+        #F3F0EC !important;
+}
+
+
+/* ==========================================================
+   TEXT
+========================================================== */
+
+html[data-theme="dark"] h1,
+
+html[data-theme="dark"] h2,
+
+html[data-theme="dark"] h3,
+
+html[data-theme="dark"] h4,
+
+html[data-theme="dark"] .username,
+
+html[data-theme="dark"] .folder-name,
+
+html[data-theme="dark"] .note-title,
+
+html[data-theme="dark"] .wish-name,
+
+html[data-theme="dark"] .modal-title,
+
+html[data-theme="dark"] label {
+
+    color:
+        #F3F0EC !important;
+}
+
+
+html[data-theme="dark"] .text-muted,
+
+html[data-theme="dark"] .welcome-small,
+
+html[data-theme="dark"] .folder-description,
+
+html[data-theme="dark"] .note-preview,
+
+html[data-theme="dark"] .note-meta,
+
+html[data-theme="dark"] .wish-price {
+
+    color:
+        #A59D95 !important;
+}
+
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+html[data-theme="dark"] input,
+
+html[data-theme="dark"] textarea,
+
+html[data-theme="dark"] select {
+
+    background:
+        #272421 !important;
+
+    color:
+        #F3F0EC !important;
+
+    border-color:
+        #3B3733 !important;
+}
+
+
+html[data-theme="dark"] input::placeholder,
+
+html[data-theme="dark"] textarea::placeholder {
+
+    color:
+        #77716B !important;
+}
+
+
+html[data-theme="dark"] input:focus,
+
+html[data-theme="dark"] textarea:focus,
+
+html[data-theme="dark"] select:focus {
+
+    background:
+        #211F1D !important;
+
+    border-color:
+        #81766F !important;
+
+    outline:
+        none;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(196,178,168,.08) !important;
+}
+
+
+/* ==========================================================
+   PRIMARY BUTTONS
+========================================================== */
+
+html[data-theme="dark"] .btn-add,
+
+html[data-theme="dark"] .btn-save,
+
+html[data-theme="dark"] .btn-daftar,
+
+html[data-theme="dark"] .btn-primary,
+
+html[data-theme="dark"] .primary-btn,
+
+html[data-theme="dark"] .app-card {
+
+    background:
+        #F1EDE8 !important;
+
+    color:
+        #191715 !important;
+
+    border-color:
+        #F1EDE8 !important;
+}
+
+
+html[data-theme="dark"] .btn-add:hover,
+
+html[data-theme="dark"] .btn-save:hover,
+
+html[data-theme="dark"] .btn-daftar:hover,
+
+html[data-theme="dark"] .btn-primary:hover,
+
+html[data-theme="dark"] .primary-btn:hover,
+
+html[data-theme="dark"] .app-card:hover {
+
+    background:
+        #FFFFFF !important;
+
+    color:
+        #171513 !important;
+}
+
+
+/* ==========================================================
+   SECONDARY BUTTON
+========================================================== */
+
+html[data-theme="dark"] .btn-cancel,
+
+html[data-theme="dark"] .btn-secondary,
+
+html[data-theme="dark"] .ghost-button {
+
+    background:
+        #292623 !important;
+
+    color:
+        #F3F0EC !important;
+
+    border-color:
+        #3B3733 !important;
+}
+
+
+/* ==========================================================
+   WISHLIST
+========================================================== */
+
+html[data-theme="dark"]
+.wish-card.completed {
+
+    background:
+        #211F1D !important;
+}
+
+
+html[data-theme="dark"]
+.wish-card.completed
+.wish-name {
+
+    color:
+        #817A74 !important;
+
+    text-decoration-color:
+        #817A74 !important;
+}
+
+
+html[data-theme="dark"]
+.wish-check {
+
+    border-color:
+        #756E68 !important;
+}
+
+
+html[data-theme="dark"]
+.wish-card.completed
+.wish-check {
+
+    background:
+        #F1EDE8 !important;
+
+    border-color:
+        #F1EDE8 !important;
+
+    color:
+        #171513 !important;
+}
+
+
+html[data-theme="dark"]
+.wish-product-link {
+
+    color:
+        #D2BDB2 !important;
+}
+
+
+/* ==========================================================
+   MENUS
+========================================================== */
+
+html[data-theme="dark"] .wish-menu-item,
+
+html[data-theme="dark"] .folder-menu .menu-item,
+
+html[data-theme="dark"] .profile-menu button {
+
+    color:
+        #F3F0EC !important;
+}
+
+
+html[data-theme="dark"] .wish-menu-item:hover,
+
+html[data-theme="dark"] .folder-menu .menu-item:hover,
+
+html[data-theme="dark"] .profile-menu button:hover {
+
+    background:
+        #2C2926 !important;
+}
+
+
+/* ==========================================================
+   LINKS
+========================================================== */
+
+html[data-theme="dark"] a {
+
+    color:
+        inherit;
+}
+
+
+/* ==========================================================
+   GLOBAL THEME TOGGLE
+========================================================== */
+
+.global-theme-toggle {
+
+    position:
+        fixed;
+
+    left:
+        18px;
+
+    bottom:
+        18px;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    padding:
+        0;
+
+    border:
+        1px solid
+        var(--border-color, #DCD6CD);
+
+    border-radius:
+        50%;
+
+    background:
+        var(--card-bg, #FFFFFF);
+
+    color:
+        var(--text-dark, #2D2D2D);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    cursor:
+        pointer;
+
+    font-size:
+        15px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(45,45,45,.12);
+
+    z-index:
+        9998;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+
+.global-theme-toggle:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+html[data-theme="dark"]
+.global-theme-toggle {
+
+    background:
+        #24211F;
+
+    color:
+        #F3F0EC;
+
+    border-color:
+        #413B37;
+
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,.30);
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .global-theme-toggle {
+
+        width:
+            39px;
+
+        height:
+            39px;
+
+        left:
+            14px;
+
+        bottom:
+            14px;
+
+        font-size:
+            14px;
+    }
+
+}

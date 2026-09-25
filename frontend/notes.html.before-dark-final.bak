@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Notes</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+
+    <style>
+
+        :root {
+
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+
+            --shadow-subtle:
+                0 10px 30px
+                rgba(45,45,45,0.06);
+
+            --shadow-hover:
+                0 15px 35px
+                rgba(45,45,45,0.10);
+        }
+
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding-bottom:
+                70px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                28px auto 0;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                24px;
+
+            padding:
+                28px 30px;
+
+            box-shadow:
+                var(--shadow-subtle);
+        }
+
+
+        .header-top {
+
+            display: flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+        }
+
+
+        .header-title h1 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            margin-bottom: 5px;
+        }
+
+
+        .header-title p {
+
+            color:
+                var(--text-muted);
+
+            font-size: 13px;
+        }
+
+
+        .btn-home {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            background:
+                var(--card-bg);
+
+            color:
+                var(--text-dark);
+
+            padding:
+                8px 13px;
+
+            border-radius:
+                10px;
+
+            margin-bottom:
+                14px;
+
+            text-decoration:
+                none;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        .profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-shrink: 0;
+        }
+
+
+        .profile-avatar {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            overflow: hidden;
+        }
+
+
+        .profile-avatar img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .profile-info {
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            line-height: 1.2;
+        }
+
+
+        .profile-name {
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .profile-username {
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           CREATE BUTTON
+        ===================================================== */
+
+        .btn-add {
+
+            margin-top: 25px;
+
+            border: none;
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+
+            padding:
+                12px 20px;
+
+            border-radius: 30px;
+
+            display:
+                inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .btn-add:hover {
+
+            background:
+                var(--dark-hover);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        main {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                38px auto 0;
+        }
+
+
+        .notes-section {
+
+            margin-bottom:
+                42px;
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .section-heading h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+
+        .note-count {
+
+            color:
+                var(--text-muted);
+
+            font-size: 11px;
+
+            background:
+                var(--beige);
+
+            padding:
+                5px 10px;
+
+            border-radius:
+                20px;
+        }
+
+
+        /* =====================================================
+           NOTE GRID
+        ===================================================== */
+
+        .note-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 15px;
+        }
+
+
+        .note-card {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius:
+                18px;
+
+            background:
+                var(--card-bg);
+
+            padding:
+                20px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            box-shadow:
+                var(--shadow-subtle);
+
+            color:
+                var(--text-dark);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .note-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .note-title {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 20px;
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+
+        .note-preview {
+
+            color:
+                var(--text-muted);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .note-meta {
+
+            margin-top: 18px;
+
+            color:
+                var(--text-muted);
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty-state {
+
+            grid-column:
+                1 / -1;
+
+            border:
+                1px dashed
+                var(--border-color);
+
+            border-radius:
+                18px;
+
+            padding:
+                34px 20px;
+
+            text-align: center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.45
+                );
+
+            color:
+                var(--text-muted);
+
+            font-size: 12px;
+        }
+
+
+        .empty-state i {
+
+            display: block;
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (
+            max-width: 650px
+        ) {
+
+            header {
+
+                width:
+                    calc(100% - 28px);
+
+                margin-top:
+                    14px;
+
+                padding:
+                    22px 20px;
+            }
+
+
+            main {
+
+                width:
+                    calc(100% - 28px);
+
+                margin-top:
+                    28px;
+            }
+
+
+            .header-title h1 {
+
+                font-size:
+                    30px;
+            }
+
+
+            .profile-info {
+
+                display: none;
+            }
+
+
+            .profile-avatar {
+
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .btn-add {
+
+                width: 100%;
+
+                justify-content:
+                    center;
+            }
+
+
+            .note-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .note-card {
+
+                padding:
+                    17px;
+            }
+
+
+            .note-title {
+
+                font-size:
+                    20px;
+            }
+
+        }
+
+
+        /* =====================================================
+           NOTE PROFILE AVATAR LINK START
+        ===================================================== */
+
+        .profile-avatar-link {
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .profile-avatar-link:hover {
+            transform:
+                translateY(-2px);
+
+            background:
+                var(--dark-hover);
+
+            box-shadow:
+                0 6px 16px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .profile-avatar-link:active {
+            transform:
+                translateY(0);
+        }
+
+        /* NOTE PROFILE AVATAR LINK END */
+
+        /* =====================================================
+           CREATE NOTE MODAL START
+        ===================================================== */
+
+        .modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(45,45,45,0.28);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.2s ease,
+                visibility 0.2s ease;
+
+            z-index: 1000;
+        }
+
+
+        .modal-overlay.active {
+
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .modal {
+
+            width: 100%;
+            max-width: 430px;
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 20px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(45,45,45,0.15);
+        }
+
+
+        .modal h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size: 23px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .input-group label {
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 11px;
+
+            padding:
+                11px 13px;
+
+            outline: none;
+
+            background: white;
+
+            color:
+                var(--text-dark);
+
+            font-size: 13px;
+        }
+
+
+        .input-group input:focus {
+
+            border-color:
+                #AAA198;
+        }
+
+
+        .modal-actions {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+        }
+
+
+        .btn-cancel,
+        .btn-save {
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding:
+                10px 16px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-cancel {
+
+            background:
+                var(--beige);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .btn-save {
+
+            background:
+                var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:disabled {
+
+            opacity: 0.6;
+
+            cursor: default;
+        }
+
+        /* CREATE NOTE MODAL END */
+
+        /* =====================================================
+           FULL WIDTH NOTE CARD START
+        ===================================================== */
+
+        .note-grid {
+            display: grid !important;
+
+            grid-template-columns:
+                1fr !important;
+
+            width: 100% !important;
+
+            gap: 12px !important;
+        }
+
+
+        .note-card {
+            width: 100% !important;
+
+            max-width: none !important;
+
+            min-height: 125px;
+
+            padding:
+                22px 26px !important;
+        }
+
+
+        .note-title {
+            font-size:
+                21px !important;
+        }
+
+
+        .note-preview {
+            margin-top: 4px;
+
+            max-width: 850px;
+        }
+
+
+        .note-meta {
+            margin-top:
+                20px !important;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .note-grid {
+                grid-template-columns:
+                    1fr !important;
+
+                gap:
+                    10px !important;
+            }
+
+
+            .note-card {
+                width:
+                    100% !important;
+
+                min-height:
+                    110px;
+
+                padding:
+                    17px 18px !important;
+
+                border-radius:
+                    15px;
+            }
+
+
+            .note-title {
+                font-size:
+                    19px !important;
+            }
+
+
+            .note-preview {
+                font-size:
+                    10px;
+
+                line-height:
+                    1.5;
+            }
+
+
+            .note-meta {
+                margin-top:
+                    15px !important;
+
+                font-size:
+                    9px;
+            }
+
+        }
+
+        /* FULL WIDTH NOTE CARD END */
+
+        /* ==========================================
+           NOTES PROFILE IMAGE STYLE START
+        ========================================== */
+
+        #noteProfileAvatar {
+            overflow: hidden;
+        }
+
+
+        #noteProfileAvatar img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+        }
+
+        /* NOTES PROFILE IMAGE STYLE END */
+
+        /* =====================================================
+           NOTES MOBILE FULL WIDTH START
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            html,
+            body {
+                width: 100% !important;
+                max-width: 100% !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                overflow-x: hidden !important;
+            }
+
+
+            body {
+                min-height: 100vh !important;
+
+                background:
+                    var(--bg-color) !important;
+            }
+
+
+            /* ==========================================
+               FULL PAGE CONTAINER
+            ========================================== */
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+
+                margin: 0 !important;
+                padding: 0 15px 50px !important;
+            }
+
+
+            /* ==========================================
+               HEADER JADI BAGIAN DARI PAGE
+               BUKAN FLOATING CARD
+            ========================================== */
+
+            header {
+                width: calc(100% + 30px) !important;
+
+                margin:
+                    0 -15px 32px !important;
+
+                padding:
+                    22px 15px 24px !important;
+
+                border: none !important;
+                border-bottom:
+                    1px solid
+                    var(--border-color) !important;
+
+                border-radius:
+                    0 !important;
+
+                box-shadow:
+                    none !important;
+
+                background:
+                    var(--card-bg) !important;
+            }
+
+
+            .header-top,
+            .header-left {
+                width: 100% !important;
+            }
+
+
+            /* Home + avatar */
+
+            .header-top {
+                display: flex !important;
+
+                align-items: center !important;
+                justify-content:
+                    space-between !important;
+
+                gap: 12px !important;
+            }
+
+
+            .profile {
+                flex-shrink: 0 !important;
+            }
+
+
+            .profile-info {
+                display: none !important;
+            }
+
+
+            .profile-avatar {
+                width: 42px !important;
+                height: 42px !important;
+
+                flex-shrink: 0 !important;
+            }
+
+
+            /* ==========================================
+               TITLE
+            ========================================== */
+
+            .header-title {
+                width: 100% !important;
+
+                margin-top:
+                    20px !important;
+            }
+
+
+            .header-title h1 {
+                margin: 0 !important;
+
+                font-size:
+                    30px !important;
+
+                line-height:
+                    1.15 !important;
+            }
+
+
+            .header-title p {
+                max-width:
+                    280px !important;
+
+                margin-top:
+                    7px !important;
+
+                font-size:
+                    12px !important;
+
+                line-height:
+                    1.6 !important;
+            }
+
+
+            /* ==========================================
+               CREATE NOTE BUTTON
+            ========================================== */
+
+            .btn-add {
+                width: 100% !important;
+
+                margin-top:
+                    22px !important;
+
+                padding:
+                    13px 18px !important;
+
+                justify-content:
+                    center !important;
+
+                border-radius:
+                    14px !important;
+            }
+
+
+            /* ==========================================
+               SECTION
+            ========================================== */
+
+            .section-header {
+                width: 100% !important;
+
+                margin-bottom:
+                    12px !important;
+            }
+
+
+            .section-header h2 {
+                font-size:
+                    24px !important;
+            }
+
+
+            /* ==========================================
+               NOTES LIST
+            ========================================== */
+
+            .note-grid {
+                width: 100% !important;
+
+                display: grid !important;
+
+                grid-template-columns:
+                    1fr !important;
+
+                gap:
+                    10px !important;
+            }
+
+
+            .note-card {
+                width: 100% !important;
+                max-width: none !important;
+
+                min-height:
+                    110px !important;
+
+                margin: 0 !important;
+
+                padding:
+                    17px 18px !important;
+
+                border-radius:
+                    15px !important;
+            }
+
+
+            .note-title {
+                font-size:
+                    19px !important;
+            }
+
+
+            .note-preview {
+                font-size:
+                    11px !important;
+
+                line-height:
+                    1.55 !important;
+            }
+
+
+            .note-meta {
+                margin-top:
+                    14px !important;
+            }
+
+
+            /* ==========================================
+               SECTION SPACING
+            ========================================== */
+
+            section {
+                width: 100% !important;
+            }
+
+
+            section + section {
+                margin-top:
+                    42px !important;
+            }
+
+
+            /* ==========================================
+               MODAL
+            ========================================== */
+
+            .modal-overlay {
+                padding:
+                    14px !important;
+            }
+
+
+            .modal {
+                width: 100% !important;
+
+                max-width:
+                    100% !important;
+
+                padding:
+                    22px 20px !important;
+
+                border-radius:
+                    20px !important;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .container {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            header {
+                width:
+                    calc(100% + 24px) !important;
+
+                margin-left:
+                    -12px !important;
+
+                margin-right:
+                    -12px !important;
+
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            .header-title h1 {
+                font-size:
+                    27px !important;
+            }
+
+        }
+
+        /* NOTES MOBILE FULL WIDTH END */
+
+        /* =====================================================
+           NOTES MOBILE ZOOM SAFE START
+        ===================================================== */
+
+        /*
+           Tetap gunakan layout mobile pada perangkat touch,
+           walaupun browser di-zoom out.
+        */
+        @media
+        (max-width: 1024px),
+        (hover: none) and (pointer: coarse) {
+
+            html {
+                width: 100%;
+                min-width: 0;
+            }
+
+
+            body {
+                width: 100% !important;
+                min-width: 0 !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                overflow-x: visible !important;
+            }
+
+
+            /* ==========================================
+               MAIN CONTAINER
+            ========================================== */
+
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                min-width: 0 !important;
+
+                margin: 0 !important;
+                padding:
+                    0 0 50px !important;
+            }
+
+
+            /* ==========================================
+               HEADER
+               Tidak pakai width calc / margin negatif
+            ========================================== */
+
+            header {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                margin:
+                    0 0 32px !important;
+
+                padding:
+                    22px 16px 24px !important;
+
+                border-left:
+                    none !important;
+
+                border-right:
+                    none !important;
+
+                border-top:
+                    none !important;
+
+                border-radius:
+                    0 !important;
+
+                box-shadow:
+                    none !important;
+            }
+
+
+            .header-top,
+            .header-left,
+            .header-title {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+
+
+            /* ==========================================
+               CONTENT
+            ========================================== */
+
+            main,
+            section {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+
+
+            section {
+                padding-left:
+                    16px !important;
+
+                padding-right:
+                    16px !important;
+            }
+
+
+            /* Jangan tambah padding lagi kalau section
+               ternyata berada di dalam elemen lain */
+            section section {
+                padding-left:
+                    0 !important;
+
+                padding-right:
+                    0 !important;
+            }
+
+
+            /* ==========================================
+               SECTION HEADER
+            ========================================== */
+
+            .section-header {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                display: flex !important;
+
+                align-items: center !important;
+                justify-content:
+                    space-between !important;
+
+                gap: 10px !important;
+            }
+
+
+            .section-header h2 {
+                min-width: 0 !important;
+
+                overflow-wrap:
+                    anywhere !important;
+            }
+
+
+            /* ==========================================
+               NOTE GRID
+            ========================================== */
+
+            .note-grid {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                grid-template-columns:
+                    minmax(0, 1fr) !important;
+            }
+
+
+            /* ==========================================
+               NOTE CARD
+            ========================================== */
+
+            .note-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                margin-left:
+                    0 !important;
+
+                margin-right:
+                    0 !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+
+            .note-title,
+            .note-preview,
+            .note-meta {
+                max-width: 100% !important;
+                min-width: 0 !important;
+
+                overflow-wrap:
+                    anywhere !important;
+
+                word-break:
+                    break-word !important;
+            }
+
+
+            /* ==========================================
+               CREATE BUTTON
+            ========================================== */
+
+            .btn-add {
+                width: 100% !important;
+                max-width: 100% !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+
+            /* ==========================================
+               PROFILE
+            ========================================== */
+
+            .profile {
+                flex-shrink:
+                    0 !important;
+            }
+
+
+            .profile-avatar {
+                flex-shrink:
+                    0 !important;
+            }
+
+
+            /* ==========================================
+               MODAL
+            ========================================== */
+
+            .modal-overlay {
+                width: 100% !important;
+
+                padding:
+                    16px !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+
+            .modal {
+                width: 100% !important;
+                max-width: 440px !important;
+                min-width: 0 !important;
+
+                box-sizing:
+                    border-box !important;
+            }
+
+        }
+
+
+        /* Sangat kecil */
+
+        @media (max-width: 380px) {
+
+            header {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+
+            section {
+                padding-left:
+                    12px !important;
+
+                padding-right:
+                    12px !important;
+            }
+
+        }
+
+        /* NOTES MOBILE ZOOM SAFE END */
+
+        /* =====================================================
+           NOTES HEADER CARD WIDTH FIX START
+        ===================================================== */
+
+        @media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+
+            header {
+                width: auto !important;
+                max-width: none !important;
+                min-width: 0 !important;
+
+                margin: 16px 16px 28px !important;
+                padding: 22px 18px 24px !important;
+
+                border: 1px solid var(--border-color) !important;
+                border-radius: 24px !important;
+                box-shadow: var(--shadow-subtle) !important;
+            }
+
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                margin: 0 auto !important;
+                padding: 0 0 50px !important;
+            }
+
+            .header-top,
+            .header-left,
+            .header-title {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+
+            .header-actions,
+            .header-buttons,
+            .btn-add {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .btn-add {
+                display: flex !important;
+                justify-content: center !important;
+            }
+        }
+
+        @media (max-width: 380px) {
+            header {
+                margin: 12px 12px 24px !important;
+                padding: 18px 14px 20px !important;
+            }
+        }
+
+        /* NOTES HEADER CARD WIDTH FIX END */
+</style>
+
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+<style id="global-dark-theme-fix">
+/* =========================================================
+   GLOBAL DARK THEME FIX
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"],
+[data-theme="dark"] body {
+    --dark-bg: #0f0c0b;
+    --dark-surface: #1b1715;
+    --dark-surface-2: #231d1a;
+    --dark-border: rgba(210, 185, 155, 0.18);
+    --dark-text: #f7efe8;
+    --dark-muted: #c9b7a6;
+    --dark-soft: #a8927e;
+    --dark-accent: #f5eee7;
+    --dark-accent-text: #1c1715;
+    --dark-chip: #2b2421;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+body.dark-theme,
+html.dark-theme body,
+[data-theme="dark"] body {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   TEXT FIX
+   ========================================================= */
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme p,
+body.dark-theme span,
+body.dark-theme div,
+body.dark-theme label,
+body.dark-theme a,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] label,
+[data-theme="dark"] a {
+    color: inherit;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .subtitle,
+body.dark-theme .welcome-label,
+body.dark-theme .section-subtitle,
+body.dark-theme .empty-subtitle,
+body.dark-theme .note-subtitle,
+body.dark-theme .member-role,
+body.dark-theme .meta-text,
+body.dark-theme .helper-text,
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .welcome-label,
+[data-theme="dark"] .section-subtitle,
+[data-theme="dark"] .empty-subtitle,
+[data-theme="dark"] .note-subtitle,
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .meta-text,
+[data-theme="dark"] .helper-text {
+    color: var(--dark-muted) !important;
+}
+
+body.dark-theme .accent-text,
+body.dark-theme .brand-text,
+body.dark-theme .user-name,
+body.dark-theme .note-title,
+body.dark-theme .page-title,
+body.dark-theme .section-title,
+[data-theme="dark"] .accent-text,
+[data-theme="dark"] .brand-text,
+[data-theme="dark"] .user-name,
+[data-theme="dark"] .note-title,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .section-title {
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   CARD / CONTAINER FIX
+   ========================================================= */
+
+body.dark-theme .welcome-card,
+body.dark-theme .home-card,
+body.dark-theme .hero-card,
+body.dark-theme .top-card,
+body.dark-theme .summary-card,
+body.dark-theme .section-card,
+body.dark-theme .note-card,
+body.dark-theme .note-editor-card,
+body.dark-theme .editor-card,
+body.dark-theme .member-card,
+body.dark-theme .members-card,
+body.dark-theme .toolbar-card,
+body.dark-theme .dropdown-menu,
+body.dark-theme .menu-dropdown,
+body.dark-theme .profile-dropdown,
+body.dark-theme .modal-content,
+body.dark-theme .share-modal-content,
+[data-theme="dark"] .welcome-card,
+[data-theme="dark"] .home-card,
+[data-theme="dark"] .hero-card,
+[data-theme="dark"] .top-card,
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .section-card,
+[data-theme="dark"] .note-card,
+[data-theme="dark"] .note-editor-card,
+[data-theme="dark"] .editor-card,
+[data-theme="dark"] .member-card,
+[data-theme="dark"] .members-card,
+[data-theme="dark"] .toolbar-card,
+[data-theme="dark"] .dropdown-menu,
+[data-theme="dark"] .menu-dropdown,
+[data-theme="dark"] .profile-dropdown,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .share-modal-content {
+    background: linear-gradient(135deg, #1c1715 0%, #211b18 100%) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   INPUT / EDITOR FIX
+   ========================================================= */
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .editor,
+body.dark-theme .note-editor,
+body.dark-theme .note-content,
+body.dark-theme .title-input,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .editor,
+[data-theme="dark"] .note-editor,
+[data-theme="dark"] .note-content,
+[data-theme="dark"] .title-input {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--dark-soft) !important;
+}
+
+/* =========================================================
+   BUTTON FIX
+   ========================================================= */
+
+body.dark-theme .btn,
+body.dark-theme button,
+body.dark-theme .action-btn,
+body.dark-theme .menu-btn,
+body.dark-theme .profile-btn,
+body.dark-theme .home-nav-btn,
+body.dark-theme .primary-btn,
+body.dark-theme .secondary-btn,
+[data-theme="dark"] .btn,
+[data-theme="dark"] button,
+[data-theme="dark"] .action-btn,
+[data-theme="dark"] .menu-btn,
+[data-theme="dark"] .profile-btn,
+[data-theme="dark"] .home-nav-btn,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .secondary-btn {
+    border-color: var(--dark-border) !important;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .primary-btn,
+body.dark-theme .btn-dark,
+body.dark-theme .main-action,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .primary-btn,
+[data-theme="dark"] .btn-dark,
+[data-theme="dark"] .main-action {
+    background: var(--dark-accent) !important;
+    color: var(--dark-accent-text) !important;
+    border: none !important;
+}
+
+body.dark-theme .btn-primary *,
+body.dark-theme .primary-btn *,
+body.dark-theme .btn-dark *,
+body.dark-theme .main-action *,
+[data-theme="dark"] .btn-primary *,
+[data-theme="dark"] .primary-btn *,
+[data-theme="dark"] .btn-dark *,
+[data-theme="dark"] .main-action * {
+    color: var(--dark-accent-text) !important;
+}
+
+body.dark-theme .btn-secondary,
+body.dark-theme .secondary-btn,
+body.dark-theme .ghost-btn,
+body.dark-theme .back-btn,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .secondary-btn,
+[data-theme="dark"] .ghost-btn,
+[data-theme="dark"] .back-btn {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   CHIP / BADGE FIX
+   ========================================================= */
+
+body.dark-theme .badge,
+body.dark-theme .role-badge,
+body.dark-theme .status-badge,
+body.dark-theme .chip,
+body.dark-theme .pill,
+body.dark-theme .member-pill,
+[data-theme="dark"] .badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .pill,
+[data-theme="dark"] .member-pill {
+    background: var(--dark-chip) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+/* =========================================================
+   DROPDOWN / MENU FIX
+   ========================================================= */
+
+body.dark-theme .dropdown-menu a,
+body.dark-theme .menu-dropdown a,
+body.dark-theme .profile-dropdown a,
+body.dark-theme .dropdown-menu button,
+body.dark-theme .menu-dropdown button,
+body.dark-theme .profile-dropdown button,
+[data-theme="dark"] .dropdown-menu a,
+[data-theme="dark"] .menu-dropdown a,
+[data-theme="dark"] .profile-dropdown a,
+[data-theme="dark"] .dropdown-menu button,
+[data-theme="dark"] .menu-dropdown button,
+[data-theme="dark"] .profile-dropdown button {
+    color: var(--dark-text) !important;
+    background: transparent !important;
+}
+
+body.dark-theme .dropdown-menu a:hover,
+body.dark-theme .menu-dropdown a:hover,
+body.dark-theme .profile-dropdown a:hover,
+body.dark-theme .dropdown-menu button:hover,
+body.dark-theme .menu-dropdown button:hover,
+body.dark-theme .profile-dropdown button:hover,
+[data-theme="dark"] .dropdown-menu a:hover,
+[data-theme="dark"] .menu-dropdown a:hover,
+[data-theme="dark"] .profile-dropdown a:hover,
+[data-theme="dark"] .dropdown-menu button:hover,
+[data-theme="dark"] .menu-dropdown button:hover,
+[data-theme="dark"] .profile-dropdown button:hover {
+    background: rgba(255,255,255,0.05) !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   NOTE PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .note-page,
+body.dark-theme .note-shell,
+body.dark-theme .editor-shell,
+body.dark-theme .note-main,
+[data-theme="dark"] .note-page,
+[data-theme="dark"] .note-shell,
+[data-theme="dark"] .editor-shell,
+[data-theme="dark"] .note-main {
+    background: transparent !important;
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .note-title-input,
+body.dark-theme .note-content-input,
+body.dark-theme .note-editor-title,
+body.dark-theme .note-editor-content,
+[data-theme="dark"] .note-title-input,
+[data-theme="dark"] .note-content-input,
+[data-theme="dark"] .note-editor-title,
+[data-theme="dark"] .note-editor-content {
+    background: #221c19 !important;
+    color: var(--dark-text) !important;
+}
+
+/* =========================================================
+   HOME PAGE SPECIFIC
+   ========================================================= */
+
+body.dark-theme .welcome-card .brand-text,
+body.dark-theme .welcome-card .username,
+body.dark-theme .welcome-card .title,
+body.dark-theme .welcome-card h1,
+body.dark-theme .welcome-card h2,
+body.dark-theme .welcome-card h3,
+[data-theme="dark"] .welcome-card .brand-text,
+[data-theme="dark"] .welcome-card .username,
+[data-theme="dark"] .welcome-card .title,
+[data-theme="dark"] .welcome-card h1,
+[data-theme="dark"] .welcome-card h2,
+[data-theme="dark"] .welcome-card h3 {
+    color: var(--dark-text) !important;
+}
+
+body.dark-theme .welcome-card p,
+body.dark-theme .welcome-card span,
+[data-theme="dark"] .welcome-card p,
+[data-theme="dark"] .welcome-card span {
+    color: var(--dark-muted) !important;
+}
+</style>
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <div class="header-top">
+
+
+            <div class="header-title">
+
+                <a
+                    class="btn-home"
+                    href="home.html"
+                >
+
+                    <i
+                        class="fa-solid fa-house"
+                    ></i>
+
+                    Home
+
+                </a>
+
+
+                <h1>
+                    My Notes
+                </h1>
+
+                <p>
+                    semua catatan kamu dalam satu tempat ♡
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <a
+                    class="profile-avatar profile-avatar-link"
+                    id="noteProfileAvatar"
+                    href="profile.html"
+                    aria-label="Edit profile"
+                    title="Edit Profile"
+                >
+                    --
+                </a>
+
+
+                <div class="profile-info">
+
+                    <div
+                        class="profile-name"
+                        id="noteProfileName"
+                    >
+                        User
+                    </div>
+
+                    <div
+                        class="profile-username"
+                        id="noteProfileUsername"
+                    >
+                        @user
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="btn-add"
+            id="newNoteButton"
+            type="button"
+        >
+
+            <i
+                class="fa-solid fa-plus"
+            ></i>
+
+            Buat Note
+
+        </button>
+
+    </header>
+
+
+    <main>
+
+
+        <section
+            class="notes-section"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    My Notes
+                </h2>
+
+                <div
+                    class="note-count"
+                    id="myNoteCount"
+                >
+                    0 note
+                </div>
+
+            </div>
+
+
+            <div
+                class="note-grid"
+                id="myNotesGrid"
+            >
+
+                <div class="empty-state">
+
+                    <i
+                        class="fa-regular fa-note-sticky"
+                    ></i>
+
+                    Belum ada note.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section
+            class="notes-section"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    Shared With Me
+                </h2>
+
+                <div
+                    class="note-count"
+                    id="sharedNoteCount"
+                >
+                    0 note
+                </div>
+
+            </div>
+
+
+            <div
+                class="note-grid"
+                id="sharedNotesGrid"
+            >
+
+                <div class="empty-state">
+
+                    <i
+                        class="fa-solid fa-user-group"
+                    ></i>
+
+                    Belum ada note yang dibagikan denganmu.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CREATE NOTE MODAL START
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="createNoteModal"
+    >
+
+        <div class="modal">
+
+            <h2>
+                Buat Note
+            </h2>
+
+
+            <div class="input-group">
+
+                <label for="newNoteTitle">
+                    Judul Note
+                </label>
+
+                <input
+                    type="text"
+                    id="newNoteTitle"
+                    maxlength="200"
+                    placeholder="contoh: Our Plans ♡"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn-cancel"
+                    type="button"
+                    onclick="closeCreateNoteModal()"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    class="btn-save"
+                    id="createNoteSubmit"
+                    type="button"
+                    onclick="createNote()"
+                >
+                    Buat Note
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CREATE NOTE MODAL END -->
+
+<script src="js/api.js"></script>
+
+    <script src="js/auth-guard.js"></script>
+
+    <script src="js/notes.js"></script>
+
+
+
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
