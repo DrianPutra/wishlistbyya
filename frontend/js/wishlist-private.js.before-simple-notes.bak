@@ -70,7 +70,7 @@ function formatPrice(price) {
         !value ||
         value <= 0
     ) {
-        return "";
+        return "Rp -";
     }
 
     return new Intl.NumberFormat(
@@ -218,7 +218,6 @@ async function loadItems() {
 ========================================= */
 
 function renderWishlist() {
-
     grid.innerHTML =
         "";
 
@@ -226,7 +225,6 @@ function renderWishlist() {
     if (
         wishlistItems.length === 0
     ) {
-
         emptyState.style.display =
             "block";
 
@@ -246,110 +244,66 @@ function renderWishlist() {
                     "div"
                 );
 
-
             card.className =
                 "wish-card";
 
 
             if (item.completed) {
-
                 card.classList.add(
                     "completed"
                 );
             }
 
 
-            const hasPrice =
-                Number(item.price) > 0;
-
-
-            const hasProductURL =
-                Boolean(
-                    String(
-                        item.product_url || ""
-                    ).trim()
-                );
-
-
-            const priceHTML =
-                hasPrice
-                    ? `
-                        <span class="wish-price">
-                            ${escapeHTML(
-                                formatPrice(
-                                    item.price
-                                )
-                            )}
-                        </span>
-                      `
-                    : "";
-
-
-            const productHTML =
-                hasProductURL
-                    ? `
-                        <a
-                            class="wish-product-link"
-                            href="${escapeHTML(
-                                item.product_url
-                            )}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            Lihat Produk
-                        </a>
-                      `
-                    : "";
-
-
-            const metaHTML =
-                (
-                    hasPrice ||
-                    hasProductURL
-                )
-                    ? `
-                        <div class="wish-meta">
-                            ${priceHTML}
-                            ${productHTML}
-                        </div>
-                      `
-                    : "";
+            const tag =
+                item.tag ||
+                "Wishlist ✨";
 
 
             card.innerHTML = `
-
-                <button
-                    class="wish-check"
-                    type="button"
-                    onclick="toggleComplete(${item.id})"
-                    aria-label="${
-                        item.completed
-                            ? "Batalkan selesai"
-                            : "Tandai selesai"
-                    }"
-                >
-
-                    ${
-                        item.completed
-                            ? `
-                                <i class="fa-solid fa-check"></i>
-                              `
-                            : ""
-                    }
-
-                </button>
+                <span class="wish-tag">
+                    ${escapeHTML(tag)}
+                </span>
 
 
                 <div class="wish-content">
 
                     <div class="wish-name">
+                        ${escapeHTML(item.name)}
+                    </div>
+
+                    <div class="wish-price">
                         ${escapeHTML(
-                            item.name
+                            formatPrice(
+                                item.price
+                            )
                         )}
                     </div>
 
-                    ${metaHTML}
+                    ${
+                        item.product_url
+                            ? `
+                                <a
+                                    href="${escapeHTML(item.product_url)}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="
+                                        display:inline-flex;
+                                        align-items:center;
+                                        gap:6px;
+                                        margin-top:10px;
+                                        color:inherit;
+                                        font-size:12px;
+                                        text-decoration:underline;
+                                        text-underline-offset:3px;
+                                    "
+                                >
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    Lihat Produk
+                                </a>
+                              `
+                            : ""
+                    }
 
                 </div>
 
@@ -357,17 +311,35 @@ function renderWishlist() {
                 <div class="wish-actions">
 
                     <button
+                        class="btn-action btn-check"
+                        onclick="toggleComplete(${item.id})"
+                    >
+
+                        ${
+                            item.completed
+                                ? `
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    Terwujud ✨
+                                  `
+                                : `
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    Terwujud
+                                  `
+                        }
+
+                    </button>
+
+
+                    <button
                         class="wish-menu-btn"
-                        type="button"
                         onclick="
                             toggleMenu(
                                 event,
                                 ${item.id}
                             )
                         "
-                        aria-label="Menu wishlist"
                     >
-                        <i class="fa-solid fa-ellipsis"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
 
                 </div>
@@ -396,7 +368,6 @@ function renderWishlist() {
                     </button>
 
                 </div>
-
             `;
 
 
