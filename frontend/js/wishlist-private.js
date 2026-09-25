@@ -297,7 +297,7 @@ function renderWishlist() {
                             rel="noopener noreferrer"
                         >
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            Lihat Produk
+                            Link Website
                         </a>
                       `
                     : "";
@@ -1042,3 +1042,167 @@ document
     );
 
 /* PRICE INPUT FORMAT END */
+
+
+/* =========================================================
+   WISHLIST THEME SYSTEM START
+========================================================= */
+
+const WISHLIST_THEME_KEY =
+    "wishlist_theme";
+
+
+function updateWishlistThemeButton() {
+
+    const button =
+        document.getElementById(
+            "wishlistThemeToggle"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    const dark =
+        document.documentElement
+            .dataset
+            .theme ===
+        "dark";
+
+
+    button.innerHTML =
+        dark
+            ? `
+                <i class="fa-solid fa-sun"></i>
+              `
+            : `
+                <i class="fa-solid fa-moon"></i>
+              `;
+
+
+    button.setAttribute(
+        "aria-label",
+        dark
+            ? "Gunakan light mode"
+            : "Gunakan dark mode"
+    );
+
+
+    button.title =
+        dark
+            ? "Light mode"
+            : "Dark mode";
+}
+
+
+function applyWishlistTheme(
+    theme
+) {
+
+    const normalized =
+        theme === "dark"
+            ? "dark"
+            : "light";
+
+
+    document.documentElement
+        .dataset
+        .theme =
+        normalized;
+
+
+    localStorage.setItem(
+        WISHLIST_THEME_KEY,
+        normalized
+    );
+
+
+    updateWishlistThemeButton();
+}
+
+
+function toggleWishlistTheme() {
+
+    const current =
+        document.documentElement
+            .dataset
+            .theme ||
+        "light";
+
+
+    applyWishlistTheme(
+        current === "dark"
+            ? "light"
+            : "dark"
+    );
+}
+
+
+function initializeWishlistTheme() {
+
+    const savedTheme =
+        localStorage.getItem(
+            WISHLIST_THEME_KEY
+        );
+
+
+    document.documentElement
+        .dataset
+        .theme =
+        savedTheme === "dark"
+            ? "dark"
+            : "light";
+
+
+    const container =
+        document.querySelector(
+            ".container"
+        );
+
+
+    if (
+        container &&
+        !document.getElementById(
+            "wishlistThemeToggle"
+        )
+    ) {
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.id =
+            "wishlistThemeToggle";
+
+
+        button.className =
+            "wishlist-theme-toggle";
+
+
+        button.type =
+            "button";
+
+
+        button.addEventListener(
+            "click",
+            toggleWishlistTheme
+        );
+
+
+        container.appendChild(
+            button
+        );
+    }
+
+
+    updateWishlistThemeButton();
+}
+
+
+initializeWishlistTheme();
+
+/* WISHLIST THEME SYSTEM END */
