@@ -764,7 +764,6 @@ function applyRealtimeActivity(
 ========================================== */
 
 function renderWishlists() {
-
     wishlistGrid.innerHTML =
         "";
 
@@ -776,7 +775,6 @@ function renderWishlists() {
     if (
         wishlists.length === 0
     ) {
-
         emptyWishlist.style.display =
             "block";
 
@@ -788,18 +786,7 @@ function renderWishlists() {
         "none";
 
 
-    
-    /* COMPLETED ITEMS BOTTOM SHARED */
-
-    const sortedItems =
-        [...wishlists]
-            .sort(
-                (a, b) =>
-                    Number(Boolean(a.completed)) -
-                    Number(Boolean(b.completed))
-            );
-
-sortedItems.forEach(
+    wishlists.forEach(
         item => {
 
             const card =
@@ -813,207 +800,195 @@ sortedItems.forEach(
 
 
             if (item.completed) {
-
                 card.classList.add(
                     "completed"
                 );
             }
 
 
-            const hasPrice =
-                Number(item.price) > 0;
-
-
-            const productURL =
-                String(
-                    item.product_url || ""
-                ).trim();
-
-
-            const hasProductURL =
-                Boolean(
-                    productURL
+            const price =
+                formatPrice(
+                    item.price
                 );
 
 
-            const addedBy =
-                String(
-                    item.added_by || ""
-                ).trim();
-
-
-            const hasAddedBy =
-                Boolean(
-                    addedBy &&
-                    addedBy.toLowerCase() !==
-                        "unknown"
-                );
-
-
-            const priceHTML =
-                hasPrice
+            const imageHTML =
+                item.image_url
                     ? `
-                        <span class="shared-wish-price">
-
-                            ${escapeHTML(
-                                formatPrice(
-                                    item.price
-                                )
-                            )}
-
-                        </span>
-                      `
-                    : "";
-
-
-            const productHTML =
-                hasProductURL
-                    ? `
-                        <a
-                            class="shared-wish-link"
-                            href="${escapeAttribute(
-                                productURL
-                            )}"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <img
+                            src="${escapeAttribute(item.image_url)}"
+                            alt="${escapeAttribute(item.name)}"
+                            onerror="
+                                this.closest('.wishlist-image').style.display='none';
+                            "
                         >
 
+                        <div
+                            class="no-image"
+                            style="display:none;"
+                        >
+                            <i class="fa-regular fa-image"></i>
+                            Gambar tidak tersedia
+                        </div>
+                      `
+                    : `
+                        <div class="no-image">
+                            <i class="fa-regular fa-image"></i>
+                            Belum ada gambar
+                        </div>
+                      `;
+
+
+
+
+            const productLinkHTML =
+                item.product_url
+                    ? `
+                        <a
+                            href="${escapeAttribute(item.product_url)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                display:inline-flex;
+                                align-items:center;
+                                gap:6px;
+                                margin-top:10px;
+                                color:inherit;
+                                font-size:12px;
+                                text-decoration:underline;
+                                text-underline-offset:3px;
+                            "
+                        >
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                            Link Website
-
+                            Lihat Produk
                         </a>
                       `
                     : "";
 
 
-            const addedByHTML =
-                hasAddedBy
-                    ? `
-                        <span class="shared-wish-added">
-
-                            oleh
-
-                            <strong>
-                                ${escapeHTML(
-                                    addedBy
-                                )}
-                            </strong>
-
-                        </span>
-                      `
-                    : "";
-
-
-            const metaHTML =
-                (
-                    hasPrice ||
-                    hasProductURL ||
-                    hasAddedBy
-                )
-                    ? `
-                        <div class="shared-wish-meta">
-
-                            ${priceHTML}
-
-                            ${productHTML}
-
-                            ${addedByHTML}
-
-                        </div>
-                      `
-                    : "";
-
-
             card.innerHTML = `
+                <div class="wishlist-image" style="${item.image_url ? "" : "display:none;"}">
 
-                <button
-                    class="shared-wish-check"
-                    type="button"
-                    onclick="toggleCompleted(${item.id})"
-                    aria-label="${
-                        item.completed
-                            ? "Tandai belum dibeli"
-                            : "Tandai sudah dibeli"
-                    }"
-                >
+                    ${imageHTML}
 
                     ${
                         item.completed
                             ? `
-                                <i class="fa-solid fa-check"></i>
+                                <div class="status-badge completed">
+
+                                    <i class="fa-solid fa-check"></i>
+                                    Sudah Dibeli
+
+                                </div>
                               `
                             : ""
                     }
 
-                </button>
+                </div>
 
 
-                <div class="shared-wish-main">
+                <div class="wishlist-content">
 
-                    <div class="shared-wish-name">
+                    <div class="wishlist-name">
+
+                        ${escapeHTML(item.name)}
+
+                    </div>
+
+
+                    <div class="wishlist-description">
 
                         ${escapeHTML(
-                            item.name
+                            item.description ||
+                            "Belum ada deskripsi"
                         )}
 
                     </div>
 
 
-                    ${metaHTML}
+                    <div class="wishlist-bottom">
 
-                </div>
+                        ${
+                            price
+                                ? `
+                                    <div class="wishlist-price">
+                                        ${price}
+                                    </div>
+                                  `
+                                : `
+                                    <div class="wishlist-price empty">
+                                        Harga belum ditentukan
+                                    </div>
+                                  `
+                        }
 
 
-                <details class="shared-wish-menu">
+                        <div class="added-by">
 
-                    <summary
-                        aria-label="Menu wishlist"
-                        title="Menu"
-                    >
+                            oleh
 
-                        <i class="fa-solid fa-ellipsis"></i>
+                            <strong>
+                                ${escapeHTML(
+                                    item.added_by ||
+                                    "Unknown"
+                                )}
+                            </strong>
 
-                    </summary>
+                        </div>
+
+                    </div>
 
 
-                    <div class="shared-wish-menu-popup">
+
+
+                    ${productLinkHTML}
+
+
+                    <div class="card-actions">
 
                         <button
-                            class="shared-wish-menu-item"
-                            type="button"
-                            onclick="
-                                this.closest('details').open = false;
-                                editWishlist(${item.id});
-                            "
+                            class="action-btn"
+                            onclick="toggleCompleted(${item.id})"
+                        >
+
+                            ${
+                                item.completed
+                                    ? `
+                                        <i class="fa-solid fa-rotate-left"></i>
+                                        Belum Dibeli
+                                      `
+                                    : `
+                                        <i class="fa-solid fa-check"></i>
+                                        Sudah Dibeli
+                                      `
+                            }
+
+                        </button>
+
+
+                        <button
+                            class="action-btn"
+                            onclick="editWishlist(${item.id})"
                         >
 
                             <i class="fa-regular fa-pen-to-square"></i>
-
                             Edit
 
                         </button>
 
 
                         <button
-                            class="shared-wish-menu-item delete"
-                            type="button"
-                            onclick="
-                                this.closest('details').open = false;
-                                deleteWishlist(${item.id});
-                            "
+                            class="action-btn delete"
+                            onclick="deleteWishlist(${item.id})"
                         >
 
                             <i class="fa-regular fa-trash-can"></i>
-
-                            Hapus
 
                         </button>
 
                     </div>
 
-                </details>
-
+                </div>
             `;
 
 
@@ -1957,36 +1932,3 @@ window.addEventListener(
 connectRealtime();
 
 /* REALTIME WEBSOCKET END */
-
-
-/* ==========================================
-   SHARED WISH MENU OUTSIDE CLICK START
-========================================== */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        document
-            .querySelectorAll(
-                ".shared-wish-menu[open]"
-            )
-            .forEach(
-                menu => {
-
-                    if (
-                        !menu.contains(
-                            event.target
-                        )
-                    ) {
-
-                        menu.removeAttribute(
-                            "open"
-                        );
-                    }
-                }
-            );
-    }
-);
-
-/* SHARED WISH MENU OUTSIDE CLICK END */

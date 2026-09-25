@@ -593,6 +593,40 @@
 
     </style>
 
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
 </head>
 
 
@@ -877,6 +911,8 @@
         defer
     ></script>
 
+
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

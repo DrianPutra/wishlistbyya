@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -35,6 +35,40 @@
         href="css/auth.css"
     >
 
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
 </head>
 
 <body>
@@ -155,6 +189,8 @@
     <script src="js/api.js"></script>
     <script src="js/login.js"></script>
 
+
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

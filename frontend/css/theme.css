@@ -1,0 +1,553 @@
+/* ==========================================================
+   NEKOYA GLOBAL THEME
+========================================================== */
+
+
+/* ==========================================================
+   GLOBAL THEME TRANSITION
+========================================================== */
+
+html {
+    color-scheme: light;
+}
+
+
+body,
+header,
+main,
+section,
+article,
+input,
+textarea,
+select,
+button,
+.modal,
+.folder-card,
+.note-card,
+.wish-card {
+    transition:
+        background-color .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+
+/* ==========================================================
+   DARK VARIABLES
+========================================================== */
+
+html[data-theme="dark"] {
+
+    color-scheme: dark;
+
+
+    /* Wishlist variables */
+
+    --bg-main: #121110;
+    --bg-soft: #252220;
+
+    --card: #1C1A19;
+
+    --dark: #F3F0EC;
+    --dark-hover: #FFFFFF;
+
+    --soft-brown: #C4B2A8;
+
+    --muted: #A59D95;
+
+    --border: #3B3733;
+
+    --danger: #E58B8B;
+
+
+    /* Main app variables */
+
+    --bg-color: #121110;
+
+    --card-bg: #1C1A19;
+
+    --dark-primary: #F3F0EC;
+
+    --beige: #252220;
+    --beige-dark: #302C28;
+
+    --border-color: #3B3733;
+
+    --text-dark: #F3F0EC;
+
+    --text-muted: #A59D95;
+
+
+    /* Auth variables */
+
+    --bg-gradient:
+        linear-gradient(
+            135deg,
+            #121110 0%,
+            #1C1917 100%
+        );
+
+    --primary-pink: #C4B2A8;
+
+    --primary-hover: #FFFFFF;
+
+    --soft-pink: #252220;
+
+
+    /* Shadows */
+
+    --shadow:
+        0 12px 35px
+        rgba(0,0,0,.20);
+
+    --shadow-soft:
+        0 15px 35px
+        rgba(0,0,0,.22);
+
+    --shadow-subtle:
+        0 8px 25px
+        rgba(0,0,0,.16);
+
+    --shadow-hover:
+        0 18px 40px
+        rgba(0,0,0,.30);
+}
+
+
+/* ==========================================================
+   PAGE BACKGROUND
+========================================================== */
+
+html[data-theme="dark"] body {
+
+    background:
+        #121110 !important;
+
+    color:
+        #F3F0EC !important;
+}
+
+
+/* ==========================================================
+   COMMON SURFACES
+========================================================== */
+
+html[data-theme="dark"] header,
+
+html[data-theme="dark"] .welcome-card,
+
+html[data-theme="dark"] .home-card,
+
+html[data-theme="dark"] .auth-card,
+
+html[data-theme="dark"] .login-card,
+
+html[data-theme="dark"] .register-card,
+
+html[data-theme="dark"] .profile-card,
+
+html[data-theme="dark"] .folder-card,
+
+html[data-theme="dark"] .note-card,
+
+html[data-theme="dark"] .wish-card,
+
+html[data-theme="dark"] .modal,
+
+html[data-theme="dark"] .folder-menu,
+
+html[data-theme="dark"] .wish-menu,
+
+html[data-theme="dark"] .profile-menu,
+
+html[data-theme="dark"] .dropdown-menu,
+
+html[data-theme="dark"] .empty-state,
+
+html[data-theme="dark"] .members-section {
+
+    background:
+        #1C1A19 !important;
+
+    border-color:
+        #3B3733 !important;
+
+    color:
+        #F3F0EC !important;
+}
+
+
+/* ==========================================================
+   TEXT
+========================================================== */
+
+html[data-theme="dark"] h1,
+
+html[data-theme="dark"] h2,
+
+html[data-theme="dark"] h3,
+
+html[data-theme="dark"] h4,
+
+html[data-theme="dark"] .username,
+
+html[data-theme="dark"] .folder-name,
+
+html[data-theme="dark"] .note-title,
+
+html[data-theme="dark"] .wish-name,
+
+html[data-theme="dark"] .modal-title,
+
+html[data-theme="dark"] label {
+
+    color:
+        #F3F0EC !important;
+}
+
+
+html[data-theme="dark"] .text-muted,
+
+html[data-theme="dark"] .welcome-small,
+
+html[data-theme="dark"] .folder-description,
+
+html[data-theme="dark"] .note-preview,
+
+html[data-theme="dark"] .note-meta,
+
+html[data-theme="dark"] .wish-price {
+
+    color:
+        #A59D95 !important;
+}
+
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+html[data-theme="dark"] input,
+
+html[data-theme="dark"] textarea,
+
+html[data-theme="dark"] select {
+
+    background:
+        #272421 !important;
+
+    color:
+        #F3F0EC !important;
+
+    border-color:
+        #3B3733 !important;
+}
+
+
+html[data-theme="dark"] input::placeholder,
+
+html[data-theme="dark"] textarea::placeholder {
+
+    color:
+        #77716B !important;
+}
+
+
+html[data-theme="dark"] input:focus,
+
+html[data-theme="dark"] textarea:focus,
+
+html[data-theme="dark"] select:focus {
+
+    background:
+        #211F1D !important;
+
+    border-color:
+        #81766F !important;
+
+    outline:
+        none;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(196,178,168,.08) !important;
+}
+
+
+/* ==========================================================
+   PRIMARY BUTTONS
+========================================================== */
+
+html[data-theme="dark"] .btn-add,
+
+html[data-theme="dark"] .btn-save,
+
+html[data-theme="dark"] .btn-daftar,
+
+html[data-theme="dark"] .btn-primary,
+
+html[data-theme="dark"] .primary-btn,
+
+html[data-theme="dark"] .app-card {
+
+    background:
+        #F1EDE8 !important;
+
+    color:
+        #191715 !important;
+
+    border-color:
+        #F1EDE8 !important;
+}
+
+
+html[data-theme="dark"] .btn-add:hover,
+
+html[data-theme="dark"] .btn-save:hover,
+
+html[data-theme="dark"] .btn-daftar:hover,
+
+html[data-theme="dark"] .btn-primary:hover,
+
+html[data-theme="dark"] .primary-btn:hover,
+
+html[data-theme="dark"] .app-card:hover {
+
+    background:
+        #FFFFFF !important;
+
+    color:
+        #171513 !important;
+}
+
+
+/* ==========================================================
+   SECONDARY BUTTON
+========================================================== */
+
+html[data-theme="dark"] .btn-cancel,
+
+html[data-theme="dark"] .btn-secondary,
+
+html[data-theme="dark"] .ghost-button {
+
+    background:
+        #292623 !important;
+
+    color:
+        #F3F0EC !important;
+
+    border-color:
+        #3B3733 !important;
+}
+
+
+/* ==========================================================
+   WISHLIST
+========================================================== */
+
+html[data-theme="dark"]
+.wish-card.completed {
+
+    background:
+        #211F1D !important;
+}
+
+
+html[data-theme="dark"]
+.wish-card.completed
+.wish-name {
+
+    color:
+        #817A74 !important;
+
+    text-decoration-color:
+        #817A74 !important;
+}
+
+
+html[data-theme="dark"]
+.wish-check {
+
+    border-color:
+        #756E68 !important;
+}
+
+
+html[data-theme="dark"]
+.wish-card.completed
+.wish-check {
+
+    background:
+        #F1EDE8 !important;
+
+    border-color:
+        #F1EDE8 !important;
+
+    color:
+        #171513 !important;
+}
+
+
+html[data-theme="dark"]
+.wish-product-link {
+
+    color:
+        #D2BDB2 !important;
+}
+
+
+/* ==========================================================
+   MENUS
+========================================================== */
+
+html[data-theme="dark"] .wish-menu-item,
+
+html[data-theme="dark"] .folder-menu .menu-item,
+
+html[data-theme="dark"] .profile-menu button {
+
+    color:
+        #F3F0EC !important;
+}
+
+
+html[data-theme="dark"] .wish-menu-item:hover,
+
+html[data-theme="dark"] .folder-menu .menu-item:hover,
+
+html[data-theme="dark"] .profile-menu button:hover {
+
+    background:
+        #2C2926 !important;
+}
+
+
+/* ==========================================================
+   LINKS
+========================================================== */
+
+html[data-theme="dark"] a {
+
+    color:
+        inherit;
+}
+
+
+/* ==========================================================
+   GLOBAL THEME TOGGLE
+========================================================== */
+
+.global-theme-toggle {
+
+    position:
+        fixed;
+
+    left:
+        18px;
+
+    bottom:
+        18px;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    padding:
+        0;
+
+    border:
+        1px solid
+        var(--border-color, #DCD6CD);
+
+    border-radius:
+        50%;
+
+    background:
+        var(--card-bg, #FFFFFF);
+
+    color:
+        var(--text-dark, #2D2D2D);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    cursor:
+        pointer;
+
+    font-size:
+        15px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(45,45,45,.12);
+
+    z-index:
+        9998;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+
+.global-theme-toggle:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+html[data-theme="dark"]
+.global-theme-toggle {
+
+    background:
+        #24211F;
+
+    color:
+        #F3F0EC;
+
+    border-color:
+        #413B37;
+
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,.30);
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .global-theme-toggle {
+
+        width:
+            39px;
+
+        height:
+            39px;
+
+        left:
+            14px;
+
+        bottom:
+            14px;
+
+        font-size:
+            14px;
+    }
+
+}

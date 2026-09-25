@@ -153,6 +153,40 @@
             transform: translateY(-2px);
         }
     </style>
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
 </head>
 <body>
 
@@ -189,5 +223,7 @@
     <script src="js/api.js"></script>
     <script src="js/index-auth.js"></script>
     <!-- AUTO LOGIN END -->
+
+    <script src="js/theme.js"></script>
 </body>
 </html>

@@ -170,62 +170,6 @@ window.addEventListener(
 );
 
 
-
-/* ==========================================
-   ACTIVE WISHLIST COUNT START
-========================================== */
-
-async function loadActiveWishlistCounts(
-    folderArray
-) {
-
-    await Promise.all(
-        folderArray.map(
-            async folder => {
-
-                try {
-
-                    const response =
-                        await window.apiRequest(
-                            `/folders/${folder.id}/items`,
-                            {
-                                method:
-                                    "GET"
-                            }
-                        );
-
-
-                    const items =
-                        response.items ||
-                        [];
-
-
-                    folder.activeWishlistCount =
-                        items.filter(
-                            item =>
-                                !item.completed
-                        ).length;
-
-
-                } catch (error) {
-
-                    console.error(
-                        `Gagal mengambil jumlah wishlist folder ${folder.id}:`,
-                        error
-                    );
-
-
-                    folder.activeWishlistCount =
-                        0;
-                }
-
-            }
-        )
-    );
-}
-
-/* ACTIVE WISHLIST COUNT END */
-
 /* ==========================================
    LOAD FOLDERS
 ========================================== */
@@ -256,17 +200,6 @@ async function loadFolders() {
                     folder.type ===
                     "shared"
             );
-
-        await Promise.all([
-            loadActiveWishlistCounts(
-                folders
-            ),
-
-            loadActiveWishlistCounts(
-                sharedFolders
-            )
-        ]);
-
 
         renderAll();
 
@@ -349,7 +282,7 @@ function renderFolders() {
 
                         <span>
                             <i class="fa-regular fa-heart"></i>
-                            ${folder.activeWishlistCount ?? 0} wishlist
+                            0 wishlist
                         </span>
 
                         <span>

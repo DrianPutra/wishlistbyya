@@ -788,18 +788,7 @@ function renderWishlists() {
         "none";
 
 
-    
-    /* COMPLETED ITEMS BOTTOM SHARED */
-
-    const sortedItems =
-        [...wishlists]
-            .sort(
-                (a, b) =>
-                    Number(Boolean(a.completed)) -
-                    Number(Boolean(b.completed))
-            );
-
-sortedItems.forEach(
+    wishlists.forEach(
         item => {
 
             const card =

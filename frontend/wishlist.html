@@ -1896,449 +1896,43 @@
 
         /* WISHLIST MOBILE GRID ORDER FIX END */
 
-        /* =====================================================
-           WISHLIST THEME SYSTEM START
-        ===================================================== */
-
-
-        /*
-           LIGHT MODE = default
-        */
-
-        html {
-            color-scheme: light;
-        }
-
-
-        /*
-           DARK MODE VARIABLES
-        */
-
-        html[data-theme="dark"] {
-
-            color-scheme: dark;
-
-            --bg-main:
-                #121110;
-
-            --bg-soft:
-                #252220;
-
-            --card:
-                #1C1A19;
-
-            --dark:
-                #F5F2EE;
-
-            --dark-hover:
-                #FFFFFF;
-
-            --soft-brown:
-                #C8B7AE;
-
-            --muted:
-                #AAA29A;
-
-            --border:
-                #3C3733;
-
-            --danger:
-                #E58B8B;
-
-            --shadow:
-                0 12px 35px
-                rgba(0,0,0,.18);
-
-            --shadow-hover:
-                0 18px 40px
-                rgba(0,0,0,.28);
-        }
-
-
-        html[data-theme="dark"] body {
-
-            background:
-                #121110 !important;
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        /* ==========================================
-           THEME BUTTON
-        ========================================== */
-
-        .container {
-            position:
-                relative;
-        }
-
-
-        .wishlist-theme-toggle {
-
-            position:
-                absolute;
-
-            top:
-                -5px;
-
-            right:
-                0;
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            padding:
-                0;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius:
-                50%;
-
-            background:
-                var(--card);
-
-            color:
-                var(--dark);
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            cursor:
-                pointer;
-
-            font-size:
-                14px;
-
-            box-shadow:
-                0 4px 14px
-                rgba(45,45,45,.07);
-
-            transition:
-                background .2s ease,
-                color .2s ease,
-                border-color .2s ease,
-                transform .2s ease;
-
-            z-index:
-                10;
-        }
-
-
-        .wishlist-theme-toggle:hover {
-
-            transform:
-                translateY(-1px);
-
-            background:
-                var(--bg-soft);
-        }
-
-
-        /* ==========================================
-           DARK COMPONENTS
-        ========================================== */
-
-        html[data-theme="dark"]
-        .wish-card {
-
-            background:
-                var(--card) !important;
-
-            border-color:
-                var(--border) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-card.completed {
-
-            background:
-                #211F1D !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-name {
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-card.completed
-        .wish-name {
-
-            color:
-                #827B75 !important;
-
-            text-decoration-color:
-                #827B75 !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-check {
-
-            border-color:
-                #77706A !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-card.completed
-        .wish-check {
-
-            background:
-                #F1EDE8 !important;
-
-            border-color:
-                #F1EDE8 !important;
-
-            color:
-                #171513 !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-menu {
-
-            background:
-                #24211F !important;
-
-            border-color:
-                var(--border) !important;
-
-            box-shadow:
-                0 12px 30px
-                rgba(0,0,0,.35);
-        }
-
-
-        html[data-theme="dark"]
-        .wish-menu-item {
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-menu-item:hover {
-
-            background:
-                #302C29 !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-menu-item.delete {
-
-            color:
-                var(--danger) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-product-link {
-
-            color:
-                #D3BFB4 !important;
-        }
-
-
-        html[data-theme="dark"]
-        .wish-price {
-
-            color:
-                var(--muted) !important;
-        }
-
-
-        /* ==========================================
-           MODAL DARK MODE
-        ========================================== */
-
-        html[data-theme="dark"]
-        .modal {
-
-            background:
-                #1C1A19 !important;
-
-            border-color:
-                var(--border) !important;
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .modal h2 {
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .modal-input-group label {
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .modal-input-group input {
-
-            background:
-                #272421 !important;
-
-            color:
-                var(--dark) !important;
-
-            border-color:
-                var(--border) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .modal-input-group input::placeholder {
-
-            color:
-                #77706A !important;
-        }
-
-
-        html[data-theme="dark"]
-        .modal-input-group input:focus {
-
-            background:
-                #211F1D !important;
-
-            border-color:
-                #8E817A !important;
-
-            box-shadow:
-                0 0 0 4px
-                rgba(200,183,174,.08) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .btn-cancel {
-
-            background:
-                #2A2724 !important;
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .btn-save,
-        html[data-theme="dark"]
-        .btn-add {
-
-            background:
-                #F0ECE7 !important;
-
-            color:
-                #191715 !important;
-        }
-
-
-        html[data-theme="dark"]
-        .btn-save:hover,
-        html[data-theme="dark"]
-        .btn-add:hover {
-
-            background:
-                #FFFFFF !important;
-        }
-
-
-        /* ==========================================
-           EMPTY STATE
-        ========================================== */
-
-        html[data-theme="dark"]
-        .empty-state {
-
-            background:
-                #1C1A19 !important;
-
-            border-color:
-                var(--border) !important;
-        }
-
-
-        /* ==========================================
-           BACK BUTTON
-        ========================================== */
-
-        html[data-theme="dark"]
-        .back-folder {
-
-            color:
-                var(--muted) !important;
-        }
-
-
-        html[data-theme="dark"]
-        .back-folder:hover {
-
-            color:
-                var(--dark) !important;
-        }
-
-
-        /* ==========================================
-           MOBILE
-        ========================================== */
-
-        @media (max-width: 600px) {
-
-            .wishlist-theme-toggle {
-
-                top:
-                    -3px;
-
-                right:
-                    1px;
-
-                width:
-                    35px;
-
-                height:
-                    35px;
-
-                font-size:
-                    13px;
-            }
-
-        }
-
-
-        /* WISHLIST THEME SYSTEM END */
+        
 </style>
 
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
 </head>
 
 
@@ -2540,5 +2134,7 @@
     <script src="js/api.js"></script>
     <script src="js/auth-guard.js"></script>
     <script src="js/wishlist-private.js"></script>
+
+    <script src="js/theme.js"></script>
 </body>
 </html>

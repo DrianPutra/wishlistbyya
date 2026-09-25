@@ -1,0 +1,4074 @@
+﻿========== WISHLISTBARENG.HTML ==========
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist Bareng Ã¢â‚¬â€ Wishlist</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           COLOR PALETTE
+        ===================================================== */
+
+        :root {
+            --bg-color: #FAF9F6;
+            --card-bg: #FFFFFF;
+
+            --dark-primary: #2D2D2D;
+            --dark-hover: #454545;
+
+            --beige: #F2EDE9;
+            --beige-dark: #E4DDD5;
+
+            --border-color: #DCD6CD;
+
+            --text-dark: #2D2D2D;
+            --text-muted: #8C857B;
+
+            --danger: #B96A6A;
+            --success: #718A6A;
+
+            --shadow-subtle:
+                0 10px 30px rgba(45,45,45,0.06);
+
+            --shadow-hover:
+                0 15px 35px rgba(45,45,45,0.10);
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        body {
+            background: var(--bg-color);
+            min-height: 100vh;
+            padding: 30px 20px 70px;
+            color: var(--text-dark);
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           TOP NAV
+        ===================================================== */
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+
+        .back-btn {
+            border: none;
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            padding: 9px 15px;
+
+            border-radius: 25px;
+
+            color: var(--text-dark);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            transition: 0.25s;
+        }
+
+
+        .back-btn:hover {
+            background: var(--beige);
+
+            transform: translateX(-2px);
+        }
+
+
+        .shared-label {
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            background: var(--card-bg);
+
+            padding: 30px 35px;
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border-color);
+
+            box-shadow: var(--shadow-subtle);
+
+            margin-bottom: 25px;
+        }
+
+
+        .header-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 20px;
+        }
+
+
+        .header-info {
+            min-width: 0;
+        }
+
+
+        .folder-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .folder-title-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            background: var(--beige);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .folder-title-icon i {
+            font-size: 19px;
+        }
+
+
+        .folder-title h1 {
+            font-size: 34px;
+
+            line-height: 1.1;
+
+            font-weight: 700;
+        }
+
+
+        .folder-description {
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-top: 10px;
+
+            line-height: 1.6;
+
+            max-width: 600px;
+        }
+
+
+        .btn-add {
+            border: none;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            transition: all 0.3s ease;
+
+            flex-shrink: 0;
+        }
+
+
+        .btn-add:hover {
+            background: var(--dark-hover);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(45,45,45,0.15);
+        }
+
+
+        /* =====================================================
+           MEMBERS
+        ===================================================== */
+
+        .members-section {
+            margin-top: 23px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid var(--border-color);
+        }
+
+
+        .members-title {
+            font-size: 11px;
+
+            font-weight: 700;
+
+            color: var(--text-dark);
+
+            margin-bottom: 10px;
+
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+
+        .members-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .member-pill {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            background: var(--beige);
+
+            border-radius: 20px;
+
+            padding: 6px 10px 6px 6px;
+
+            font-size: 10px;
+
+            color: var(--text-dark);
+        }
+
+
+        .member-pill-avatar {
+            width: 24px;
+            height: 24px;
+
+            border-radius: 50%;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .stat-card {
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 15px;
+
+            padding: 17px 18px;
+
+            box-shadow: var(--shadow-subtle);
+        }
+
+
+        .stat-label {
+            font-size: 9px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 5px;
+        }
+
+
+        .stat-value {
+            font-size: 23px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .section-title h2 {
+            font-size: 25px;
+
+            font-weight: 700;
+        }
+
+
+        .count-badge {
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            background: var(--beige);
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+        }
+
+
+        /* =====================================================
+           WISHLIST GRID
+        ===================================================== */
+
+        .wishlist-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 16px;
+        }
+
+
+        /* =====================================================
+           WISHLIST CARD
+        ===================================================== */
+
+        .wishlist-card {
+            background: white;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow-subtle);
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+
+        .wishlist-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow: var(--shadow-hover);
+        }
+
+
+        .wishlist-card.completed {
+            opacity: 0.7;
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .wishlist-image {
+            width: 100%;
+
+            height: 210px;
+
+            background: var(--beige);
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .wishlist-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .no-image {
+            color: var(--text-muted);
+
+            text-align: center;
+
+            font-size: 11px;
+        }
+
+
+        .no-image i {
+            display: block;
+
+            font-size: 28px;
+
+            margin-bottom: 7px;
+        }
+
+
+        /* =====================================================
+           STATUS BADGE
+        ===================================================== */
+
+        .status-badge {
+            position: absolute;
+
+            top: 10px;
+            left: 10px;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            background: white;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.08);
+        }
+
+
+        .status-badge.completed {
+            color: var(--success);
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .wishlist-content {
+            padding: 17px;
+        }
+
+
+        .wishlist-name {
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+
+            line-height: 1.25;
+        }
+
+
+        .wishlist-description {
+            font-size: 10px;
+
+            color: var(--text-muted);
+
+            line-height: 1.5;
+
+            min-height: 30px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .wishlist-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+
+        .wishlist-price {
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .wishlist-price.empty {
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            font-weight: 500;
+        }
+
+
+        .added-by {
+            font-size: 9px;
+
+            color: var(--text-muted);
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           CARD ACTIONS
+        ===================================================== */
+
+        .card-actions {
+            display: flex;
+
+            gap: 7px;
+
+            margin-top: 13px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid var(--border-color);
+        }
+
+
+        .action-btn {
+            flex: 1;
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 8px;
+
+            font-size: 9px;
+
+            cursor: pointer;
+
+            background: var(--beige);
+
+            color: var(--text-dark);
+
+            transition: 0.2s;
+        }
+
+
+        .action-btn:hover {
+            background: var(--beige-dark);
+        }
+
+
+        .action-btn.delete {
+            flex: 0 0 35px;
+
+            color: var(--danger);
+        }
+
+
+        .action-btn.delete:hover {
+            background: #F9EEEE;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            text-align: center;
+
+            padding: 65px 20px;
+
+            background: white;
+
+            border: 1px dashed var(--border-color);
+
+            border-radius: 18px;
+        }
+
+
+        .empty-state i {
+            font-size: 35px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty-state h3 {
+            font-size: 23px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .empty-state p {
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 18px;
+        }
+
+
+        .empty-state button {
+            border: none;
+
+            background: var(--dark-primary);
+
+            color: white;
+
+            padding: 10px 17px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(45,45,45,0.35);
+
+            backdrop-filter: blur(5px);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 100;
+        }
+
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+
+        .modal {
+            background: white;
+
+            width: 100%;
+
+            max-width: 450px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            border: 1px solid var(--border-color);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.12);
+
+            animation: modalIn 0.25s ease;
+        }
+
+
+        @keyframes modalIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(10px)
+                    scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .modal h2 {
+            font-size: 29px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .modal-subtitle {
+            font-size: 11px;
+
+            color: var(--text-muted);
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+
+        .input-group label {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+        }
+
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+
+            border: 1px solid var(--border-color);
+
+            background: #FAF8F5;
+
+            border-radius: 10px;
+
+            padding: 11px 13px;
+
+            outline: none;
+
+            font-size: 12px;
+
+            color: var(--text-dark);
+
+            transition: 0.2s;
+        }
+
+
+        .input-group textarea {
+            height: 75px;
+
+            resize: none;
+        }
+
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            background: white;
+
+            border-color: var(--dark-primary);
+
+            box-shadow:
+                0 0 0 3px rgba(45,45,45,0.06);
+        }
+
+
+        /* =====================================================
+           MODAL BUTTONS
+        ===================================================== */
+
+        .modal-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 22px;
+        }
+
+
+        .btn-cancel,
+        .btn-save {
+            flex: 1;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            border: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-cancel {
+            background: var(--beige);
+
+            color: var(--text-dark);
+        }
+
+
+        .btn-save {
+            background: var(--dark-primary);
+
+            color: white;
+        }
+
+
+        .btn-save:hover {
+            background: var(--dark-hover);
+        }
+
+
+        /* =====================================================
+           DELETE MODAL
+        ===================================================== */
+
+        .delete-modal {
+            text-align: center;
+        }
+
+
+        .delete-icon {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #F9EEEE;
+
+            color: var(--danger);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+
+        .delete-modal h2 {
+            margin-bottom: 8px;
+        }
+
+
+        .delete-modal p {
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            color: var(--text-muted);
+        }
+
+
+        .btn-delete-confirm {
+            flex: 1;
+
+            padding: 11px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: var(--danger);
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding:
+                    18px
+                    14px
+                    50px;
+            }
+
+
+            .top-nav {
+                margin-bottom: 14px;
+            }
+
+
+            header {
+                padding: 23px 20px;
+            }
+
+
+            .header-top {
+                flex-direction: column;
+            }
+
+
+            .folder-title h1 {
+                font-size: 28px;
+            }
+
+
+            .folder-title-icon {
+                width: 43px;
+                height: 43px;
+            }
+
+
+            .btn-add {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+
+            .stats {
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 8px;
+            }
+
+
+            .stat-card {
+                padding: 13px 10px;
+            }
+
+
+            .stat-value {
+                font-size: 19px;
+            }
+
+
+            .stat-label {
+                font-size: 8px;
+            }
+
+
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .wishlist-image {
+                height: 230px;
+            }
+
+
+            .modal {
+                padding: 23px;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* ACTIVITY LOG STYLE START */
+
+        .activity-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .activity-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .activity-count {
+            font-size: 9px;
+            color: var(--text-dark);
+            opacity: 0.55;
+        }
+
+        .activity-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--beige);
+            border-radius: 12px;
+        }
+
+        .activity-avatar {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--dark-primary);
+            color: white;
+
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+        .activity-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .activity-text {
+            font-size: 10px;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .activity-time {
+            margin-top: 2px;
+
+            font-size: 9px;
+            color: var(--text-dark);
+
+            opacity: 0.55;
+        }
+
+        .activity-empty {
+            padding: 8px 0;
+
+            font-size: 10px;
+            color: var(--text-dark);
+
+            opacity: 0.55;
+        }
+
+        /* ACTIVITY LOG STYLE END */
+
+
+        /* =====================================================
+           FINAL WISHLIST RESPONSIVE LAYOUT START
+        ===================================================== */
+
+        /*
+           Card memenuhi lebar area Wishlist.
+        */
+
+        .wishlist-grid {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) !important;
+            width: 100% !important;
+            gap: 18px !important;
+        }
+
+        .wishlist-card {
+            width: 100% !important;
+            max-width: none !important;
+            box-sizing: border-box !important;
+        }
+
+
+        /*
+           DESKTOP / TABLET
+
+           kiri   : nama + deskripsi
+           tengah : harga + lihat produk
+           kanan  : oleh username
+           bawah  : tombol
+        */
+
+        .wishlist-content {
+            display: grid !important;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(180px, 240px)
+                minmax(120px, 170px) !important;
+
+            grid-template-areas:
+                "name        price       added"
+                "description product     added"
+                "actions     actions     actions" !important;
+
+            column-gap: 28px !important;
+            row-gap: 6px !important;
+
+            align-items: start !important;
+
+            height: auto !important;
+            min-height: 0 !important;
+        }
+
+
+        .wishlist-name {
+            grid-area: name !important;
+            min-width: 0 !important;
+        }
+
+
+        .wishlist-description {
+            grid-area: description !important;
+
+            min-height: 0 !important;
+            height: auto !important;
+
+            margin: 0 !important;
+        }
+
+
+        /*
+           Harga dan "added by" sebelumnya berada
+           di dalam .wishlist-bottom.
+        */
+
+        .wishlist-bottom {
+            display: contents !important;
+        }
+
+
+        .wishlist-price {
+            grid-area: price !important;
+
+            justify-self: center !important;
+            align-self: end !important;
+
+            margin: 0 !important;
+
+            text-align: center !important;
+            white-space: nowrap;
+        }
+
+
+        /*
+           Link Produk adalah child langsung
+           dari .wishlist-content.
+        */
+
+        .wishlist-content > a[rel="noopener noreferrer"] {
+            grid-area: product !important;
+
+            justify-self: center !important;
+            align-self: start !important;
+
+            margin: 0 !important;
+
+            white-space: nowrap;
+        }
+
+
+        .added-by {
+            grid-area: added !important;
+
+            justify-self: end !important;
+            align-self: center !important;
+
+            margin: 0 !important;
+
+            text-align: right !important;
+            white-space: nowrap;
+        }
+
+
+        .card-actions {
+            grid-area: actions !important;
+
+            width: 100% !important;
+
+            margin-top: 12px !important;
+            padding-top: 12px !important;
+        }
+
+
+        /* =====================================================
+           MOBILE
+           Tetap layout yang sama seperti desktop
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .wishlist-grid {
+                gap: 12px !important;
+            }
+
+            .wishlist-content {
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    minmax(82px, 100px)
+                    minmax(58px, 78px) !important;
+
+                grid-template-areas:
+                    "name        price       added"
+                    "description product     added"
+                    "actions     actions     actions" !important;
+
+                column-gap: 6px !important;
+                row-gap: 3px !important;
+
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+
+            .wishlist-name {
+                font-size: 15px !important;
+            }
+
+
+            .wishlist-description {
+                min-height: 0 !important;
+                height: auto !important;
+
+                margin: 0 !important;
+
+                font-size: 10px !important;
+                line-height: 1.35 !important;
+            }
+
+
+            .wishlist-price {
+                font-size: 9px !important;
+                line-height: 1.3 !important;
+
+                white-space: normal !important;
+            }
+
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                margin: 0 !important;
+
+                font-size: 8px !important;
+                line-height: 1.3 !important;
+
+                gap: 3px !important;
+            }
+
+
+            .added-by {
+                max-width: 78px !important;
+
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+
+                font-size: 8px !important;
+            }
+
+
+            .card-actions {
+                margin-top: 8px !important;
+                padding-top: 8px !important;
+            }
+
+        }
+
+        /* FINAL WISHLIST RESPONSIVE LAYOUT END */
+
+        /* =====================================================
+           PRODUCT INFO ALIGNMENT FINAL START
+        ===================================================== */
+
+        /*
+           Desktop:
+           kiri   = nama/deskripsi
+           tengah = harga/link, digeser lebih ke kiri
+           kanan  = oleh username
+        */
+
+        @media (min-width: 769px) {
+
+            .wishlist-content {
+                grid-template-columns:
+                    minmax(0, 43%)
+                    minmax(0, 32%)
+                    minmax(0, 1fr) !important;
+
+                column-gap: 24px !important;
+            }
+
+            .wishlist-price {
+                justify-self: start !important;
+                text-align: left !important;
+
+                margin: 0 !important;
+            }
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                justify-self: start !important;
+                text-align: left !important;
+
+                margin: 0 !important;
+            }
+
+            .added-by {
+                justify-self: end !important;
+                text-align: right !important;
+            }
+        }
+
+
+        /*
+           Mobile:
+           tetap layout yang sama seperti desktop,
+           dan harga + link tetap left aligned.
+        */
+
+        @media (max-width: 768px) {
+
+            .wishlist-content {
+                grid-template-columns:
+                    minmax(0, 44%)
+                    minmax(0, 31%)
+                    minmax(0, 1fr) !important;
+
+                column-gap: 5px !important;
+            }
+
+            .wishlist-price {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+
+            .added-by {
+                justify-self: end !important;
+                text-align: right !important;
+            }
+        }
+
+        /* PRODUCT INFO ALIGNMENT FINAL END */
+
+        /* =====================================================
+           NAME PRICE ALIGNMENT FIX START
+        ===================================================== */
+
+        /*
+           Nama produk dan harga berada pada baseline
+           yang sama di baris pertama.
+        */
+
+        .wishlist-name,
+        .wishlist-price {
+            align-self: baseline !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            line-height: 1.3 !important;
+        }
+
+        .wishlist-price {
+            justify-self: start !important;
+            text-align: left !important;
+        }
+
+
+        /*
+           DESKTOP:
+           pertahankan ukuran masing-masing,
+           hanya sejajarkan posisi vertikalnya.
+        */
+
+        @media (min-width: 769px) {
+
+            .wishlist-name,
+            .wishlist-price {
+                grid-row: 1 !important;
+            }
+
+            .wishlist-name {
+                align-self: baseline !important;
+            }
+
+            .wishlist-price {
+                align-self: baseline !important;
+            }
+        }
+
+
+        /*
+           MOBILE:
+           nama produk dan harga menggunakan
+           font family + ukuran teks yang sama.
+        */
+
+        @media (max-width: 768px) {
+
+            .wishlist-name,
+            .wishlist-price {
+                font-family: inherit !important;
+                font-size: 13px !important;
+
+                line-height: 1.3 !important;
+
+                align-self: baseline !important;
+            }
+
+            .wishlist-price {
+                justify-self: start !important;
+                text-align: left !important;
+
+                white-space: normal !important;
+            }
+
+            .wishlist-content > a[rel="noopener noreferrer"] {
+                justify-self: start !important;
+                text-align: left !important;
+            }
+        }
+
+        /* NAME PRICE ALIGNMENT FIX END */
+</style>
+
+    <!-- GLOBAL THEME BOOT START -->
+    <script>
+        (function () {
+            try {
+
+                var theme =
+                    localStorage.getItem(
+                        "nekoya_theme"
+                    ) ||
+                    localStorage.getItem(
+                        "wishlist_theme"
+                    ) ||
+                    "light";
+
+
+                document.documentElement.dataset.theme =
+                    theme === "dark"
+                        ? "dark"
+                        : "light";
+
+            } catch (error) {
+
+                document.documentElement.dataset.theme =
+                    "light";
+            }
+        })();
+    </script>
+    <!-- GLOBAL THEME BOOT END -->
+
+    <link
+        rel="stylesheet"
+        href="css/theme.css"
+    >
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =====================================================
+         TOP NAV
+    ====================================================== -->
+
+    <div class="top-nav">
+
+        <button
+            class="back-btn"
+            onclick="goBack()">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Kembali ke Folder
+
+        </button>
+
+
+        <div class="shared-label">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            Shared Wishlist
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <div class="header-top">
+
+
+            <div class="header-info">
+
+                <div class="folder-title">
+
+                    <div class="folder-title-icon">
+
+                        <i class="fa-solid fa-user-group"></i>
+
+                    </div>
+
+
+                    <h1 id="folderName">
+                        Wishlist Bareng
+                    </h1>
+
+                </div>
+
+
+                <p
+                    class="folder-description"
+                    id="folderDescription">
+
+                    Wishlist yang dibagikan bersama kamu
+
+                </p>
+
+            </div>
+
+
+
+            <button
+                class="btn-add"
+                onclick="openWishlistModal()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Tambah Wishlist
+
+            </button>
+
+        </div>
+
+
+
+        <!-- MEMBERS -->
+
+        <div class="members-section">
+
+            <div class="members-title">
+
+                <i class="fa-solid fa-users"></i>
+
+                Anggota Wishlist
+
+            </div>
+
+
+            <div
+                class="members-list"
+                id="membersList">
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL WISHLIST
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalWishlist">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                SUDAH DIBELI
+            </div>
+
+            <div
+                class="stat-value"
+                id="completedWishlist">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                TOTAL ANGGOTA
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalMembers">
+
+                0
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         WISHLIST SECTION
+    ====================================================== -->
+
+    <section class="section">
+
+
+        <div class="section-header">
+
+            <div class="section-title">
+
+                <h2>Wishlist</h2>
+
+                <span
+                    class="count-badge"
+                    id="wishlistCount">
+
+                    0 item
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WISHLIST LIST -->
+
+        <div
+            class="wishlist-grid"
+            id="wishlistGrid">
+
+        </div>
+
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty-state"
+            id="emptyWishlist">
+
+            <i class="fa-regular fa-heart"></i>
+
+            <h3>Belum ada wishlist</h3>
+
+            <p>
+                Tambahkan barang yang ingin kalian
+                beli atau dapatkan bersama Ã¢â„¢Â¡
+            </p>
+
+            <button
+                onclick="openWishlistModal()">
+
+                + Tambah Wishlist
+
+            </button>
+
+        </div>
+
+        <!-- ACTIVITY LOG HTML START -->
+
+        <section
+            class="activity-section"
+            id="activitySection">
+
+            <div class="activity-header">
+
+                <div class="activity-title">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Aktivitas Terbaru
+                </div>
+
+                <div
+                    class="activity-count"
+                    id="activityCount">
+
+                    0 aktivitas
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="activity-list"
+                id="activityList">
+
+            </div>
+
+        </section>
+
+        <!-- ACTIVITY LOG HTML END -->
+
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     ADD / EDIT WISHLIST MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="wishlistModal">
+
+
+    <div class="modal">
+
+
+        <h2 id="modalTitle">
+            Tambah Wishlist
+        </h2>
+
+
+        <p class="modal-subtitle">
+            Tambahkan sesuatu yang ingin kalian miliki Ã¢â„¢Â¡
+        </p>
+
+
+
+        <!-- NAME -->
+
+        <div class="input-group">
+
+            <label>
+                Nama Barang / Nama Tempat
+            </label>
+
+            <input
+                type="text"
+                id="itemName"
+                placeholder="contoh: Tas Charles & Keith"
+            >
+
+        </div>
+
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="input-group">
+
+            <label>
+                Deskripsi
+            </label>
+
+            <textarea
+                id="itemDescription"
+                placeholder="contoh: Warna hitam, ukuran medium..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- PRICE -->
+
+        <div class="input-group">
+
+            <label>
+                Harga
+            </label>
+
+            <input
+                type="text" inputmode="numeric"
+                id="itemPrice"
+                placeholder="contoh: 850000"
+                min="0"
+            >
+
+        </div>
+
+
+
+        <!-- IMAGE -->
+
+        <div class="input-group">
+
+            <label>
+                URL Gambar
+            </label>
+
+            <input
+                type="url"
+                id="itemImage"
+                placeholder="https://contoh.com/gambar.jpg"
+            >
+
+        </div>
+
+
+        <!-- PRODUCT LINK -->
+
+        <div class="input-group">
+
+            <label>
+                Link Produk (opsional)
+            </label>
+
+            <input
+                type="url"
+                id="itemProductUrl"
+                placeholder="contoh: https://shopee.co.id/..."
+            >
+
+        </div>
+
+
+
+        <!-- ADDED BY -->
+
+        <div class="input-group">
+
+            <label>
+                Ditambahkan oleh
+            </label>
+
+            <input
+                type="text"
+                id="itemAddedBy"
+                placeholder="contoh: Naya"
+            >
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn-cancel"
+                onclick="closeWishlistModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="btn-save"
+                onclick="saveWishlist()">
+
+                Simpan
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     DELETE MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="deleteModal">
+
+
+    <div class="modal delete-modal">
+
+
+        <div class="delete-icon">
+
+            <i class="fa-regular fa-trash-can"></i>
+
+        </div>
+
+
+        <h2>
+            Hapus Wishlist?
+        </h2>
+
+
+        <p>
+
+            Wishlist
+
+            <strong id="deleteItemName"></strong>
+
+            akan dihapus.
+
+            <br>
+
+            Tindakan ini tidak dapat dibatalkan.
+
+        </p>
+
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn-cancel"
+                onclick="closeDeleteModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="btn-delete-confirm"
+                onclick="confirmDelete()">
+
+                Hapus
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+    <script src="js/api.js"></script>
+    <script src="js/auth-guard.js"></script>
+    <script src="js/wishlist-shared.js"></script>
+
+    <script src="js/theme.js"></script>
+</body>
+</html>
+
+
+========== WISHLIST-SHARED.JS ==========
+/* ==========================================
+   STATE
+========================================== */
+
+const activeFolderId =
+    Number(
+        localStorage.getItem(
+            "activeSharedWishlistFolder"
+        )
+    );
+
+let activeFolder = null;
+let members = [];
+let wishlists = [];
+let activities = [];
+
+let editingWishlistId = null;
+let deletingWishlistId = null;
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const folderNameElement =
+    document.getElementById(
+        "folderName"
+    );
+
+const folderDescriptionElement =
+    document.getElementById(
+        "folderDescription"
+    );
+
+const membersList =
+    document.getElementById(
+        "membersList"
+    );
+
+const wishlistGrid =
+    document.getElementById(
+        "wishlistGrid"
+    );
+
+const emptyWishlist =
+    document.getElementById(
+        "emptyWishlist"
+    );
+
+const wishlistCountElement =
+    document.getElementById(
+        "wishlistCount"
+    );
+
+const totalWishlistElement =
+    document.getElementById(
+        "totalWishlist"
+    );
+
+const completedWishlistElement =
+    document.getElementById(
+        "completedWishlist"
+    );
+
+const totalMembersElement =
+    document.getElementById(
+        "totalMembers"
+    );
+
+
+
+const activityList =
+    document.getElementById(
+        "activityList"
+    );
+
+const activityCountElement =
+    document.getElementById(
+        "activityCount"
+    );
+
+/* ==========================================
+   CHECK ACTIVE FOLDER
+========================================== */
+
+if (!activeFolderId) {
+    window.location.replace(
+        "folders.html"
+    );
+}
+
+
+/* ==========================================
+   UTILS
+========================================== */
+
+function escapeHTML(text) {
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        String(text ?? "");
+
+    return div.innerHTML;
+}
+
+
+function escapeAttribute(text) {
+    return String(text ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+}
+
+
+function formatPrice(price) {
+    const number =
+        Number(price);
+
+    if (
+        !number ||
+        number <= 0
+    ) {
+        return "";
+    }
+
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            style:
+                "currency",
+
+            currency:
+                "IDR",
+
+            maximumFractionDigits:
+                0
+        }
+    ).format(
+        number
+    );
+}
+
+
+/* ==========================================
+   HIDE OLD ADDED BY FIELD
+========================================== */
+
+function hideAddedByField() {
+    const input =
+        document.getElementById(
+            "itemAddedBy"
+        );
+
+    const group =
+        input?.closest(
+            ".input-group"
+        );
+
+    if (group) {
+        group.style.display =
+            "none";
+    }
+}
+
+
+/* ==========================================
+   LOAD PAGE
+========================================== */
+
+async function loadPage() {
+    try {
+        const [
+            folderResponse,
+            memberResponse,
+            itemResponse
+        ] =
+            await Promise.all([
+                window.apiRequest(
+                    `/folders/${activeFolderId}`,
+                    {
+                        method:
+                            "GET"
+                    }
+                ),
+
+                window.apiRequest(
+                    `/folders/${activeFolderId}/members`,
+                    {
+                        method:
+                            "GET"
+                    }
+                ),
+
+                window.apiRequest(
+                    `/folders/${activeFolderId}/items`,
+                    {
+                        method:
+                            "GET"
+                    }
+                )
+            ]);
+
+
+        activeFolder =
+            folderResponse.folder;
+
+
+        if (
+            activeFolder.type !==
+            "shared"
+        ) {
+            alert(
+                "Folder ini bukan shared folder."
+            );
+
+            window.location.replace(
+                "folders.html"
+            );
+
+            return;
+        }
+
+
+        members =
+            memberResponse.members || [];
+
+
+        wishlists =
+            itemResponse.items || [];
+
+        const activityResponse =
+            await window.apiRequest(
+                `/folders/${activeFolderId}/activities`,
+                {
+                    method:
+                        "GET"
+                }
+            );
+
+        activities =
+            activityResponse.activities || [];
+
+
+        renderPage();
+
+
+    } catch (error) {
+
+        if (
+            error.status === 401
+        ) {
+            return;
+        }
+
+
+        alert(
+            error.message
+        );
+
+
+        if (
+            error.status === 403 ||
+            error.status === 404
+        ) {
+            window.location.replace(
+                "folders.html"
+            );
+        }
+    }
+}
+
+
+/* ==========================================
+   RELOAD ITEMS ONLY
+========================================== */
+
+async function loadItems() {
+    const response =
+        await window.apiRequest(
+            `/folders/${activeFolderId}/items`,
+            {
+                method:
+                    "GET"
+            }
+        );
+
+    wishlists =
+        response.items || [];
+
+    renderWishlists();
+    updateStatistics();
+}
+
+
+async function loadMembers() {
+    const response =
+        await window.apiRequest(
+            `/folders/${activeFolderId}/members`,
+            {
+                method:
+                    "GET"
+            }
+        );
+
+    members =
+        response.members || [];
+
+    renderMembers();
+    updateStatistics();
+}
+
+
+async function loadActivities() {
+    const response =
+        await window.apiRequest(
+            `/folders/${activeFolderId}/activities`,
+            {
+                method:
+                    "GET"
+            }
+        );
+
+    activities =
+        response.activities || [];
+
+    renderActivities();
+}
+
+
+/* ==========================================
+   RENDER PAGE
+========================================== */
+
+function renderPage() {
+    renderFolderInfo();
+    renderMembers();
+    renderWishlists();
+    updateStatistics();
+    renderActivities();
+
+}
+
+
+/* ==========================================
+   FOLDER INFO
+========================================== */
+
+function renderFolderInfo() {
+    folderNameElement.textContent =
+        activeFolder.name;
+
+    folderDescriptionElement.textContent =
+        activeFolder.description ||
+        "Wishlist yang dibagikan bersama kamu";
+}
+
+
+/* ==========================================
+   MEMBERS
+========================================== */
+
+function renderMembers() {
+    membersList.innerHTML =
+        "";
+
+    totalMembersElement.textContent =
+        members.length;
+
+
+    if (
+        members.length === 0
+    ) {
+        membersList.innerHTML = `
+            <div class="member-pill">
+
+                <div class="member-pill-avatar">
+                    ?
+                </div>
+
+                Belum ada anggota
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    members.forEach(
+        member => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "member-pill";
+
+
+            const displayName =
+                member.username ||
+                member.email;
+
+
+            const initials =
+                displayName
+                    .substring(0, 2)
+                    .toUpperCase();
+
+
+            const roleText =
+                member.role ===
+                "owner"
+                    ? " (Pemilik)"
+                    : "";
+
+
+            item.innerHTML = `
+                <div class="member-pill-avatar">
+
+                    ${escapeHTML(initials)}
+
+                </div>
+
+                ${escapeHTML(displayName)}
+                ${escapeHTML(roleText)}
+            `;
+
+            if (member.avatar_url) {
+                const avatarElement =
+                    item.querySelector(
+                        ".member-pill-avatar"
+                    );
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+                image.src =
+                    member.avatar_url;
+
+                image.alt =
+                    displayName;
+
+                image.style.width =
+                    "100%";
+
+                image.style.height =
+                    "100%";
+
+                image.style.objectFit =
+                    "cover";
+
+                image.style.borderRadius =
+                    "50%";
+
+                image.style.display =
+                    "block";
+
+                image.addEventListener(
+                    "error",
+                    function() {
+                        avatarElement.innerHTML =
+                            "";
+
+                        avatarElement.textContent =
+                            initials;
+                    }
+                );
+
+                avatarElement.innerHTML =
+                    "";
+
+                avatarElement.appendChild(
+                    image
+                );
+            }
+
+            membersList.appendChild(
+                item
+            );
+        }
+    );
+}
+
+
+
+/* ==========================================
+   ACTIVITY LOG
+========================================== */
+
+function formatActivityTime(value) {
+    if (!value) {
+        return "";
+    }
+
+    const date =
+        new Date(value);
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+        return "";
+    }
+
+    return new Intl.DateTimeFormat(
+        "id-ID",
+        {
+            day:
+                "2-digit",
+
+            month:
+                "short",
+
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit"
+        }
+    ).format(date);
+}
+
+
+function getActivityDescription(
+    activity
+) {
+    const itemName =
+        escapeHTML(
+            activity.item_name ||
+            "wishlist"
+        );
+
+    switch (
+        activity.action
+    ) {
+        case "wishlist_created":
+            return `
+                menambahkan
+                <strong>${itemName}</strong>
+            `;
+
+        case "wishlist_updated":
+            return `
+                mengubah
+                <strong>${itemName}</strong>
+            `;
+
+        case "wishlist_completed":
+            return `
+                menandai
+                <strong>${itemName}</strong>
+                sebagai sudah dibeli
+            `;
+
+        case "wishlist_uncompleted":
+            return `
+                menandai
+                <strong>${itemName}</strong>
+                sebagai belum dibeli
+            `;
+
+        case "wishlist_deleted":
+            return `
+                menghapus
+                <strong>${itemName}</strong>
+            `;
+
+        default:
+            return `
+                melakukan perubahan pada
+                <strong>${itemName}</strong>
+            `;
+    }
+}
+
+
+function renderActivities() {
+    if (
+        !activityList ||
+        !activityCountElement
+    ) {
+        return;
+    }
+
+    activityList.innerHTML =
+        "";
+
+    activityCountElement.textContent =
+        `${activities.length} aktivitas`;
+
+    if (
+        activities.length === 0
+    ) {
+        activityList.innerHTML = `
+            <div class="activity-empty">
+                Belum ada aktivitas.
+            </div>
+        `;
+
+        return;
+    }
+
+    activities.forEach(
+        activity => {
+
+            const displayName =
+                activity.actor_username ||
+                activity.actor_email ||
+                "Unknown";
+
+            const initials =
+                displayName
+                    .substring(0, 2)
+                    .toUpperCase();
+
+            const description =
+                getActivityDescription(
+                    activity
+                );
+
+            const time =
+                formatActivityTime(
+                    activity.created_at
+                );
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "activity-item";
+
+            item.innerHTML = `
+                <div class="activity-avatar">
+                    ${escapeHTML(initials)}
+                </div>
+
+                <div class="activity-content">
+
+                    <div class="activity-text">
+
+                        <strong>
+                            ${escapeHTML(displayName)}
+                        </strong>
+
+                        ${description}
+
+                    </div>
+
+                    <div class="activity-time">
+                        ${escapeHTML(time)}
+                    </div>
+
+                </div>
+            `;
+
+            if (activity.actor_avatar_url) {
+                const avatarElement =
+                    item.querySelector(
+                        ".activity-avatar"
+                    );
+
+                const image =
+                    document.createElement(
+                        "img"
+                    );
+
+                image.src =
+                    activity.actor_avatar_url;
+
+                image.alt =
+                    displayName;
+
+                image.style.width =
+                    "100%";
+
+                image.style.height =
+                    "100%";
+
+                image.style.objectFit =
+                    "cover";
+
+                image.style.borderRadius =
+                    "50%";
+
+                image.style.display =
+                    "block";
+
+                image.addEventListener(
+                    "error",
+                    function() {
+                        avatarElement.innerHTML =
+                            "";
+
+                        avatarElement.textContent =
+                            initials;
+                    }
+                );
+
+                avatarElement.innerHTML =
+                    "";
+
+                avatarElement.appendChild(
+                    image
+                );
+            }
+
+            activityList.appendChild(
+                item
+            );
+        }
+    );
+}
+
+
+function applyRealtimeActivity(
+    activity
+) {
+    if (!activity) {
+        return;
+    }
+
+    const exists =
+        activities.some(
+            item =>
+                Number(item.id) ===
+                Number(activity.id)
+        );
+
+    if (exists) {
+        return;
+    }
+
+    activities.unshift(
+        activity
+    );
+
+    if (
+        activities.length > 50
+    ) {
+        activities =
+            activities.slice(
+                0,
+                50
+            );
+    }
+
+    renderActivities();
+}
+
+/* ==========================================
+   WISHLISTS
+========================================== */
+
+function renderWishlists() {
+    wishlistGrid.innerHTML =
+        "";
+
+
+    wishlistCountElement.textContent =
+        `${wishlists.length} item`;
+
+
+    if (
+        wishlists.length === 0
+    ) {
+        emptyWishlist.style.display =
+            "block";
+
+        return;
+    }
+
+
+    emptyWishlist.style.display =
+        "none";
+
+
+    wishlists.forEach(
+        item => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "wishlist-card";
+
+
+            if (item.completed) {
+                card.classList.add(
+                    "completed"
+                );
+            }
+
+
+            const price =
+                formatPrice(
+                    item.price
+                );
+
+
+            const imageHTML =
+                item.image_url
+                    ? `
+                        <img
+                            src="${escapeAttribute(item.image_url)}"
+                            alt="${escapeAttribute(item.name)}"
+                            onerror="
+                                this.closest('.wishlist-image').style.display='none';
+                            "
+                        >
+
+                        <div
+                            class="no-image"
+                            style="display:none;"
+                        >
+                            <i class="fa-regular fa-image"></i>
+                            Gambar tidak tersedia
+                        </div>
+                      `
+                    : `
+                        <div class="no-image">
+                            <i class="fa-regular fa-image"></i>
+                            Belum ada gambar
+                        </div>
+                      `;
+
+
+
+
+            const productLinkHTML =
+                item.product_url
+                    ? `
+                        <a
+                            href="${escapeAttribute(item.product_url)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                display:inline-flex;
+                                align-items:center;
+                                gap:6px;
+                                margin-top:10px;
+                                color:inherit;
+                                font-size:12px;
+                                text-decoration:underline;
+                                text-underline-offset:3px;
+                            "
+                        >
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            Lihat Produk
+                        </a>
+                      `
+                    : "";
+
+
+            card.innerHTML = `
+                <div class="wishlist-image" style="${item.image_url ? "" : "display:none;"}">
+
+                    ${imageHTML}
+
+                    ${
+                        item.completed
+                            ? `
+                                <div class="status-badge completed">
+
+                                    <i class="fa-solid fa-check"></i>
+                                    Sudah Dibeli
+
+                                </div>
+                              `
+                            : ""
+                    }
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+                    <div class="wishlist-name">
+
+                        ${escapeHTML(item.name)}
+
+                    </div>
+
+
+                    <div class="wishlist-description">
+
+                        ${escapeHTML(
+                            item.description ||
+                            "Belum ada deskripsi"
+                        )}
+
+                    </div>
+
+
+                    <div class="wishlist-bottom">
+
+                        ${
+                            price
+                                ? `
+                                    <div class="wishlist-price">
+                                        ${price}
+                                    </div>
+                                  `
+                                : `
+                                    <div class="wishlist-price empty">
+                                        Harga belum ditentukan
+                                    </div>
+                                  `
+                        }
+
+
+                        <div class="added-by">
+
+                            oleh
+
+                            <strong>
+                                ${escapeHTML(
+                                    item.added_by ||
+                                    "Unknown"
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    ${productLinkHTML}
+
+
+                    <div class="card-actions">
+
+                        <button
+                            class="action-btn"
+                            onclick="toggleCompleted(${item.id})"
+                        >
+
+                            ${
+                                item.completed
+                                    ? `
+                                        <i class="fa-solid fa-rotate-left"></i>
+                                        Belum Dibeli
+                                      `
+                                    : `
+                                        <i class="fa-solid fa-check"></i>
+                                        Sudah Dibeli
+                                      `
+                            }
+
+                        </button>
+
+
+                        <button
+                            class="action-btn"
+                            onclick="editWishlist(${item.id})"
+                        >
+
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            Edit
+
+                        </button>
+
+
+                        <button
+                            class="action-btn delete"
+                            onclick="deleteWishlist(${item.id})"
+                        >
+
+                            <i class="fa-regular fa-trash-can"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+
+            wishlistGrid.appendChild(
+                card
+            );
+        }
+    );
+}
+
+
+/* ==========================================
+   STATISTICS
+========================================== */
+
+function updateStatistics() {
+    totalWishlistElement.textContent =
+        wishlists.length;
+
+
+    const completed =
+        wishlists.filter(
+            item =>
+                item.completed
+        ).length;
+
+
+    completedWishlistElement.textContent =
+        completed;
+
+
+    totalMembersElement.textContent =
+        members.length;
+}
+
+
+/* ==========================================
+   OPEN MODAL
+========================================== */
+
+function openWishlistModal() {
+    editingWishlistId =
+        null;
+
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+        "Tambah Wishlist";
+
+
+    document
+        .getElementById(
+            "itemName"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "itemDescription"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "itemPrice"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "itemImage"
+        )
+        .value =
+        "";
+
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "wishlistModal"
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    setTimeout(
+        () => {
+
+            document
+                .getElementById(
+                    "itemName"
+                )
+                .focus();
+
+        },
+        100
+    );
+}
+
+
+/* ==========================================
+   CLOSE MODAL
+========================================== */
+
+function closeWishlistModal() {
+    document
+        .getElementById(
+            "wishlistModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+    editingWishlistId =
+        null;
+}
+
+
+/* ==========================================
+   SAVE WISHLIST
+========================================== */
+
+async function saveWishlist() {
+    const name =
+        document
+            .getElementById(
+                "itemName"
+            )
+            .value
+            .trim();
+
+
+    const description =
+        document
+            .getElementById(
+                "itemDescription"
+            )
+            .value
+            .trim();
+
+
+    const priceValue =
+        document
+            .getElementById(
+                "itemPrice"
+            )
+            .value;
+
+
+    const imageURL =
+        document
+            .getElementById(
+                "itemImage"
+            )
+            .value
+            .trim();
+
+
+    const productURL =
+        document
+            .getElementById(
+                "itemProductUrl"
+            )
+            .value
+            .trim();
+
+
+    if (!name) {
+        alert(
+            "Nama barang harus diisi."
+        );
+
+        return;
+    }
+
+
+    const price =
+        parsePriceInput(
+            priceValue
+        );
+
+
+    if (
+        !Number.isFinite(price) ||
+        price < 0
+    ) {
+        alert(
+            "Harga tidak valid."
+        );
+
+        return;
+    }
+
+
+    const button =
+        document.querySelector(
+            "#wishlistModal .btn-save"
+        );
+
+
+    const oldText =
+        button
+            ? button.textContent
+            : "Simpan";
+
+
+    if (button) {
+        button.disabled =
+            true;
+
+        button.textContent =
+            "Menyimpan...";
+    }
+
+
+    try {
+
+        if (
+            editingWishlistId === null
+        ) {
+
+            await window.apiRequest(
+                `/folders/${activeFolderId}/items`,
+                {
+                    method:
+                        "POST",
+
+                    body:
+                        JSON.stringify({
+                            name,
+                            description,
+                            price,
+                            tag: "",
+                            image_url:
+                                imageURL,
+                            product_url:
+                                productURL
+                        })
+                }
+            );
+
+        } else {
+
+            await window.apiRequest(
+                `/folders/${activeFolderId}/items/${editingWishlistId}`,
+                {
+                    method:
+                        "PATCH",
+
+                    body:
+                        JSON.stringify({
+                            name,
+                            description,
+                            price,
+                            image_url:
+                                imageURL,
+                            product_url:
+                                productURL
+                        })
+                }
+            );
+        }
+
+
+        closeWishlistModal();
+
+        await loadItems();
+
+
+    } catch (error) {
+
+        alert(
+            error.message
+        );
+
+
+    } finally {
+
+        if (button) {
+            button.disabled =
+                false;
+
+            button.textContent =
+                oldText;
+        }
+    }
+}
+
+
+/* ==========================================
+   EDIT WISHLIST
+========================================== */
+
+function editWishlist(id) {
+    const item =
+        wishlists.find(
+            wishlist =>
+                Number(wishlist.id) ===
+                Number(id)
+        );
+
+
+    if (!item) {
+        return;
+    }
+
+
+    editingWishlistId =
+        item.id;
+
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+        "Edit Wishlist";
+
+
+    document
+        .getElementById(
+            "itemName"
+        )
+        .value =
+        item.name || "";
+
+
+    document
+        .getElementById(
+            "itemDescription"
+        )
+        .value =
+        item.description || "";
+
+
+    document
+        .getElementById(
+            "itemPrice"
+        )
+        .value =
+        item.price > 0
+            ? formatPriceInput(item.price)
+            : "";
+
+
+    document
+        .getElementById(
+            "itemImage"
+        )
+        .value =
+        item.image_url || "";
+
+    document
+        .getElementById(
+            "itemProductUrl"
+        )
+        .value =
+        item.product_url || "";
+
+
+    document
+        .getElementById(
+            "wishlistModal"
+        )
+        .classList.add(
+            "active"
+        );
+}
+
+
+/* ==========================================
+   TOGGLE COMPLETED
+========================================== */
+
+async function toggleCompleted(id) {
+    const item =
+        wishlists.find(
+            wishlist =>
+                Number(wishlist.id) ===
+                Number(id)
+        );
+
+
+    if (!item) {
+        return;
+    }
+
+
+    try {
+
+        await window.apiRequest(
+            `/folders/${activeFolderId}/items/${id}`,
+            {
+                method:
+                    "PATCH",
+
+                body:
+                    JSON.stringify({
+                        completed:
+                            !item.completed
+                    })
+            }
+        );
+
+
+        await loadItems();
+
+
+    } catch (error) {
+
+        alert(
+            error.message
+        );
+    }
+}
+
+
+/* ==========================================
+   DELETE
+========================================== */
+
+function deleteWishlist(id) {
+    const item =
+        wishlists.find(
+            wishlist =>
+                Number(wishlist.id) ===
+                Number(id)
+        );
+
+
+    if (!item) {
+        return;
+    }
+
+
+    deletingWishlistId =
+        item.id;
+
+
+    document
+        .getElementById(
+            "deleteItemName"
+        )
+        .textContent =
+        `"${item.name}"`;
+
+
+    document
+        .getElementById(
+            "deleteModal"
+        )
+        .classList.add(
+            "active"
+        );
+}
+
+
+async function confirmDelete() {
+    if (
+        deletingWishlistId === null
+    ) {
+        return;
+    }
+
+
+    try {
+
+        await window.apiRequest(
+            `/folders/${activeFolderId}/items/${deletingWishlistId}`,
+            {
+                method:
+                    "DELETE"
+            }
+        );
+
+
+        closeDeleteModal();
+
+        deletingWishlistId =
+            null;
+
+
+        await loadItems();
+
+
+    } catch (error) {
+
+        alert(
+            error.message
+        );
+    }
+}
+
+
+function closeDeleteModal() {
+    document
+        .getElementById(
+            "deleteModal"
+        )
+        .classList.remove(
+            "active"
+        );
+}
+
+
+/* ==========================================
+   BACK
+========================================== */
+
+function goBack() {
+    window.location.href =
+        "folders.html";
+}
+
+
+/* ==========================================
+   MODAL OUTSIDE CLICK
+========================================== */
+
+document
+    .getElementById(
+        "wishlistModal"
+    )
+    ?.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                this
+            ) {
+                closeWishlistModal();
+            }
+        }
+    );
+
+
+document
+    .getElementById(
+        "deleteModal"
+    )
+    ?.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                this
+            ) {
+                closeDeleteModal();
+            }
+        }
+    );
+
+
+/* ==========================================
+   START
+========================================== */
+
+hideAddedByField();
+
+loadPage();
+
+/* PRICE INPUT FORMAT START */
+
+function formatPriceInput(value) {
+    const digits =
+        String(value ?? "")
+            .replace(/\D/g, "");
+
+    if (!digits) {
+        return "";
+    }
+
+    return digits.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        "."
+    );
+}
+
+
+function parsePriceInput(value) {
+    const digits =
+        String(value ?? "")
+            .replace(/\D/g, "");
+
+    if (!digits) {
+        return 0;
+    }
+
+    const number =
+        Number(digits);
+
+    if (
+        !Number.isSafeInteger(number) ||
+        number < 0
+    ) {
+        return null;
+    }
+
+    return number;
+}
+
+
+function handlePriceTyping(event) {
+    const input =
+        event.target;
+
+    const oldValue =
+        input.value;
+
+    const oldCursor =
+        input.selectionStart ??
+        oldValue.length;
+
+    const digitsBeforeCursor =
+        oldValue
+            .slice(0, oldCursor)
+            .replace(/\D/g, "")
+            .length;
+
+
+    const formatted =
+        formatPriceInput(
+            oldValue
+        );
+
+    input.value =
+        formatted;
+
+
+    let newCursor = 0;
+    let digitCount = 0;
+
+    while (
+        newCursor < formatted.length &&
+        digitCount < digitsBeforeCursor
+    ) {
+        if (
+            /\d/.test(
+                formatted[newCursor]
+            )
+        ) {
+            digitCount++;
+        }
+
+        newCursor++;
+    }
+
+
+    input.setSelectionRange(
+        newCursor,
+        newCursor
+    );
+}
+
+
+document
+    .getElementById(
+        "itemPrice"
+    )
+    ?.addEventListener(
+        "input",
+        handlePriceTyping
+    );
+
+/* PRICE INPUT FORMAT END */
+
+
+/* REALTIME DIRECT UPDATE START */
+
+function applyRealtimeWishlistChange(message) {
+    if (message.action === "created" && message.item) {
+
+        const exists =
+            wishlists.some(
+                item =>
+                    Number(item.id) ===
+                    Number(message.item.id)
+            );
+
+        if (!exists) {
+            wishlists.unshift(
+                message.item
+            );
+        }
+
+        renderWishlists();
+        updateStatistics();
+
+        return;
+    }
+
+
+    if (message.action === "updated" && message.item) {
+
+        const index =
+            wishlists.findIndex(
+                item =>
+                    Number(item.id) ===
+                    Number(message.item.id)
+            );
+
+        if (index !== -1) {
+            wishlists[index] =
+                message.item;
+        } else {
+            wishlists.unshift(
+                message.item
+            );
+        }
+
+        renderWishlists();
+        updateStatistics();
+
+        return;
+    }
+
+
+    if (message.action === "deleted") {
+
+        wishlists =
+            wishlists.filter(
+                item =>
+                    Number(item.id) !==
+                    Number(message.item_id)
+            );
+
+        renderWishlists();
+        updateStatistics();
+
+        return;
+    }
+
+
+    loadItems().catch(
+        error => {
+            console.error(
+                "Gagal sinkronisasi wishlist:",
+                error
+            );
+        }
+    );
+}
+
+/* REALTIME DIRECT UPDATE END */
+
+/* REALTIME WEBSOCKET START */
+
+let wishlistSocket = null;
+let realtimeReloadTimer = null;
+let realtimeReconnectTimer = null;
+let allowRealtimeReconnect = true;
+
+function scheduleRealtimeReload() {
+    clearTimeout(realtimeReloadTimer);
+
+    realtimeReloadTimer = setTimeout(
+        async function() {
+            try {
+                await loadItems();
+            } catch (error) {
+                console.error(
+                    "Gagal mengambil update realtime:",
+                    error
+                );
+            }
+        },
+        120
+    );
+}
+
+function connectRealtime() {
+    const token =
+        localStorage.getItem(
+            "wishlist_token"
+        );
+
+    if (!token || !activeFolderId) {
+        return;
+    }
+
+    if (
+        wishlistSocket &&
+        (
+            wishlistSocket.readyState === WebSocket.OPEN ||
+            wishlistSocket.readyState === WebSocket.CONNECTING
+        )
+    ) {
+        return;
+    }
+
+    const socketURL =
+        `wss://wishlistbyya-api-production.up.railway.app/ws/folders/${activeFolderId}` +
+        `?token=${encodeURIComponent(token)}`;
+
+    wishlistSocket =
+        new WebSocket(socketURL);
+
+    wishlistSocket.addEventListener(
+        "open",
+        function() {
+            console.log(
+                "Realtime wishlist terhubung."
+            );
+        }
+    );
+
+    wishlistSocket.addEventListener(
+        "message",
+        function(event) {
+            let message;
+
+            try {
+                message =
+                    JSON.parse(event.data);
+            } catch (error) {
+                console.error(
+                    "Pesan realtime tidak valid:",
+                    error
+                );
+
+                return;
+            }
+
+            console.log(
+                "Realtime message:",
+                message
+            );
+
+            if (
+                message.type ===
+                "wishlist_changed"
+            ) {
+                applyRealtimeWishlistChange(
+                    message
+                );
+            }
+
+            if (
+                message.type ===
+                "activity_created" &&
+                message.activity
+            ) {
+                loadActivities().catch(
+                    error => {
+                        console.error(
+                            "Gagal memperbarui activity realtime:",
+                            error
+                        );
+                    }
+                );
+            }
+
+            if (
+                message.type ===
+                "profile_changed"
+            ) {
+                Promise.all([
+                    loadMembers(),
+                    loadActivities()
+                ]).catch(
+                    error => {
+                        console.error(
+                            "Gagal memperbarui profile realtime:",
+                            error
+                        );
+                    }
+                );
+            }
+        }
+    );
+
+    wishlistSocket.addEventListener(
+        "close",
+        function() {
+            console.log(
+                "Realtime wishlist terputus."
+            );
+
+            wishlistSocket = null;
+
+            if (!allowRealtimeReconnect) {
+                return;
+            }
+
+            clearTimeout(
+                realtimeReconnectTimer
+            );
+
+            realtimeReconnectTimer =
+                setTimeout(
+                    connectRealtime,
+                    2000
+                );
+        }
+    );
+
+    wishlistSocket.addEventListener(
+        "error",
+        function(error) {
+            console.error(
+                "WebSocket error:",
+                error
+            );
+        }
+    );
+}
+
+window.addEventListener(
+    "beforeunload",
+    function() {
+        allowRealtimeReconnect = false;
+
+        clearTimeout(
+            realtimeReconnectTimer
+        );
+
+        if (wishlistSocket) {
+            wishlistSocket.close();
+        }
+    }
+);
+
+connectRealtime();
+
+/* REALTIME WEBSOCKET END */
