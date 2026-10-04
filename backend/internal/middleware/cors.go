@@ -8,8 +8,8 @@ import (
 
 func CORS() gin.HandlerFunc {
 	allowedOrigins := map[string]bool{
-		"http://localhost:5500":                    true,
-		"http://127.0.0.1:5500":                    true,
+		"http://localhost:8080":                    true,
+		"http://127.0.0.1:8080":                    true,
 		"https://wishlistbyya.nekoyaa.workers.dev": true,
 	}
 
