@@ -1,5 +1,5 @@
 const API_BASE_URL =
-    "https://wishlistbyya-api-production.up.railway.app/api";
+    "https://https://wishlistbyya.vercel.app//api";
 
 
 /* ==========================================
