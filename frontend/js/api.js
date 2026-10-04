@@ -1,5 +1,5 @@
 const API_BASE_URL =
-    "https://https://wishlistbyya.vercel.app/api";
+    "https://wishlistbyya.vercel.app/api";
 
 
 /* ==========================================

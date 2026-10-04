@@ -990,7 +990,7 @@ function getNoteSocketURL() {
 
 
     return (
-        `wss://https://wishlistbyya.vercel.app/ws/notes/${encodeURIComponent(noteID)}` +
+        `wss://wishlistbyya.vercel.app/ws/notes/${encodeURIComponent(noteID)}` +
         `?token=${encodeURIComponent(token)}`
     );
 }
