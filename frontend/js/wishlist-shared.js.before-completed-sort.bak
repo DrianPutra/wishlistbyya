@@ -1812,7 +1812,7 @@ function connectRealtime() {
     }
 
     const socketURL =
-        `wss://wishlistbyya-api-production.up.railway.app/ws/folders/${activeFolderId}` +
+        `wss://https://wishlistbyya.vercel.app/ws/folders/${activeFolderId}` +
         `?token=${encodeURIComponent(token)}`;
 
     wishlistSocket =
